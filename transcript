@@ -1,0 +1,105 @@
+# Compile of Instruction_Memory.vhd was successful.
+do Instruction_Memory_do.do
+# vsim -gui work.instruction_memory 
+# Start time: 15:32:52 on Apr 18,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# ** UI-Msg: (vish-4014) No objects found matching '/instruction_memory/n'.
+# Error in macro ./Instruction_Memory_do.do line 17
+# ** UI-Msg: (vish-4014) No objects found matching '/instruction_memory/n'.
+#     while executing
+# "add wave -position insertpoint  \
+# sim:/instruction_memory/n \
+# sim:/instruction_memory/ReadAddress \
+# sim:/instruction_memory/ReadData \
+# sim:/instructio..."
+force -freeze sim:/instruction_memory/ReadAddress 000000000000 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /instruction_memory
+force -freeze sim:/instruction_memory/ReadAddress 111111111110 0
+run
+force -freeze sim:/instruction_memory/ReadAddress 111111111111 0
+run
+force -freeze sim:/instruction_memory/ReadAddress 1111111111111 0
+# Value length (13) does not equal array index length (12).
+# ** UI-Msg: (vsim-4011) Invalid force value: 1111111111111 0.
+# 
+run
+quit -sim
+# End time: 00:13:43 on Apr 19,2024, Elapsed time: 8:40:51
+# Errors: 0, Warnings: 3
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd failed with 3 errors.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd failed with 1 errors.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd failed with 2 errors.
+# 8 compiles, 3 failed with 6 errors.
+# Compile of Instruction_Memory.vhd failed with 1 errors.
+# Compile of Instruction_Memory.vhd was successful.
+vsim -gui work.instruction_memory
+# vsim -gui work.instruction_memory 
+# Start time: 00:15:57 on Apr 19,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /instruction_memory/ram
+add wave -position insertpoint  \
+sim:/instruction_memory/n \
+sim:/instruction_memory/ReadAddress \
+sim:/instruction_memory/ReadData \
+sim:/instruction_memory/ram
+add wave -position insertpoint  \
+sim:/instruction_memory/n \
+sim:/instruction_memory/ReadAddress \
+sim:/instruction_memory/ReadData \
+sim:/instruction_memory/ram
+add wave -position insertpoint  \
+sim:/instruction_memory/n \
+sim:/instruction_memory/ReadAddress \
+sim:/instruction_memory/ReadData \
+sim:/instruction_memory/ram
+force -freeze sim:/instruction_memory/ReadAddress 0000000000000000000000000000000 0
+# Value length (31) does not equal array index length (32).
+# ** UI-Msg: (vsim-4011) Invalid force value: 0000000000000000000000000000000 0.
+# 
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /instruction_memory
+force -freeze sim:/instruction_memory/ReadAddress 00000000000000000000000000000001 0
+run
+force -freeze sim:/instruction_memory/ReadAddress 00000000000000000000000000000000 0
+run
+force -freeze sim:/instruction_memory/ReadAddress 10000000000000000000000000000000 0
+run
+# ** Warning: (vsim-151) NUMERIC_STD.TO_INTEGER: Value -2147483648 is not in bounds of subtype NATURAL.
+#    Time: 300 ps  Iteration: 0  Instance: /instruction_memory
+# ** Fatal: (vsim-3734) Index value -2147483648 is out of range 0 to 4095.
+#    Time: 300 ps  Iteration: 0  Process: /instruction_memory/line__19 File: D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd
+# Fatal error in Architecture Instruction_Memory_Architecture at D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd line 19
+# 
+# HDL call sequence:
+# Stopped at D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd 19 Architecture Instruction_Memory_Architecture
+# 
+run
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd 19 Architecture Instruction_Memory_Architecture
+# 
+quit -sim
+# End time: 02:01:35 on Apr 19,2024, Elapsed time: 1:45:38
+# Errors: 1, Warnings: 6
+# Compile of Fetch.vhd failed with 6 errors.
+# Compile of Fetch.vhd failed with 4 errors.
+# Compile of Fetch.vhd failed with 5 errors.
+# Compile of Fetch.vhd was successful.
