@@ -34,9 +34,10 @@ BEGIN
                 ELSE '0';
                     
 
-    WBdatasrc <= "01" WHEN opcode(5 DOWNTO 4) = "01"
+    WBdatasrc <= "10" WHEN (opcode(5 downto 4) ="00" and opcode(3 downto 0) /= "1011") or opcode(5 downto 0) = "110101" or opcode(5 downto 0) = "110110"
                  ELSE "00" WHEN opcode = "110010" -- IN
-                 ELSE "10";
+                 ELSE "01" WHEN opcode = "010001" or opcode = "010010" or opcode = "110111"
+                 ELSE "11";
 
     AluSelector <= "0000" WHEN opcode = "000000" -- NOT
                  ELSE "0001" WHEN opcode = "000001" -- NEG
@@ -60,10 +61,10 @@ BEGIN
     alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- To include ADDI & LDM
                  ELSE '0';
 
-    MWrite <= '1' WHEN opcode = "011111" or opcode = "010011" or opcode = "100010" -- PUSH STD , CALL
+    MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
               ELSE '0';
 
-    MRead <= '1' WHEN opcode = "010001" or opcode = "010010" or opcode = "100100" or opcode = "100011" -- LDM for ناوو
+    MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
              ELSE '0';
 
     SPPointer <= "01" WHEN opcode = "010000" OR opcode = "100111" -- PUSH , CALL
