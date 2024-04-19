@@ -73,5 +73,16 @@ BEGIN
 
     MemWRsrc <= opcode(5);
 
+    interruptsignal <= '1' WHEN opcode = "1110011" -- INT
+                     ELSE '0';
+    
+    rtisignal <= '1' WHEN opcode = "100100" -- RTI
+                ELSE '0';
+
+    FreeProtectStore <= "00" WHEN opcode(5 downto 4) = "00" or (opcode(5 downto 4) ="01" and opcode(3 downto 0) /= "0011") or opcode(5 downto 4) = "10" or (opcode(5 downto 4) ="11" and (opcode(3 downto 0) /= "0011" or opcode(3 downto 0) /= "0100"))
+                      ELSE "01" WHEN opcode = "110011" -- FREE
+                      ELSE "10" WHEN opcode = "110100" -- PROTECT
+                      ELSE "11"; -- Default value STD
+
 END Controller_Arch;
 
