@@ -7,282 +7,57 @@ ENTITY ALU is
         n : integer := 32
     );
     PORT (
-        Reg1, Reg2 : IN std_logic_vector(n-1 downto 0);
+        Reg1, Reg2 ,Imm_value: IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
         carry_flag, neg_flag, zero_flag, overflow_flag : OUT std_logic;
         ALUout : OUT std_logic_vector(n-1 downto 0)
     );
 END ENTITY ALU;
 
-ARCHITECTURE struct OF ALU IS
-    SIGNAL carry_flag_sig, neg_flag_sig, zero_flag_sig, overflow_flag_sig : std_logic;
-    SIGNAL ALUout_sig : std_logic_vector(n-1 downto 0);
-BEGIN
-PROCESS (ALU_selector, Reg1, Reg2)
-BEGIN
-    CASE ALU_selector IS
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0000" => -- NOT
-            ALUout_sig <= NOT Reg1;
-        IF ALUout_sig = "00000000000000000000000000000000" THEN
-            zero_flag_sig <= '1';
-        ELSE
-            zero_flag_sig <= '0';
-        END IF;
-        IF ALUout_sig(n-1) = '1' THEN
-            neg_flag_sig <= '1';
-        ELSE
-            neg_flag_sig <= '0';
-        END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0001" => --  NEG
-            std_logic_vector(unsigned("00000000000000000000000000000000") - unsigned(Reg1))
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-            zero_flag_sig <= '1';
-        ELSE
-            zero_flag_sig <= '0';
-        END IF;        
-        IF ALUout_sig(n-1) = '1' THEN
-            neg_flag_sig <= '1';
-        ELSE
-            neg_flag_sig <= '0';
-        END IF;
-        IF Reg1 = X"80000000" THEN
-            overflow_flag_sig <= '1';
-        ELSE
-            overflow_flag_sig <= '0';
-        END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0010" => -- INC
-            ALUout_sig <= Reg1 + "00000000000000000000000000000001" ;
-            IF ALUout_sig < Reg1 THEN
-                overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0011" => -- DEC
-            ALUout_sig <= Reg1 - "00000000000000000000000000000001";
-            IF ALUout_sig > Reg1 THEN
-                overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0100" => -- ADD
-            ALUout_sig <= Reg1 + Reg2;
-            IF ALUout_sig < Reg1 THEN
-            overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-            IF unsigned(Reg1) + unsigned(Reg2) > unsigned(ALUout_sig) THEN
-                carry_flag_sig <= '1';
-            ELSE
-                carry_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0101" => -- SUB
-            ALUout_sig <= Reg1 OR Reg2;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0110" => -- AND
-            ALUout_sig <= Reg1 AND Reg2;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0111" => -- XOR
-            ALUout_sig <= NOT Reg1;
-        WHEN "1000" => -- OR
-            ALUout_sig <= Reg1 sll to_integer(unsigned(Reg2));
-    END CASE;
-    carry_flag <= carry_flag_sig;
-    neg_flag <= neg_flag_sig;
-    zero_flag <= zero_flag_sig;
-    overflow_flag <= overflow_flag_sig;
-    ALUout <= ALUout_sig;
-    
-END PROCESS;
-
-END ARCHITECTURE struct;
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
-ENTITY ALU is
-    GENERIC (
-        n : integer := 32
-    );
-    PORT (
-        Reg1, Reg2 : IN std_logic_vector(n-1 downto 0);
-        ALU_selector : IN std_logic_vector(3 downto 0);
-        carry_flag, neg_flag, zero_flag, overflow_flag : OUT std_logic;
-        ALUout : OUT std_logic_vector(n-1 downto 0)
-    );
-END ENTITY ALU;
 
 ARCHITECTURE struct OF ALU IS
-    SIGNAL carry_flag_sig, neg_flag_sig, zero_flag_sig, overflow_flag_sig : std_logic;
     SIGNAL ALUout_sig : std_logic_vector(n-1 downto 0);
-BEGIN
-PROCESS (ALU_selector, Reg1, Reg2)
-BEGIN
-    CASE ALU_selector IS
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0000" => -- NOT
-            ALUout_sig <= NOT Reg1;
-        IF ALUout_sig = "00000000000000000000000000000000" THEN
-            zero_flag_sig <= '1';
-        ELSE
-            zero_flag_sig <= '0';
-        END IF;
-        IF ALUout_sig(n-1) = '1' THEN
-            neg_flag_sig <= '1';
-        ELSE
-            neg_flag_sig <= '0';
-        END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0001" => --  NEG
-            std_logic_vector(unsigned("00000000000000000000000000000000") - unsigned(Reg1))
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-            zero_flag_sig <= '1';
-        ELSE
-            zero_flag_sig <= '0';
-        END IF;        
-        IF ALUout_sig(n-1) = '1' THEN
-            neg_flag_sig <= '1';
-        ELSE
-            neg_flag_sig <= '0';
-        END IF;
-        IF Reg1 = X"80000000" THEN
-            overflow_flag_sig <= '1';
-        ELSE
-            overflow_flag_sig <= '0';
-        END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0010" => -- INC
-            ALUout_sig <= Reg1 + "00000000000000000000000000000001" ;
-            IF ALUout_sig < Reg1 THEN
-                overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0011" => -- DEC
-            ALUout_sig <= Reg1 - "00000000000000000000000000000001";
-            IF ALUout_sig > Reg1 THEN
-                overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0100" => -- ADD
-            ALUout_sig <= Reg1 + Reg2;
-            IF ALUout_sig < Reg1 THEN
-            overflow_flag_sig <= '1';
-            ELSE
-                overflow_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-            IF unsigned(Reg1) + unsigned(Reg2) > unsigned(ALUout_sig) THEN
-                carry_flag_sig <= '1';
-            ELSE
-                carry_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0101" => -- SUB
-            ALUout_sig <= Reg1 OR Reg2;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0110" => -- AND
-            ALUout_sig <= Reg1 AND Reg2;
-            IF ALUout_sig = "00000000000000000000000000000000" THEN
-                zero_flag_sig <= '1';
-            ELSE
-                zero_flag_sig <= '0';
-            END IF;
-            IF ALUout_sig(n-1) = '1' THEN
-                neg_flag_sig <= '1';
-            ELSE
-                neg_flag_sig <= '0';
-            END IF;
-    --------------------------------------------------------------------------------------------------------------------
-        WHEN "0111" => -- XOR
-            ALUout_sig <= NOT Reg1;
-        WHEN "1000" => -- OR
-            ALUout_sig <= Reg1 sll to_integer(unsigned(Reg2));
-    END CASE;
-    carry_flag <= carry_flag_sig;
-    neg_flag <= neg_flag_sig;
-    zero_flag <= zero_flag_sig;
-    overflow_flag <= overflow_flag_sig;
-    ALUout <= ALUout_sig;
-    
-END PROCESS;
+    CONSTANT zero_vector : std_logic_vector(n-1 downto 0) := (others => '0');
 
+BEGIN
+    Process(Reg1, Reg2, ALU_selector, Imm_value,ALUout_sig)
+    BEGIN
+        CASE ALU_selector IS
+            WHEN "0000" =>
+                ALUout_sig <= NOT Reg1;  -- NOT operation
+            WHEN "0001" =>
+                ALUout_sig <= std_logic_vector(to_unsigned(0, ALUout_sig'length) - unsigned(Reg1));  -- NEG operation
+            WHEN "0010" =>
+                ALUout_sig <= std_logic_vector(unsigned(Reg1) + 1);  -- INC operation
+            WHEN "0011" =>
+                ALUout_sig <= std_logic_vector(unsigned(Reg1) - 1);  -- DEC operation
+            WHEN "0100" =>
+                ALUout_sig <= std_logic_vector(unsigned(Reg1) + unsigned(Reg2));  -- ADD operation
+            WHEN "0101" =>
+                ALUout_sig <= std_logic_vector(unsigned(Reg1) - unsigned(Reg2));  -- SUB operation
+            WHEN "0110" =>
+                ALUout_sig <= Reg1 AND Reg2;  -- AND operation
+            WHEN "0111" =>
+                ALUout_sig <= Reg1 XOR Reg2;  -- XOR operation
+            WHEN "1000" =>
+                ALUout_sig <= Reg1 OR Reg2;  -- OR operation
+            WHEN OTHERS =>
+                ALUout_sig <= Reg1;  -- Default case (NOP)
+        END CASE;
+
+        -- Check for zero flag
+        IF ALUout_sig = zero_vector THEN
+            zero_flag <= '1';
+        ELSE
+            zero_flag <= '0';
+        END IF;
+	    neg_flag <= ALUout_sig(31);
+        -- Check for carry flag
+        IF ALU_selector = "0100" AND (unsigned(Reg1) + unsigned(Reg2)) > to_unsigned(2**n-1, n) THEN
+            carry_flag <= '1';
+        ELSE
+            carry_flag <= '0';
+        END IF;
+        ALUout<=ALUout_sig;  -- Assign ALU outputPROCESS
+END PROCESS;
 END ARCHITECTURE struct;
