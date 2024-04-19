@@ -359,3 +359,31 @@ force -freeze sim:/fetch/exceptionSel 0 0
 run
 force -freeze sim:/fetch/interrupt 0 0
 run
+quit -sim
+# End time: 19:05:53 on Apr 19,2024, Elapsed time: 4:53:59
+# Errors: 0, Warnings: 3
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd failed with 3 errors.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# 8 compiles, 1 failed with 3 errors.
+# Compile of Controller.vhd failed with 3 errors.
+# Compile of Controller.vhd failed with 3 errors.
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd was successful with warnings.
+# Compile of Controller.vhd was successful with warnings.
+# Compile of Controller.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# 8 compiles, 0 failed with no errors.
