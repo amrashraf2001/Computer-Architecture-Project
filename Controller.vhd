@@ -6,7 +6,7 @@ USE IEEE.numeric_std.all;
 ENTITY Controller IS
     PORT(
         opcode: IN std_logic_vector(5 DOWNTO 0); 
-        ZeroFlag: IN std_logic; -- Branching
+        --ZeroFlag: IN std_logic; -- Branching
         AluSelector: OUT std_logic_vector(3 DOWNTO 0); -- 3 bits subcode and extra bit
         Branching: OUT std_logic;
         alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
