@@ -13,9 +13,10 @@ ENTITY Controller IS
         MWrite, MRead: OUT std_logic;
         WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
         RegWrite: OUT std_logic;
-        SPPointer: OUT std_logic_vector(1 DOWNTO 0);
-        MemWRsrc: OUT std_logic;
+        SPPointer: OUT std_logic_vector(2 DOWNTO 0);
+        --MemWRsrc: OUT std_logic;
         interruptsignal:  out std_logic;
+        pcSource: OUT std_logic;
         rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0)
     );
@@ -58,7 +59,7 @@ BEGIN
     Branching <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100" -- Branching
                  ELSE '0';
 
-    alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- To include ADDI & LDM
+    alusource <= '1' WHEN (opcode(5 downto 4) = "11" and opcode(3 downto 0) /= "0001") -- To include ADDI & LDM
                  ELSE '0';
 
     MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
@@ -67,11 +68,14 @@ BEGIN
     MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
              ELSE '0';
 
-    SPPointer <= "01" WHEN opcode = "010000" OR opcode = "100111" -- PUSH , CALL
-               ELSE "10" WHEN opcode(5 DOWNTO 2) = "1000" OR opcode = "010110" -- RET, RTI, POP
-               ELSE "00"; -- SP=SP
+    SPPointer <= "010" WHEN opcode = "010000" -- PUSH
+               ELSE "000" WHEN opcode = "010001" -- POP
+               ELSE "001" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
+               ELSE "011" WHEN opcode = "100010" -- CALL
+               ELSE "100" WHEN opcode = "111001" -- INT
+               ELSE "000";
 
-    MemWRsrc <= opcode(5);
+    --MemWRsrc <= opcode(5);
 
     interruptsignal <= '1' WHEN opcode = "1110011" -- INT
                      ELSE '0';
@@ -83,6 +87,9 @@ BEGIN
                       ELSE "01" WHEN opcode = "110011" -- FREE
                       ELSE "10" WHEN opcode = "110100" -- PROTECT
                       ELSE "11"; -- Default value STD
+
+    pcSource <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100"
+                ELSE '0';
 
 END Controller_Arch;
 
