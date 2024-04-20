@@ -77,7 +77,7 @@ BEGIN
 
     --MemWRsrc <= opcode(5);
 
-    interruptsignal <= '1' WHEN opcode = "1110011" -- INT
+    interruptsignal <= '1' WHEN opcode = "111001" -- INT
                      ELSE '0';
     
     rtisignal <= '1' WHEN opcode = "100100" -- RTI

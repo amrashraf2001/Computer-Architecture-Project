@@ -387,3 +387,5 @@ quit -sim
 # Compile of StackReg.vhd was successful.
 # Compile of Fetch.vhd was successful.
 # 8 compiles, 0 failed with no errors.
+# Compile of Controller.vhd was successful with warnings.
+# Compile of Controller.vhd was successful with warnings.
