@@ -32,7 +32,7 @@ ARCHITECTURE Fetch_Arch OF Fetch IS
  
     signal pcIn, pcOut: std_logic_vector(n-1 downto 0);
     signal instruction: std_logic_vector(15 downto 0);
-    signai WrongAddress: std_logic;
+    signal WrongAddress: std_logic;
 begin
     PC1: PC PORT MAP (d=>pcIn, q=>pcOut, clk=>clk, rst=>rst, en=>en);
     IM1: Instruction_Memory PORT MAP (ReadAddress=>pcOut, ReadData=>instruction, WrongAddress=>WrongAddress);

@@ -34,3 +34,16 @@
 # Compile of RegFile.vhd was successful.
 # Compile of RegFile.vhd was successful.
 # Compile of Controller.vhd was successful.
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd failed with 1 errors.
+# Compile of PredictorReg.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd was successful.
+# 11 compiles, 1 failed with 1 error.
+# Compile of Fetch.vhd failed with 1 errors.
