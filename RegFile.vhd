@@ -29,10 +29,12 @@ BEGIN
 						ram(to_integer(unsigned(WriteAddress1))) <= WriteData1;
 						ram(to_integer(unsigned(WriteAddress2))) <= WriteData2;
 					END IF;
+				ELSIF falling_edge(Clk) then
+					ReadData1 <= ram(to_integer(unsigned(ReadAddress1)));
+					ReadData2 <= ram(to_integer(unsigned(ReadAddress2)));		
 				END IF;
 	END PROCESS;
-	ReadData1 <= ram(to_integer(unsigned(ReadAddress1)));
-	ReadData2 <= ram(to_integer(unsigned(ReadAddress2)));
+	
        
 
 END RegFile_Architecture;
