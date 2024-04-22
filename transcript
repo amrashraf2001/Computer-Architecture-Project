@@ -645,3 +645,4 @@ clear
 # Compile of ALU.vhd failed with 5 errors.
 # Compile of ALU.vhd was successful.
 # Compile of ALU.vhd was successful.
+# Compile of Execute.vhd was successful.
