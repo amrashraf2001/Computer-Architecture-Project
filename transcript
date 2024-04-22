@@ -134,3 +134,38 @@ force -freeze sim:/fetch/branchingAddress 10000000000000000000000000000100 0
 force -freeze sim:/fetch/exceptionSel 0 0
 force -freeze sim:/fetch/branchingSel 1 0
 run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/fetchTest.mem} /fetch/IM1/ram
+force -freeze sim:/fetch/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/fetch/en 1 0
+force -freeze sim:/fetch/rst 1 0
+force -freeze sim:/fetch/interrupt 0 0
+force -freeze sim:/fetch/branchingSel 0 0
+force -freeze sim:/fetch/exceptionSel 0 0
+force -freeze sim:/fetch/stall 0 0
+run
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fetch/IM1
+force -freeze sim:/fetch/rst 0 0
+run
+force -freeze sim:/fetch/branchingAddress 00000000000000000000000000000100 0
+force -freeze sim:/fetch/branchingSel 1 0
+run
+force -freeze sim:/fetch/branchingSel 0 0
+run
+force -freeze sim:/fetch/exceptionSel 1 0
+run
+force -freeze sim:/fetch/rst 1 0
+force -freeze sim:/fetch/exceptionSel 0 0
+run
+force -freeze sim:/fetch/stall 1 0
+run
+force -freeze sim:/fetch/rst 0 0
+run
+run
+force -freeze sim:/fetch/en 0 0
+run
