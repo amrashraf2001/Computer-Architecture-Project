@@ -8,7 +8,8 @@ GENERIC(n : integer :=32);
         Clk, Rst, WriteEnable : IN STD_LOGIC;
         ReadAddress, WriteAddress : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
         ReadData : OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0);
-        WriteData : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0)
+        WriteData : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        WrongAddress : OUT STD_LOGIC
     );
 END Data_Memory;
 
@@ -26,12 +27,22 @@ BEGIN
 							ram(i) <= (others => '0');
 						END LOOP;
 					ELSIF WriteEnable = '1' THEN
-						ram(to_integer(unsigned(WriteAddress))) <= WriteData;
+                        IF WriteAddress < "00000000000000000000010000000000" THEN
+						    ram(to_integer(unsigned(WriteAddress))) <= WriteData;
+                            WrongAddress <= '0';
+                        ELSE
+                            WrongAddress <= '1';
+                        END IF;
 					END IF;
 				END IF;
-	END PROCESS;
-	ReadData <= ram(to_integer(unsigned(ReadAddress)));
-       
+                IF ReadAddress < "00000000000000000000010000000000" THEN
+                    ReadData <= ram(to_integer(unsigned(ReadAddress)));
+                    WrongAddress <= '0';
+                ELSE
+                    WrongAddress <= '1';
+                    ReadData <= (others => '0');
+            END IF;
+	END PROCESS;   
 
 END Data_Memory_Architecture;
 
