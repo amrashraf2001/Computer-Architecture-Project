@@ -47,3 +47,5 @@
 # Compile of ProtectedFlagReg.vhd was successful.
 # 11 compiles, 1 failed with 1 error.
 # Compile of Fetch.vhd failed with 1 errors.
+# Compile of Fetch.vhd failed with 2 errors.
+# Compile of Fetch.vhd was successful.

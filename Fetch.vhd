@@ -32,12 +32,11 @@ ARCHITECTURE Fetch_Arch OF Fetch IS
  
     signal pcIn, pcOut: std_logic_vector(n-1 downto 0);
     signal instruction: std_logic_vector(15 downto 0);
-    signal WrongAddress: std_logic;
 begin
     PC1: PC PORT MAP (d=>pcIn, q=>pcOut, clk=>clk, rst=>rst, en=>en);
     IM1: Instruction_Memory PORT MAP (ReadAddress=>pcOut, ReadData=>instruction, WrongAddress=>WrongAddress);
 
-    en <= '1' when stall = '0' and interrupt = '0' else '0';
+    --en <= '1' when stall = '0' and interrupt = '0' else '0'; fl integration matensa4 ya amr nta w sarraa
 
     pcIn <= std_logic_vector(unsigned(pcOut) + "00000000000000000000000000000001") when branchingSel = '0' and exceptionSel = '0' 
         else "00000000000000000000111111111100" when branchingSel = '0' and exceptionSel = '1'
