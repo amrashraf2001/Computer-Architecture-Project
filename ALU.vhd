@@ -17,7 +17,7 @@ END ENTITY ALU;
 
 
 ARCHITECTURE struct OF ALU IS
-    SIGNAL ALUout_sig : std_logic_vector(n-1 downto 0);
+    SIGNAL ALUout_sig : std_logic_vector(32 downto 0);
     CONSTANT zero_vector : std_logic_vector(n-1 downto 0) := (others => '0');
     signal extendedA,extendedB:std_logic_vector(32 downto 0);
 BEGIN
