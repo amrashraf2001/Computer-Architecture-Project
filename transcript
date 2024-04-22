@@ -627,3 +627,20 @@ force -freeze sim:/decode/ImmediateValue 1000110011001100 0
 run
 force -freeze sim:/decode/rst 0 0
 run
+quit -sim
+# End time: 00:12:35 on Apr 23,2024, Elapsed time: 0:43:42
+# Errors: 0, Warnings: 4
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+clear
+# invalid command name "clear"
+
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 6 errors.
+# Compile of ALU.vhd failed with 5 errors.
+# Compile of ALU.vhd was successful.

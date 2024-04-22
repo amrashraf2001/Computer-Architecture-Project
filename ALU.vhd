@@ -10,6 +10,7 @@ ENTITY ALU is
         Reg1, Reg2: IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
         carry_flag, neg_flag, zero_flag, overflow_flag : OUT std_logic;
+        FlagFeedbackCarry,FlagFeedbackNeg,FlagFeedbackZero : IN std_logic; 
         ALUout : OUT std_logic_vector(n-1 downto 0)
     );
 END ENTITY ALU;
@@ -18,64 +19,65 @@ END ENTITY ALU;
 ARCHITECTURE struct OF ALU IS
     SIGNAL ALUout_sig : std_logic_vector(n-1 downto 0);
     CONSTANT zero_vector : std_logic_vector(n-1 downto 0) := (others => '0');
-
+    signal extendedA,extendedB:std_logic_vector(32 downto 0);
 BEGIN
-    Process(Reg1, Reg2, ALU_selector,ALUout_sig)
+    extendedA <='0' & Reg1(31 DOWNTO 0);
+    extendedB <='0' & Reg2(31 DOWNTO 0);
+    Process(extendedA, extendedB, ALU_selector,ALUout_sig)
+   
     BEGIN
         CASE ALU_selector IS
             WHEN "0000" =>   -- NOT operation
-                ALUout_sig <= NOT Reg1;  
+                ALUout_sig <= NOT extendedA;  
             WHEN "0001" =>   -- NEG operation
-                ALUout_sig <= std_logic_vector(to_unsigned(0, ALUout_sig'length) - unsigned(Reg1));  
+                ALUout_sig <= std_logic_vector(to_unsigned(0, ALUout_sig'length) - unsigned(extendedA));  
             WHEN "0010" =>   -- INC operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) + 1);  
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) + 1);  
             WHEN "0011" =>   -- DEC operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) - 1); 
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) - 1); 
             WHEN "0100" =>   -- ADD operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) + unsigned(Reg2));  
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) + unsigned(extendedB));  
             WHEN "0101" =>   -- SUB operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) - unsigned(Reg2));  
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) - unsigned(extendedB));  
             WHEN "0110" =>   -- AND operation
-                ALUout_sig <= Reg1 AND Reg2;  
+                ALUout_sig <= extendedA AND extendedB;  
             WHEN "0111" =>   -- XOR operation
-                ALUout_sig <= Reg1 XOR Reg2;  
+                ALUout_sig <= extendedA XOR extendedB;  
             WHEN "1000" =>   -- OR operation
-                ALUout_sig <= Reg1 OR Reg2; 
+                ALUout_sig <= extendedA OR extendedB; 
             WHEN "1001" =>   --CMP Operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) - unsigned(Reg2));
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) - unsigned(extendedB));
             WHEN "1010" =>   -- LDD operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) + unsigned(Reg2));
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) + unsigned(extendedB));
             WHEN "1011" =>   -- STD operation
-                ALUout_sig <= std_logic_vector(unsigned(Reg1) + unsigned(Reg2)); 
+                ALUout_sig <= std_logic_vector(unsigned(extendedA) + unsigned(extendedB)); 
             WHEN "1100" =>   -- ADDI Operation
-                ALUout_sig <=  std_logic_vector(unsigned(Reg1) + unsigned(Reg2));
+                ALUout_sig <=  std_logic_vector(unsigned(extendedA) + unsigned(extendedB));
             WHEN "1101" =>   -- SUBI Operation
-                ALUout_sig <=  std_logic_vector(unsigned(Reg1) - unsigned(Reg2));
+                ALUout_sig <=  std_logic_vector(unsigned(extendedA) - unsigned(extendedB));
 
             WHEN OTHERS =>
-                ALUout_sig <= Reg1;  -- Default case (NOP)
+                ALUout_sig <= extendedA;  -- Default case (NOP)
         END CASE;
 
-        -- Check for zero flag
-        IF ALUout_sig = zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011") THEN
-            zero_flag <= '1';
-        ELSE
-            zero_flag <= '0';
-        END IF;
-        -- Check for negative flag
-	    neg_flag <= ALUout_sig(31);
-        -- Check for carry flag
-        IF (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101") AND (unsigned(Reg1) + unsigned(Reg2)) > to_unsigned(2**n-1, n) THEN
-            carry_flag <= '1';
-        ELSE
-            carry_flag <= '0';
-        END IF;
         -- Check for overflow flag
-        IF (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101") AND (Reg1(31) = Reg2(31)) AND (ALUout_sig(31) /= Reg1(31)) THEN
+        IF (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31)) THEN
             overflow_flag <= '1';
         ELSE
             overflow_flag <= '0';
         END IF;
-        ALUout<=ALUout_sig;  -- Assign ALU output
+        ALUout<=ALUout_sig(31 downto 0);  -- Assign ALU output
 END PROCESS;
+        -- Check for zero flag
+        zero_flag <= '1' when ALUout_sig(31 downto 0) = zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011")
+        else '0' when ALUout_sig(31 downto 0) /= zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011")
+        else FlagFeedbackZero;
+        -- Check for negative flag
+	    --neg_flag <= ALUout_sig(31);
+        neg_flag <= '1' when ALUout_sig(31) = '1' and (ALU_selector /= "1010" or ALU_selector /= "1011") AND (to_integer(signed(ALUout_sig(31 downto 0))) < 0)
+        else '0' when ALUout_sig(31) = '0' and (ALU_selector /= "1010" or ALU_selector /= "1011") AND (to_integer(signed(ALUout_sig(31 downto 0))) >= 0)
+        else FlagFeedbackNeg;
+        -- Check for carry flag
+        carry_flag <= ALUout_sig(32) when ALU_selector = "0100" or ALU_selector = "0101" or ALU_selector = "1100" or ALU_selector = "1101" or ALU_selector = "0010" or ALU_selector = "0011"
+            else FlagFeedbackCarry;
 END ARCHITECTURE struct;
