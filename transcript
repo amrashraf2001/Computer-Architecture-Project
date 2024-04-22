@@ -27,3 +27,7 @@
 # Compile of Data_Memory.vhd failed with 1 errors.
 # Compile of Data_Memory.vhd was successful.
 # Compile of ALU.vhd was successful.
+# Compile of Instruction_Memory.vhd failed with 1 errors.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd failed with 1 errors.
+# Compile of ProtectedFlagReg.vhd was successful.
