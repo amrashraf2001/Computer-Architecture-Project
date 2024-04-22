@@ -20,3 +20,7 @@
 # Compile of Data_Memory.vhd failed with 1 errors.
 # 10 compiles, 1 failed with 1 error.
 # Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd failed with 4 errors.
+# Compile of ProtectedFlagReg.vhd failed with 2 errors.
+# Compile of ProtectedFlagReg.vhd failed with 1 errors.
+# Compile of ProtectedFlagReg.vhd was successful.
