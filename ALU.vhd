@@ -57,7 +57,7 @@ BEGIN
         END CASE;
 
         -- Check for zero flag
-        IF ALUout_sig = zero_vector THEN
+        IF ALUout_sig = zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011") THEN
             zero_flag <= '1';
         ELSE
             zero_flag <= '0';
