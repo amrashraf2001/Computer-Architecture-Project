@@ -18,8 +18,7 @@ ENTITY Controller IS
         interruptsignal:  out std_logic;
         pcSource: OUT std_logic;
         rtisignal:  out std_logic;
-        FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-        isImmediate: OUT std_logic
+        FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0)
     );
 END Controller;
 
@@ -57,13 +56,11 @@ BEGIN
                  ELSE "1101" WHEN opcode = "110110" -- SUBI 
                  ELSE "1110"; -- Default value NOP
 
-    isImmediate <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
-                 ELSE '0';
 
     Branching <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100" -- Branching
                  ELSE '0';
 
-    alusource <= '1' WHEN (opcode(5 downto 4) = "11" and opcode(3 downto 0) /= "0001") -- To include ADDI & LDM
+    alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
                  ELSE '0';
 
     MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
