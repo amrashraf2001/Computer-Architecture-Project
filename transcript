@@ -169,3 +169,10 @@ run
 run
 force -freeze sim:/fetch/en 0 0
 run
+quit -sim
+# End time: 21:54:55 on Apr 22,2024, Elapsed time: 3:28:29
+# Errors: 0, Warnings: 2
+# Compile of Decode.vhd failed with 7 errors.
+# Compile of Decode.vhd failed with 3 errors.
+# Compile of Decode.vhd failed with 2 errors.
+# Compile of Decode.vhd was successful.
