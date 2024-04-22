@@ -63,11 +63,12 @@ PORT(
     clk,rst,en : IN std_logic 
 );
 END component;
-signal regOneAddress, regTwoAddress: std_logic_vector(2 downto 0);
+signal regOneAddress, regTwoAddress, regAddressDist1,regAddressDist2: std_logic_vector(2 downto 0);
 signal opcode: std_logic_vector(5 downto 0);
 signal ExtendedImmediate: std_logic_vector(31 downto 0);
 signal PredictorInput: std_logic:= '0';
 signal PredictorOutput: std_logic;
+signal swapcheck: std_logic;
 
 begin
     process(ImmediateValue)
@@ -77,11 +78,13 @@ begin
         end loop;
         ExtendedImmediate(31 downto 16) <= ImmediateValue(15 downto 0);
     end process;
+
     opcode <= Instruction(15 downto 10);
     regOneAddress <= Instruction(6 downto 4);
     regTwoAddress <= Instruction(3 downto 1);
+    regAddressDist <= Instruction(9 downto 7);
     Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, rtisignal, FreeProtectStore);
-    RegFile1: RegFile PORT MAP(clk, rst, writeEnable, ReadAdd1, ReadAdd2, WriteAdd1, WriteAdd2, readport1, readport2, writeport1, writeport2);
+    RegFile1: RegFile PORT MAP(clk, rst, writeEnable, regOneAddress, regTwoAddress, regAddressDist, WriteAdd2, readport1, readport2, writeport1, writeport2);
     PredictorReg1: PredictorReg PORT MAP(PredictorInput, PredictorOutput, clk, rst, writeEnable);
 
     PredictorInput <= PredictorOutput when (Flush = '0')
