@@ -465,3 +465,165 @@ force -freeze sim:/decode/ImmediateValue 1000110011001100 0
 run
 force -freeze sim:/decode/rst 0 0
 run
+quit -sim
+# End time: 23:12:07 on Apr 22,2024, Elapsed time: 0:08:28
+# Errors: 0, Warnings: 1
+# Compile of Decode.vhd was successful.
+vsim -gui work.decode
+# vsim -gui work.decode 
+# Start time: 23:12:25 on Apr 22,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# vsim -gui work.decode 
+# Start time: 22:53:18 on Apr 22,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+add wave -position insertpoint  \
+sim:/decode/n \
+sim:/decode/clk \
+sim:/decode/rst \
+sim:/decode/writeEnable \
+sim:/decode/Instruction \
+sim:/decode/writeport1 \
+sim:/decode/writeport2 \
+sim:/decode/readport1 \
+sim:/decode/readport2 \
+sim:/decode/WriteAdd1 \
+sim:/decode/WriteAdd2 \
+sim:/decode/ReadAdd1 \
+sim:/decode/ReadAdd2 \
+sim:/decode/AluSelector \
+sim:/decode/Branching \
+sim:/decode/alusource \
+sim:/decode/MWrite \
+sim:/decode/MRead \
+sim:/decode/WBdatasrc \
+sim:/decode/RegWrite \
+sim:/decode/SPPointer \
+sim:/decode/interruptsignal \
+sim:/decode/pcSource \
+sim:/decode/rtisignal \
+sim:/decode/FreeProtectStore \
+sim:/decode/Flush \
+sim:/decode/ImmediateValue \
+sim:/decode/regOneAddress \
+sim:/decode/regTwoAddress \
+sim:/decode/regAddressDist1 \
+sim:/decode/regAddressDist2 \
+sim:/decode/opcode \
+sim:/decode/ExtendedImmediate \
+sim:/decode/PredictorInput \
+sim:/decode/PredictorOutput \
+sim:/decode/swapcheck \
+sim:/decode/writeData1 \
+sim:/decode/writeData2
+force -freeze sim:/decode/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/decode/rst 1 0
+force -freeze sim:/decode/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/decode/writeEnable 1 0
+force -freeze sim:/decode/Instruction 0011000010100110 0
+force -freeze sim:/decode/writeport1 11111111111111111111111100000001 0
+force -freeze sim:/decode/writeport2 00000111111111111111111100000001 0
+force -freeze sim:/decode/Flush 0 0
+force -freeze sim:/decode/ImmediateValue 1000110011001100 0
+run
+force -freeze sim:/decode/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 23:22:43 on Apr 22,2024, Elapsed time: 0:10:18
+# Errors: 0, Warnings: 2
+# Compile of Decode.vhd failed with 5 errors.
+# Compile of Decode.vhd was successful.
+# Compile of Decode.vhd was successful.
+vsim -gui work.decode
+# vsim -gui work.decode 
+# Start time: 23:28:53 on Apr 22,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# vsim -gui work.decode 
+# Start time: 22:53:18 on Apr 22,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+add wave -position insertpoint  \
+sim:/decode/n \
+sim:/decode/clk \
+sim:/decode/rst \
+sim:/decode/writeEnable \
+sim:/decode/Instruction \
+sim:/decode/writeport1 \
+sim:/decode/writeport2 \
+sim:/decode/ReadData1 \
+sim:/decode/ReadData2 \
+sim:/decode/WriteAdd1 \
+sim:/decode/WriteAdd2 \
+sim:/decode/AluSelector \
+sim:/decode/Branching \
+sim:/decode/alusource \
+sim:/decode/MWrite \
+sim:/decode/MRead \
+sim:/decode/WBdatasrc \
+sim:/decode/RegWrite \
+sim:/decode/SPPointer \
+sim:/decode/interruptsignal \
+sim:/decode/pcSource \
+sim:/decode/rtisignal \
+sim:/decode/FreeProtectStore \
+sim:/decode/Flush \
+sim:/decode/ImmediateValue \
+sim:/decode/regOneAddress \
+sim:/decode/regTwoAddress \
+sim:/decode/regAddressDist1 \
+sim:/decode/regAddressDist2 \
+sim:/decode/opcode \
+sim:/decode/ExtendedImmediate \
+sim:/decode/PredictorInput \
+sim:/decode/PredictorOutput \
+sim:/decode/swapcheck \
+sim:/decode/writeData1 \
+sim:/decode/writeData2
+force -freeze sim:/decode/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/decode/rst 1 0
+force -freeze sim:/decode/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/decode/writeEnable 1 0
+force -freeze sim:/decode/Instruction 0011000010100110 0
+force -freeze sim:/decode/writeport1 11111111111111111111111100000001 0
+force -freeze sim:/decode/writeport2 00000111111111111111111100000001 0
+force -freeze sim:/decode/Flush 0 0
+force -freeze sim:/decode/ImmediateValue 1000110011001100 0
+run
+force -freeze sim:/decode/rst 0 0
+run
