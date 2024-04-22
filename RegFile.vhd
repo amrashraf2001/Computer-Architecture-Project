@@ -3,17 +3,18 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.numeric_std.all;
 
 ENTITY RegFile IS
+GENERIC(n : integer :=32);
     PORT(
         Clk, Rst, WriteEnable : IN STD_LOGIC;
         ReadAddress1, ReadAddress2, WriteAddress1,WriteAddress2 : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ReadData1, ReadData2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        WriteData1,WriteData2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+        ReadData1, ReadData2 : OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        WriteData1,WriteData2 : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0)
     );
 END RegFile;
 
 ARCHITECTURE RegFile_Architecture OF RegFile IS
     
-	TYPE ram_type IS ARRAY(0 TO 7) OF std_logic_vector(31 DOWNTO 0);
+	TYPE ram_type IS ARRAY(0 TO 7) OF std_logic_vector(n-1 DOWNTO 0);
 	SIGNAL ram : ram_type ;
 
 BEGIN

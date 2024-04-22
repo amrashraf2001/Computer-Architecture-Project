@@ -397,25 +397,25 @@ R64
 R11
 R12
 Eregfile
-Z65 w1713531125
+Z65 w1713798202
 R1
 R2
 R3
-!i122 150
+!i122 166
 R4
 Z66 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
 Z67 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
 l0
 L5 1
-V6UgVgE<K0K;I295kdkYEY2
-!s100 ]VSFPJoL^gI6oe4Oh^:5l2
+VBz_QMg5^OZ9PXXKHIziEM3
+!s100 Fo]ZVCV56Nh;0LnJ2UZS91
 R7
 32
-R30
+Z68 !s110 1713798217
 !i10b 1
-R37
-Z68 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
-Z69 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
+Z69 !s108 1713798217.000000
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
+Z71 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
 !i113 1
 R11
 R12
@@ -423,30 +423,30 @@ Aregfile_architecture
 R1
 R2
 R3
-DEx4 work 7 regfile 0 22 6UgVgE<K0K;I295kdkYEY2
-!i122 150
-l19
-L14 24
-VXQ`S7ISea]YJSHZH<4VHE2
-!s100 eoLmQ6B=nmf8WWoJA13Ua0
+DEx4 work 7 regfile 0 22 Bz_QMg5^OZ9PXXKHIziEM3
+!i122 166
+l20
+L15 24
+VclC^5AY]lkNVTTZEnc54c3
+!s100 bL=LD5DJml_YUhA`lZUFZ0
 R7
 32
-R30
-!i10b 1
-R37
 R68
+!i10b 1
 R69
+R70
+R71
 !i113 1
 R11
 R12
 Estackreg
-Z70 w1713531069
+Z72 w1713531069
 R2
 R3
 !i122 151
 R4
-Z71 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
-Z72 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
+Z73 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
+Z74 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
 l0
 L3 1
 VNkKKSYiI1G`V^<cEU1]N13
@@ -456,8 +456,8 @@ R7
 R30
 !i10b 1
 R31
-Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
-Z74 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
+Z75 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
+Z76 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
 !i113 1
 R11
 R12
@@ -475,31 +475,31 @@ R7
 R30
 !i10b 1
 R31
-R73
-R74
+R75
+R76
 !i113 1
 R11
 R12
 Etb_pc
-Z75 w1713380591
+Z77 w1713380591
 R1
 R2
 R3
 !i122 76
 R4
-Z76 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
-Z77 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
+Z78 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
+Z79 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
 l0
 L5 1
 V^E7FB[Nb@OF>c2jM1O8Ef0
 !s100 C4`ki=ZkD:]7]TGCPJaJg0
 R7
 32
-Z78 !s110 1713397957
+Z80 !s110 1713397957
 !i10b 1
-Z79 !s108 1713397956.000000
-Z80 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
-Z81 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
+Z81 !s108 1713397956.000000
+Z82 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
+Z83 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
 !i113 1
 R11
 R12
@@ -515,11 +515,11 @@ Vm:Y=214A6?5>G2aX^ElMH2
 !s100 0FhHc;9?m=0hAl;GDaeUc0
 R7
 32
-R78
-!i10b 1
-R79
 R80
+!i10b 1
 R81
+R82
+R83
 !i113 1
 R11
 R12

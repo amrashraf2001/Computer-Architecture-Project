@@ -31,3 +31,4 @@
 # Compile of Instruction_Memory.vhd was successful.
 # Compile of ProtectedFlagReg.vhd failed with 1 errors.
 # Compile of ProtectedFlagReg.vhd was successful.
+# Compile of RegFile.vhd was successful.
