@@ -550,3 +550,24 @@ force -freeze sim:/decode/Instruction 0010100010010110 0
 run
 force -freeze sim:/decode/writeBackEnable 0 0
 mem save -o decode.mem -f mti -data symbolic -addr hex /decode/RegFile1/ram
+quit -sim
+# End time: 23:06:36 on Apr 23,2024, Elapsed time: 5:31:17
+# Errors: 0, Warnings: 5
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# Compile of PredictorReg.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd was successful.
+# Compile of Decode.vhd was successful.
+# Compile of Execute.vhd was successful.
+# Compile of Memory.vhd failed with 1 errors.
+# Compile of WriteBack.vhd was successful.
+# Compile of ExecuteMemory_Reg.vhd was successful.
+# Compile of FetchDecode_Reg.vhd was successful.
+# 17 compiles, 1 failed with 1 error.
