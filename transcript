@@ -548,3 +548,5 @@ force -freeze sim:/decode/Rst 0 0
 run
 force -freeze sim:/decode/Instruction 0010100010010110 0
 run
+force -freeze sim:/decode/writeBackEnable 0 0
+mem save -o decode.mem -f mti -data symbolic -addr hex /decode/RegFile1/ram
