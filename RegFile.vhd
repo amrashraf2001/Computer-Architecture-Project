@@ -31,9 +31,9 @@ BEGIN
         END IF;
     END PROCESS;
     
-    PROCESS(Clk) IS
+    PROCESS(Clk,ReadAddress1,ReadAddress2) IS
     BEGIN
-        IF rising_edge(Clk) then
+        IF falling_edge(Clk) then
             ReadData1 <= ram(to_integer(unsigned(ReadAddress1)));
             ReadData2 <= ram(to_integer(unsigned(ReadAddress2)));
         END IF;

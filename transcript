@@ -572,3 +572,5 @@ quit -sim
 # Compile of FetchDecode_Reg.vhd was successful.
 # 17 compiles, 1 failed with 1 error.
 # Compile of MemoryWriteBack_Reg.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of RegFile.vhd was successful.
