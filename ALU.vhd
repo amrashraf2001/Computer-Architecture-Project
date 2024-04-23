@@ -10,7 +10,7 @@ ENTITY ALU is
         Reg1, Reg2: IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
         carry_flag, neg_flag, zero_flag, overflow_flag : OUT std_logic;
-        FlagFeedbackCarry,FlagFeedbackNeg,FlagFeedbackZero : IN std_logic; 
+        --FlagFeedbackCarry,FlagFeedbackNeg,FlagFeedbackZero : IN std_logic; 
         ALUout : OUT std_logic_vector(n-1 downto 0)
     );
 END ENTITY ALU;
@@ -70,14 +70,12 @@ BEGIN
 END PROCESS;
         -- Check for zero flag
         zero_flag <= '1' when ALUout_sig(31 downto 0) = zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011")
-        else '0' when ALUout_sig(31 downto 0) /= zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011")
-        else FlagFeedbackZero;
+        else '0';
         -- Check for negative flag
 	    --neg_flag <= ALUout_sig(31);
         neg_flag <= '1' when ALUout_sig(31) = '1' and (ALU_selector /= "1010" or ALU_selector /= "1011") AND (to_integer(signed(ALUout_sig(31 downto 0))) < 0)
-        else '0' when ALUout_sig(31) = '0' and (ALU_selector /= "1010" or ALU_selector /= "1011") AND (to_integer(signed(ALUout_sig(31 downto 0))) >= 0)
-        else FlagFeedbackNeg;
+        else '0';
         -- Check for carry flag
         carry_flag <= ALUout_sig(32) when ALU_selector = "0100" or ALU_selector = "0101" or ALU_selector = "1100" or ALU_selector = "1101" or ALU_selector = "0010" or ALU_selector = "0011"
-            else FlagFeedbackCarry;
+            else '0';
 END ARCHITECTURE struct;
