@@ -9,7 +9,7 @@ port (
 
 end entity MemoryWriteBack_Reg;
 
---Read Wrtie signal -> 1 Bit (169)
+--RWrtie signal -> 1 Bit (169)
 --Write Back Source signal → 2 Bit (168 downto 167)
 --OUT Enable signal → 1 Bit (166)
 --Memory Output → 32 Bit (165 downto 134)
