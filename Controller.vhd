@@ -78,7 +78,7 @@ BEGIN
                ELSE "001" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
                ELSE "011" WHEN opcode = "100010" -- CALL
                ELSE "100" WHEN opcode = "111001" -- INT
-               ELSE "000";
+               ELSE "101";
 
     MemAddress <= "00" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
                 ELSE "01" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,PUSH,CALL

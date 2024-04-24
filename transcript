@@ -614,3 +614,4 @@ quit -sim
 # Compile of MemoryWriteBack_Reg.vhd was successful.
 # Compile of DecodeExecute_Reg.vhd was successful.
 # 19 compiles, 1 failed with 1 error.
+# Compile of Controller.vhd was successful.
