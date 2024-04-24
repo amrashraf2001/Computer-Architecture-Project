@@ -594,3 +594,23 @@ quit -sim
 # Compile of MemoryWriteBack_Reg.vhd was successful.
 # Compile of DecodeExecute_Reg.vhd was successful.
 # 19 compiles, 1 failed with 1 error.
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# Compile of PredictorReg.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd was successful.
+# Compile of Decode.vhd was successful.
+# Compile of Execute.vhd was successful.
+# Compile of Memory.vhd failed with 1 errors.
+# Compile of WriteBack.vhd was successful.
+# Compile of ExecuteMemory_Reg.vhd was successful.
+# Compile of FetchDecode_Reg.vhd was successful.
+# Compile of MemoryWriteBack_Reg.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# 19 compiles, 1 failed with 1 error.

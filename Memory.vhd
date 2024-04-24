@@ -27,10 +27,10 @@ architecture Memory_Arch of Memory is
     --Data_Memory Component
     component Data_Memory IS
     PORT(
-        Clk, Rst, WriteEnable : IN STD_LOGIC;
-        ReadAddress, WriteAddress : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        Clk, Rst, WriteEnable1, WriteEnable2 : IN STD_LOGIC;
+        ReadAddress, WriteAddress1, WriteAddress2 : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
         ReadData : OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0);
-        WriteData : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        WriteData1, WriteData2 : IN STD_LOGIC_VECTOR(n-1 DOWNTO 0);
         WrongAddress : OUT STD_LOGIC
     );
     END component;

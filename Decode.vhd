@@ -19,7 +19,7 @@ ENTITY Decode IS
         AluSelector: OUT std_logic_vector(3 DOWNTO 0); 
         Branching: OUT std_logic;
         alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-        MWrite, MRead: OUT std_logic;
+        MWrite1,MWrite2, MRead: OUT std_logic;
         WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
         RegWrite: OUT std_logic;
         SPPointer: OUT std_logic_vector(2 DOWNTO 0);
@@ -27,7 +27,8 @@ ENTITY Decode IS
         pcSource: OUT std_logic;
         rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-        swap: out std_logic -- ana batal3ha lama bala2i el instruction swap w bazabet el address w el data
+        swap: out std_logic; -- ana batal3ha lama bala2i el instruction swap w bazabet el address w el data
+        MemAddress: OUT std_logic_vector(1 DOWNTO 0)
     );
 END ENTITY Decode;
 
@@ -38,14 +39,15 @@ architecture Decode_Arch of Decode is
             AluSelector: OUT std_logic_vector(3 DOWNTO 0); 
             Branching: OUT std_logic;
             alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-            MWrite, MRead: OUT std_logic;
+            MWrite1,MWrite2, MRead: OUT std_logic;
             WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
             RegWrite: OUT std_logic;
             SPPointer: OUT std_logic_vector(2 DOWNTO 0);
             interruptsignal:  OUT std_logic;
             pcSource: OUT std_logic;
             rtisignal:  OUT std_logic;
-            FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0)
+            FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
+            MemAddress: OUT std_logic_vector(1 DOWNTO 0)
         );
     END component;
     
@@ -97,7 +99,7 @@ begin
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, rtisignal, FreeProtectStore);
+    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite1,MWrite2, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, rtisignal, FreeProtectStore, MemAddress);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,

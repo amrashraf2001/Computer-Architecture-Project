@@ -10,7 +10,7 @@ ENTITY Controller IS
         AluSelector: OUT std_logic_vector(3 DOWNTO 0); -- 3 bits subcode and extra bit
         Branching: OUT std_logic;
         alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-        MWrite, MRead: OUT std_logic;
+        MWrite1,MWrite2, MRead: OUT std_logic;
         WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
         RegWrite: OUT std_logic;
         SPPointer: OUT std_logic_vector(2 DOWNTO 0);
@@ -18,7 +18,8 @@ ENTITY Controller IS
         interruptsignal:  out std_logic;
         pcSource: OUT std_logic;
         rtisignal:  out std_logic;
-        FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0)
+        FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
+        MemAddress: OUT std_logic_vector(1 DOWNTO 0)
     );
 END Controller;
 
@@ -63,7 +64,10 @@ BEGIN
     alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
                  ELSE '0';
 
-    MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
+    MWrite1 <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
+              ELSE '0';
+
+    MWrite2 <= '1' WHEN opcode = "111001" 
               ELSE '0';
 
     MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
@@ -76,7 +80,11 @@ BEGIN
                ELSE "100" WHEN opcode = "111001" -- INT
                ELSE "000";
 
-    --MemWRsrc <= opcode(5);
+    MemAddress <= "00" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
+                ELSE "01" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,PUSH,CALL
+                ELSE "10" WHEN opcode = "010001" -- POP
+                ELSE "11" WHEN opcode = "100011" or opcode = "100100" -- RTI,RET
+                ELSE "00";
 
     interruptsignal <= '1' WHEN opcode = "111001" -- INT
                      ELSE '0';
