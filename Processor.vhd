@@ -236,7 +236,7 @@ FetchDecode_Reg1: FetchDecode_Reg PORT MAP(
 Decode1: Decode PORT MAP(
     Clk => clk,
     Rst => rst,
-    WriteBackEnable => WriteBackEnable_DIN,
+    WriteBackEnable => MWOUT(169),
     PredictorEnable => '0',
     Instruction => FDOUT(48 downto 33),
     WritePort1 => WriteBackDataOut, -- l7ad mawsal lel write back
@@ -264,6 +264,7 @@ Decode1: Decode PORT MAP(
     Swap => Swap_DOUT,
     MemAddress => MemAddress_DOUT
 );
+WriteAdd1_DIN <= FDOUT(42 downto 40);
 
 DOUT<= AluSource_DOUT & ImmediateValue_DIN & MemAddress_DOUT & FreeProtectedStore_DOUT & AluSelector_DOUT & SPPointer_DOUT & '1' & WBDataSrc_DOUT & MRead_DOUT & Mwrite1_DOUT & MWrite2_DOUT & RegWrite_DOUT & '0' & ReadData1_DOUT & ReadData2_DOUT & FDOUT(80 downto 49) & WriteAdd1_DIN & WriteAdd2_DIN & FDOUT(32 downto 1);
 
@@ -339,7 +340,7 @@ Memory1: Memory PORT MAP(
 );
 
 
-MWIN <= EMOUT(8) & EMOUT(3 downto 2) & EMOUT(12) & MemoryOut_MOut & DEOUT(77 downto 46) & EMOUT(45 downto 14) & EMOUT(83 downto 78) & EMOUT(115 downto 84) & EMOUT(147 downto 116);
+MWIN <= EMOUT(8) & EMOUT(3 downto 2) & EMOUT(12) & MemoryOut_MOut & EMOUT(77 downto 46) & EMOUT(45 downto 14) & EMOUT(83 downto 78) & EMOUT(115 downto 84) & EMOUT(147 downto 116);
 
 MemoryWriteBack_Reg1: MemoryWriteBack_Reg PORT MAP(
     A => MWIN,

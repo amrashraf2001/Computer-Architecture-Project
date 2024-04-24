@@ -1,10 +1,10 @@
 // memory data file (do not edit the following line - required for mem load use)
 // instance=/processor/Fetch1/IM1/ram
 // format=mti addressradix=h dataradix=s version=1.0 wordsperline=1
-  0: 0000110000001010
-  1: 1100000000000000
-  2: 1100000000000000
-  3: 1100000000000000
+  0: 1100000000000000
+  1: 0000100000000101
+  2: UUUUUUUUUUUUUUUU
+  3: UUUUUUUUUUUUUUUU
   4: UUUUUUUUUUUUUUUU
   5: UUUUUUUUUUUUUUUU
   6: UUUUUUUUUUUUUUUU

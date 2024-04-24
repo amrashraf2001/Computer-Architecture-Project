@@ -30,9 +30,9 @@ architecture WriteBack_arch of WriteBack is
 begin
 
     -- multiplexer process to select the input
-    mux_output <= ALUout WHEN WriteBackSource = "00" else
+    mux_output <= ALUout WHEN WriteBackSource = "10" else
               MemoryOut WHEN WriteBackSource = "01" else
-              data_in WHEN WriteBackSource = "10" else
+              data_in WHEN WriteBackSource = "00" else
               (others => '0');
 
     -- -- Write to RegFile process

@@ -444,3 +444,641 @@ run
 run
 run
 run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+mem save -o meh.mem -f mti -data symbolic -addr hex -wordsperline 1 /processor/Fetch1/IM1/ram
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/meh.mem} /processor/Fetch1/IM1/ram
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+run
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 21:21:33 on Apr 24,2024, Elapsed time: 0:42:23
+# Errors: 0, Warnings: 8
+# Compile of Processor.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 21:22:01 on Apr 24,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/meh.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/n \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/InPort \
+sim:/processor/OutPort \
+sim:/processor/PCPlus_FDIN \
+sim:/processor/WrongAddress_FDIN \
+sim:/processor/BranchSel \
+sim:/processor/ExceptionSel \
+sim:/processor/Stall \
+sim:/processor/Interrupt \
+sim:/processor/BranchingAddress_FIN \
+sim:/processor/Instruction_FDIN \
+sim:/processor/Flush \
+sim:/processor/FDIN \
+sim:/processor/FDOUT \
+sim:/processor/Inport_FDIN \
+sim:/processor/WriteBackEnable_DIN \
+sim:/processor/PredictorEnable_DIN \
+sim:/processor/WritePort1_DIN \
+sim:/processor/WritePort2_DIN \
+sim:/processor/WriteAdd1_DIN \
+sim:/processor/WriteAdd2_DIN \
+sim:/processor/Flush_DIN \
+sim:/processor/Swaped_DIN \
+sim:/processor/ImmediateValue_DIN \
+sim:/processor/ReadData1_DOUT \
+sim:/processor/ReadData2_DOUT \
+sim:/processor/AluSelector_DOUT \
+sim:/processor/Branching_DOUT \
+sim:/processor/AluSource_DOUT \
+sim:/processor/MWrite1_DOUT \
+sim:/processor/MWrite2_DOUT \
+sim:/processor/MRead_DOUT \
+sim:/processor/WBDataSrc_DOUT \
+sim:/processor/RegWrite_DOUT \
+sim:/processor/SPPointer_DOUT \
+sim:/processor/InterruptSignal_DOUT \
+sim:/processor/PcSource_DOUT \
+sim:/processor/RtiSignal_DOUT \
+sim:/processor/FreeProtectedStore_DOUT \
+sim:/processor/Swap_DOUT \
+sim:/processor/MemAddress_DOUT \
+sim:/processor/DOUT \
+sim:/processor/DEOUT \
+sim:/processor/Reg1_EIN \
+sim:/processor/Reg2_EIN \
+sim:/processor/ALU_selector_EIN \
+sim:/processor/ALUout_EOUT \
+sim:/processor/FlagReg_out_EOUT \
+sim:/processor/EOUT \
+sim:/processor/EMOUT \
+sim:/processor/MemoryWrite1_MIN \
+sim:/processor/MemoryWrite2_MIN \
+sim:/processor/MemoryRead_MIN \
+sim:/processor/MemoryEnable_MIN \
+sim:/processor/MemoryAddress_MIN \
+sim:/processor/MemoryWriteData_MIN \
+sim:/processor/CALL_STD_MIN \
+sim:/processor/ALUOut_MIN \
+sim:/processor/pcPlus_MIN \
+sim:/processor/SecondOperand_MIN \
+sim:/processor/SP_MIN \
+sim:/processor/FreeProtectedStore_MIN \
+sim:/processor/MWIN \
+sim:/processor/MWOUT \
+sim:/processor/MemoryOut_MOut \
+sim:/processor/WrongAddress_MOut \
+sim:/processor/WriteBackDataOut
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 21:34:41 on Apr 24,2024, Elapsed time: 0:12:40
+# Errors: 0, Warnings: 15
+# Compile of Processor.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 21:35:09 on Apr 24,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/meh.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/n \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/InPort \
+sim:/processor/OutPort \
+sim:/processor/PCPlus_FDIN \
+sim:/processor/WrongAddress_FDIN \
+sim:/processor/BranchSel \
+sim:/processor/ExceptionSel \
+sim:/processor/Stall \
+sim:/processor/Interrupt \
+sim:/processor/BranchingAddress_FIN \
+sim:/processor/Instruction_FDIN \
+sim:/processor/Flush \
+sim:/processor/FDIN \
+sim:/processor/FDOUT \
+sim:/processor/Inport_FDIN \
+sim:/processor/WriteBackEnable_DIN \
+sim:/processor/PredictorEnable_DIN \
+sim:/processor/WritePort1_DIN \
+sim:/processor/WritePort2_DIN \
+sim:/processor/WriteAdd1_DIN \
+sim:/processor/WriteAdd2_DIN \
+sim:/processor/Flush_DIN \
+sim:/processor/Swaped_DIN \
+sim:/processor/ImmediateValue_DIN \
+sim:/processor/ReadData1_DOUT \
+sim:/processor/ReadData2_DOUT \
+sim:/processor/AluSelector_DOUT \
+sim:/processor/Branching_DOUT \
+sim:/processor/AluSource_DOUT \
+sim:/processor/MWrite1_DOUT \
+sim:/processor/MWrite2_DOUT \
+sim:/processor/MRead_DOUT \
+sim:/processor/WBDataSrc_DOUT \
+sim:/processor/RegWrite_DOUT \
+sim:/processor/SPPointer_DOUT \
+sim:/processor/InterruptSignal_DOUT \
+sim:/processor/PcSource_DOUT \
+sim:/processor/RtiSignal_DOUT \
+sim:/processor/FreeProtectedStore_DOUT \
+sim:/processor/Swap_DOUT \
+sim:/processor/MemAddress_DOUT \
+sim:/processor/DOUT \
+sim:/processor/DEOUT \
+sim:/processor/Reg1_EIN \
+sim:/processor/Reg2_EIN \
+sim:/processor/ALU_selector_EIN \
+sim:/processor/ALUout_EOUT \
+sim:/processor/FlagReg_out_EOUT \
+sim:/processor/EOUT \
+sim:/processor/EMOUT \
+sim:/processor/MemoryWrite1_MIN \
+sim:/processor/MemoryWrite2_MIN \
+sim:/processor/MemoryRead_MIN \
+sim:/processor/MemoryEnable_MIN \
+sim:/processor/MemoryAddress_MIN \
+sim:/processor/MemoryWriteData_MIN \
+sim:/processor/CALL_STD_MIN \
+sim:/processor/ALUOut_MIN \
+sim:/processor/pcPlus_MIN \
+sim:/processor/SecondOperand_MIN \
+sim:/processor/SP_MIN \
+sim:/processor/FreeProtectedStore_MIN \
+sim:/processor/MWIN \
+sim:/processor/MWOUT \
+sim:/processor/MemoryOut_MOut \
+sim:/processor/WrongAddress_MOut \
+sim:/processor/WriteBackDataOut
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 850 ps  Iteration: 3  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 900 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 950 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1 ns  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1050 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1100 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1150 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1200 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1200 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1200 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+quit -sim
+# End time: 21:47:10 on Apr 24,2024, Elapsed time: 0:12:01
+# Errors: 0, Warnings: 31
+# Compile of Processor.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 21:47:27 on Apr 24,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/meh.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/n \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/InPort \
+sim:/processor/OutPort \
+sim:/processor/PCPlus_FDIN \
+sim:/processor/WrongAddress_FDIN \
+sim:/processor/BranchSel \
+sim:/processor/ExceptionSel \
+sim:/processor/Stall \
+sim:/processor/Interrupt \
+sim:/processor/BranchingAddress_FIN \
+sim:/processor/Instruction_FDIN \
+sim:/processor/Flush \
+sim:/processor/FDIN \
+sim:/processor/FDOUT \
+sim:/processor/Inport_FDIN \
+sim:/processor/WriteBackEnable_DIN \
+sim:/processor/PredictorEnable_DIN \
+sim:/processor/WritePort1_DIN \
+sim:/processor/WritePort2_DIN \
+sim:/processor/WriteAdd1_DIN \
+sim:/processor/WriteAdd2_DIN \
+sim:/processor/Flush_DIN \
+sim:/processor/Swaped_DIN \
+sim:/processor/ImmediateValue_DIN \
+sim:/processor/ReadData1_DOUT \
+sim:/processor/ReadData2_DOUT \
+sim:/processor/AluSelector_DOUT \
+sim:/processor/Branching_DOUT \
+sim:/processor/AluSource_DOUT \
+sim:/processor/MWrite1_DOUT \
+sim:/processor/MWrite2_DOUT \
+sim:/processor/MRead_DOUT \
+sim:/processor/WBDataSrc_DOUT \
+sim:/processor/RegWrite_DOUT \
+sim:/processor/SPPointer_DOUT \
+sim:/processor/InterruptSignal_DOUT \
+sim:/processor/PcSource_DOUT \
+sim:/processor/RtiSignal_DOUT \
+sim:/processor/FreeProtectedStore_DOUT \
+sim:/processor/Swap_DOUT \
+sim:/processor/MemAddress_DOUT \
+sim:/processor/DOUT \
+sim:/processor/DEOUT \
+sim:/processor/Reg1_EIN \
+sim:/processor/Reg2_EIN \
+sim:/processor/ALU_selector_EIN \
+sim:/processor/ALUout_EOUT \
+sim:/processor/FlagReg_out_EOUT \
+sim:/processor/EOUT \
+sim:/processor/EMOUT \
+sim:/processor/MemoryWrite1_MIN \
+sim:/processor/MemoryWrite2_MIN \
+sim:/processor/MemoryRead_MIN \
+sim:/processor/MemoryEnable_MIN \
+sim:/processor/MemoryAddress_MIN \
+sim:/processor/MemoryWriteData_MIN \
+sim:/processor/CALL_STD_MIN \
+sim:/processor/ALUOut_MIN \
+sim:/processor/pcPlus_MIN \
+sim:/processor/SecondOperand_MIN \
+sim:/processor/SP_MIN \
+sim:/processor/FreeProtectedStore_MIN \
+sim:/processor/MWIN \
+sim:/processor/MWOUT \
+sim:/processor/MemoryOut_MOut \
+sim:/processor/WrongAddress_MOut \
+sim:/processor/WriteBackDataOut
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 21:54:19 on Apr 24,2024, Elapsed time: 0:06:52
+# Errors: 0, Warnings: 13
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# Compile of PredictorReg.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd was successful.
+# Compile of Decode.vhd was successful.
+# Compile of Execute.vhd was successful.
+# Compile of Memory.vhd was successful.
+# Compile of WriteBack.vhd was successful.
+# Compile of ExecuteMemory_Reg.vhd was successful.
+# Compile of FetchDecode_Reg.vhd was successful.
+# Compile of MemoryWriteBack_Reg.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of Processor.vhd was successful.
+# 20 compiles, 0 failed with no errors.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 21:55:02 on Apr 24,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/meh.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/n \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/InPort \
+sim:/processor/OutPort \
+sim:/processor/PCPlus_FDIN \
+sim:/processor/WrongAddress_FDIN \
+sim:/processor/BranchSel \
+sim:/processor/ExceptionSel \
+sim:/processor/Stall \
+sim:/processor/Interrupt \
+sim:/processor/BranchingAddress_FIN \
+sim:/processor/Instruction_FDIN \
+sim:/processor/Flush \
+sim:/processor/FDIN \
+sim:/processor/FDOUT \
+sim:/processor/Inport_FDIN \
+sim:/processor/WriteBackEnable_DIN \
+sim:/processor/PredictorEnable_DIN \
+sim:/processor/WritePort1_DIN \
+sim:/processor/WritePort2_DIN \
+sim:/processor/WriteAdd1_DIN \
+sim:/processor/WriteAdd2_DIN \
+sim:/processor/Flush_DIN \
+sim:/processor/Swaped_DIN \
+sim:/processor/ImmediateValue_DIN \
+sim:/processor/ReadData1_DOUT \
+sim:/processor/ReadData2_DOUT \
+sim:/processor/AluSelector_DOUT \
+sim:/processor/Branching_DOUT \
+sim:/processor/AluSource_DOUT \
+sim:/processor/MWrite1_DOUT \
+sim:/processor/MWrite2_DOUT \
+sim:/processor/MRead_DOUT \
+sim:/processor/WBDataSrc_DOUT \
+sim:/processor/RegWrite_DOUT \
+sim:/processor/SPPointer_DOUT \
+sim:/processor/InterruptSignal_DOUT \
+sim:/processor/PcSource_DOUT \
+sim:/processor/RtiSignal_DOUT \
+sim:/processor/FreeProtectedStore_DOUT \
+sim:/processor/Swap_DOUT \
+sim:/processor/MemAddress_DOUT \
+sim:/processor/DOUT \
+sim:/processor/DEOUT \
+sim:/processor/Reg1_EIN \
+sim:/processor/Reg2_EIN \
+sim:/processor/ALU_selector_EIN \
+sim:/processor/ALUout_EOUT \
+sim:/processor/FlagReg_out_EOUT \
+sim:/processor/EOUT \
+sim:/processor/EMOUT \
+sim:/processor/MemoryWrite1_MIN \
+sim:/processor/MemoryWrite2_MIN \
+sim:/processor/MemoryRead_MIN \
+sim:/processor/MemoryEnable_MIN \
+sim:/processor/MemoryAddress_MIN \
+sim:/processor/MemoryWriteData_MIN \
+sim:/processor/CALL_STD_MIN \
+sim:/processor/ALUOut_MIN \
+sim:/processor/pcPlus_MIN \
+sim:/processor/SecondOperand_MIN \
+sim:/processor/SP_MIN \
+sim:/processor/FreeProtectedStore_MIN \
+sim:/processor/MWIN \
+sim:/processor/MWOUT \
+sim:/processor/MemoryOut_MOut \
+sim:/processor/WrongAddress_MOut \
+sim:/processor/WriteBackDataOut
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 400 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 500 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
