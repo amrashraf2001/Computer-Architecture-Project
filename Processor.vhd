@@ -273,7 +273,7 @@ SIGNAL MemoryWriteData_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
 SIGNAL CALL_STD_MIN: STD_LOGIC;
 SIGNAL ALUOut_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
 SIGNAL pcPlus_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
-SIGNAL SecondOperand : STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL SecondOperand_MIN : STD_LOGIC_VECTOR(n-1 downto 0);
 SIGNAL SP_MIN: STD_LOGIC_VECTOR(2 downto 0);
 SIGNAL FreeProtectedStore_MIN: STD_LOGIC_VECTOR(1 downto 0);
 MemoryRead_MIN <= EMOUT(11);
@@ -286,6 +286,11 @@ else EMOUT(147 downto 116);
 CALL_STD_MIN <= EMOUT(13);
 ALUOut_MIN <= EMOUT(77 downto 46);
 pcPlus_MIN <= EMOUT(147 downto 116);
+SecondOperand_MIN <= EMOUT(45 downto 14);
+SP_MIN <= EMOUT(6 downto 4);
+FreeProtectedStore_MIN <= EMOUT(1 downto 0);
+SIGNAL MemoryOut_MOut: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL WrongAddress_MOut: STD_LOGIC;
 
 
 -- Memory PORT MAP
@@ -299,14 +304,14 @@ Memory1: Memory PORT MAP(
     MemoryEnable => MemoryEnable_MIN,
     MemoryAddress => MemoryAddress_MIN,
     MemoryWriteData => MemoryWriteData_MIN,
-    CALL_STD => EMOUT(152),
-    ALUOut => EMOUT(151 downto 120),
-    pcPlus => DEOUT(69 downto 38),
-    SecondOperand => Reg2_EIN,
-    SP => DEOUT(138 downto 136),
-    FreeProtectedStore => DEOUT(135 downto 134),
-    MemoryOut => Inport_FDIN,
-    WrongAddress => WrongAddress_FDIN
+    CALL_STD => CALL_STD_MIN,
+    ALUOut => ALUOut_MIN,
+    pcPlus => pcPlus_MIN,
+    SecondOperand => SecondOperand_MIN,
+    SP => SP_MIN,
+    FreeProtectedStore => FreeProtectedStore_MIN,
+    MemoryOut => MemoryOut_MOut,
+    WrongAddress => WrongAddress_MOut
 );
 
 
