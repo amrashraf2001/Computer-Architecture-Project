@@ -25,18 +25,20 @@ END Controller;
 
 ARCHITECTURE Controller_Arch OF Controller IS
 BEGIN
-    RegWrite <= '1' WHEN (opcode(5 downto 4) = "00" and opcode(3 downto 0) /= "1011") or 
+    RegWrite <= '1' WHEN opcode = "000100" or
+                        (opcode(5 downto 4) = "00" and opcode(3 downto 0) /= "1011") or 
                         opcode(5 downto 0) = "010001" or 
                         opcode(5 downto 0) = "010010" or
-                        (opcode(5 downto 4) = "11" and 
-                        (opcode(3 downto 1) /= "000" or 
-                         opcode(3 downto 0) /= "0011" or 
-                         opcode(3 downto 0) /= "0100" or 
-                         opcode(3 downto 0) /= "1001"))
+                        opcode(5 downto 0) = "110101" or
+                        opcode(5 downto 0) = "110110" or
+                        opcode(5 downto 0) = "111000" or
+                        opcode(5 downto 0) = "110111" or
+                        opcode(5 downto 0) = "110010"
+
                 ELSE '0';
                     
 
-    WBdatasrc <= "10" WHEN (opcode(5 downto 4) ="00" and opcode(3 downto 0) /= "1011") or opcode(5 downto 0) = "110101" or opcode(5 downto 0) = "110110"
+    WBdatasrc <= "10" WHEN opcode(5 downto 4) = "00" or opcode = "110101" or opcode = "110110"
                  ELSE "00" WHEN opcode = "110010" -- IN
                  ELSE "01" WHEN opcode = "010001" or opcode = "010010" or opcode = "110111"
                  ELSE "11";
@@ -55,7 +57,8 @@ BEGIN
                  ELSE "1011" WHEN opcode = "010011" -- STD
                  ELSE "1100" WHEN opcode = "110101" -- ADDI
                  ELSE "1101" WHEN opcode = "110110" -- SUBI 
-                 ELSE "1110"; -- Default value NOP
+                 ELSE "1110" WHEN opcode = "000100" --MOV
+                 ELSE "1111"; -- Default value NOP
 
 
     Branching <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100" -- Branching
@@ -91,7 +94,7 @@ BEGIN
     
     rtisignal <= '1' WHEN opcode = "100100" -- RTI
                 ELSE '0';
-
+    -- TODO : 7OTAHA 3ADY W BALA4 FAZLAKA
     FreeProtectStore <= "00" WHEN opcode(5 downto 4) = "00" or (opcode(5 downto 4) ="01" and opcode(3 downto 0) /= "0011") or opcode(5 downto 4) = "10" or (opcode(5 downto 4) ="11" and (opcode(3 downto 0) /= "0011" or opcode(3 downto 0) /= "0100"))
                       ELSE "01" WHEN opcode = "110011" -- FREE
                       ELSE "10" WHEN opcode = "110100" -- PROTECT

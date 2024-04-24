@@ -55,6 +55,8 @@ BEGIN
                 ALUout_sig <=  std_logic_vector(unsigned(extendedA) + unsigned(extendedB));
             WHEN "1101" =>   -- SUBI Operation
                 ALUout_sig <=  std_logic_vector(unsigned(extendedA) - unsigned(extendedB));
+            WHEN "1110" =>   -- MOV operation
+                ALUout_sig <= extendedA;
 
             WHEN OTHERS =>
                 ALUout_sig <= extendedA;  -- Default case (NOP)
