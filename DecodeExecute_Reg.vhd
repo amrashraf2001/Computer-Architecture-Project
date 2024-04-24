@@ -3,11 +3,12 @@ use ieee.std_logic_1164.all;
 
 entity DecodeExecute_Reg is
 port (
-    A: IN std_logic_vector(152 downto 0); 
+    A: IN std_logic_vector(185 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(152 downto 0));
+    F: out STD_LOGIC_VECTOR(185 downto 0));
 end entity DecodeExecute_Reg;
-
+-- ALU src 1 bit (185)
+-- Immediate value (32 bit) → 32 Bit (184 downto 153)
 -- Mem Address → 2 Bit (152 downto 151)
 --F/P/S → 2 Bit (150 downto 149)
 --ALU Operation → 4 Bit(148 downto 145)

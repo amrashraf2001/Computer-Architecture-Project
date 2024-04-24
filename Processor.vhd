@@ -141,11 +141,158 @@ SIGNAL PCPlus_FDIN: STD_LOGIC_VECTOR(31 downto 0);
 SIGNAL WrongAddress_FDIN: STD_LOGIC;
 SIGNAL BranchSel, ExceptionSel, Stall,Interrupt: STD_LOGIC;
 SIGNAL BranchingAddress_FIN: STD_LOGIC_VECTOR(31 downto 0);
+SIGNAL Instruction_FDIN: STD_LOGIC_VECTOR(15 downto 0);
+SIGNAL Flush: STD_LOGIC:='0';
 SIGNAL FDIN: STD_LOGIC_VECTOR(80 downto 0);
 --FETCH PORT MAP
-Fetch1: Fetch 
--- 3ayez azabar el branching address ama 23ml ba2i el port maps
---
+Fetch1: Fetch PORT MAP(
+    clk => clk,
+    branchingAddress => BranchingAddress_FIN,
+    en => en,
+    rst => rst,
+    interrupt => Interrupt,
+    branchingSel => BranchSel,
+    exceptionSel => ExceptionSel,
+    stall => Stall,
+    dataout => Instruction_FDIN,
+    pcPlus => PCPlus_FDIN,
+    WrongAddress => WrongAddress_FDIN
+); 
+SIGNAL Inport_FDIN: STD_LOGIC_VECTOR(31 downto 0);
+Inport_FDIN<=InPort;
+FDIN<=InPort_FDIN & Instruction_FDIN & PCPlus_FDIN & WrongAddress_FDIN;
+SIGNAL FDOUT: STD_LOGIC_VECTOR(80 downto 0);
+-- FetchDecode_Reg PORT MAP
+FetchDecode_Reg1: FetchDecode_Reg PORT MAP(
+    A => FDIN,
+    clk => clk,
+    en => en,
+    rest => rst,
+    F => FDOUT
+);
+-- DECODE INPUT SIGNALS
+SIGNAL WriteBackEnable_DIN, PredictorEnable_DIN: STD_LOGIC; -- mn el write back
+SIGNAL WritePort1_DIN, WritePort2_DIN: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL WriteAdd1_DIN, WriteAdd2_DIN: STD_LOGIC_VECTOR(2 downto 0);
+SIGNAL Flush_DIN,Swaped_DIN: STD_LOGIC;
+SIGNAL ImmediateValue_DIN: STD_LOGIC_VECTOR(15 downto 0); -- mn el fetch eli ablya m4 el buffer
+SIGNAL ReadData1_DOUT, ReadData2_DOUT: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL AluSelector_DOUT: STD_LOGIC_VECTOR(3 downto 0);
+SIGNAL Branching_DOUT: STD_LOGIC;
+SIGNAL AluSource_DOUT: STD_LOGIC;
+SIGNAL MWrite1_DOUT, MWrite2_DOUT, MRead_DOUT: STD_LOGIC;
+SIGNAL WBDataSrc_DOUT: STD_LOGIC_VECTOR(1 downto 0);
+SIGNAL RegWrite_DOUT: STD_LOGIC;
+SIGNAL SPPointer_DOUT: STD_LOGIC_VECTOR(2 downto 0);
+SIGNAL InterruptSignal_DOUT: STD_LOGIC;
+SIGNAL PcSource_DOUT: STD_LOGIC;
+SIGNAL RtiSignal_DOUT: STD_LOGIC;
+SIGNAL FreeProtectedStore_DOUT: STD_LOGIC_VECTOR(1 downto 0);
+SIGNAL Swap_DOUT: STD_LOGIC;
+SIGNAL MemAddress_DOUT: STD_LOGIC_VECTOR(1 downto 0);
+-- Decode PORT MAP
+Decode1: Decode PORT MAP(
+    Clk => clk,
+    Rst => rst,
+    WriteBackEnable => WriteBackEnable_DIN,
+    PredictorEnable => PredictorEnable_DIN,
+    Instruction => FDOUT(48 downto 33),
+    WritePort1 => WritePort1_DIN, -- l7ad mawsal lel write back
+    WritePort2 => WritePort2_DIN,
+    WriteAdd1 => WriteAdd1_DIN,
+    WriteAdd2 => WriteAdd2_DIN,
+    Flush => Flush,
+    Swaped => Swaped_DIN,
+    ImmediateValue => ImmediateValue_DIN,
+    ReadData1 => ReadData1_DOUT,
+    ReadData2 => ReadData2_DOUT,
+    AluSelector => AluSelector_DOUT,
+    Branching => Branching_DOUT,
+    AluSource => AluSource_DOUT,
+    MWrite1 => MWrite1_DOUT,
+    MWrite2 => MWrite2_DOUT,
+    MRead => MRead_DOUT,
+    WBDataSrc => WBDataSrc_DOUT,
+    RegWrite => RegWrite_DOUT,
+    SPPointer => SPPointer_DOUT,
+    InterruptSignal => InterruptSignal_DOUT,
+    PcSource => PcSource_DOUT,
+    RtiSignal => RtiSignal_DOUT,
+    FreeProtectedStore => FreeProtectedStore_DOUT,
+    Swap => Swap_DOUT,
+    MemAddress => MemAddress_DOUT
+);
+--DECODE -> EXECUTE BUFFER
+SIGNAL DOUT: STD_LOGIC_VECTOR(185 downto 0);
+DOUT<= AluSource_DOUT & ImmediateValue_DIN & MemAddress_DOUT & FreeProtectedStore_DOUT & AluSelector_DOUT & SPPointer_DOUT & '1' & WBDataSrc_DOUT & MRead_DOUT & Mwrite1_DOUT & MWrite2_DOUT & RegWrite_DOUT & '0' & ReadData1_DOUT & ReadData2_DOUT & FDOUT(80 downto 49) & WriteAdd1_DIN & WriteAdd2_DIN & FDOUT(32 downto 1)
+--DecodeExecute_Reg PORT MAP
+SIGNAL DEOUT: STD_LOGIC_VECTOR(185 downto 0);
+DecodeExecute_Reg1: DecodeExecute_Reg PORT MAP(
+    A => DOUT,
+    clk => clk,
+    en => en,
+    rest => rst,
+    F => DEOUT
+);
+
+-- EXECUTE INPUT SIGNALS
+SIGNAL Reg1_EIN, Reg2_EIN: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL ALU_selector_EIN: STD_LOGIC_VECTOR(3 downto 0);
+SIGNAL ALUout_EOUT: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL FlagReg_out_EOUT: STD_LOGIC_VECTOR(3 downto 0);
+Reg1_EIN <= DEOUT(133 downto 102);
+Reg2_EIN <= DEOUT(101 downto 70) when DEOUT(185)='0' else DEOUT(184 downto 153);
+ALU_selector_EIN <= DEOUT(148 downto 145);
+-- Execute PORT MAP
+Execute1: Execute PORT MAP(
+    clk => clk,
+    en => en,
+    rst => rst,
+    Reg1 => Reg1_EIN,
+    Reg2 => Reg2_EIN,
+    ALU_selector => ALU_selector_EIN,
+    ALUout => ALUout_EOUT,
+    FlagReg_out => FlagReg_out_EOUT
+);
+-- ExecuteMemory_Reg PORT MAP
+SIGNAL EOUT: STD_LOGIC_VECTOR(153 downto 0);
+SIGNAL EMOUT: STD_LOGIC_VECTOR(153 downto 0);
+EOUT<= DEOUT(152 downto 151) & FlagReg_out_EOUT & DEOUT(31 downto 0) & DEOUT(69 downto 38) & DEOUT(37 downto 32) & ALUout_EOUT & Reg2_EIN & '0' & '1' & DEOUT(138 downto 135) & DEOUT(185) & DEOUT(144 downto 142) & DEOUT(140 downto 139) & DEOUT(150 downto 149);
+ExecuteMemory_Reg1: ExecuteMemory_Reg PORT MAP(
+    A => EOUT,
+    clk => clk,
+    en => en,
+    rest => rst,
+    F => EMOUT
+);
+
+-- MEMORY INPUT SIGNALS
+SIGNAL MemoryWrite1_MIN, MemoryWrite2_MIN, MemoryRead_MIN, MemoryEnable_MIN: STD_LOGIC;
+SIGNAL MemoryAddress_MIN :STD_LOGIC_VECTOR(1 downto 0); 
+SIGNAL MemoryWriteData_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
+
+-- Memory PORT MAP
+Memory1: Memory PORT MAP(
+    clk => clk,
+    en => en,
+    rst => rst,
+    MemoryWrite1 => MemoryWrite1_MIN,
+    MemoryWrite2 => MemoryWrite2_MIN,
+    MemoryRead => MemoryRead_MIN,
+    MemoryEnable => MemoryEnable_MIN,
+    MemoryAddress => MemoryAddress_MIN,
+    MemoryWriteData => MemoryWriteData_MIN,
+    CALL_STD => EMOUT(152),
+    ALUOut => EMOUT(151 downto 120),
+    pcPlus => DEOUT(69 downto 38),
+    SecondOperand => Reg2_EIN,
+    SP => DEOUT(138 downto 136),
+    FreeProtectedStore => DEOUT(135 downto 134),
+    MemoryOut => Inport_FDIN,
+    WrongAddress => WrongAddress_FDIN
+);
+
+
 
 
 END Processor_Arch;
