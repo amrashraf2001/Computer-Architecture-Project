@@ -10,14 +10,14 @@ port (
 end entity MemoryWriteBack_Reg;
 
 --Read Wrtie signal -> 1 Bit (169)
---Write Back Source signal → 2 Bit (167->168)
+--Write Back Source signal → 2 Bit (168 downto 167)
 --OUT Enable signal → 1 Bit (166)
---Memory Output → 32 Bit (134->165)
---ALU Output → 32 Bit (102->133)
---Second Operand → 32 Bit (70->101)
---Write Back Addresses → 6 Bit (64->69)
---IN -> 32 Bit (32->63)
---PC + 1 → 32 Bit (0->31)
+--Memory Output → 32 Bit (165 downto 134)
+--ALU Output → 32 Bit (133 downto 102)
+--Second Operand → 32 Bit (101 downto 70)
+--Write Back Addresses → 6 Bit (69 downto 64)
+--IN -> 32 Bit (63 downto 32)
+--PC + 1 → 32 Bit (31 downto 0)
 
 Architecture MemoryWriteBack_Reg of MemoryWriteBack_Reg is
 begin
