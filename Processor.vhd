@@ -270,6 +270,23 @@ ExecuteMemory_Reg1: ExecuteMemory_Reg PORT MAP(
 SIGNAL MemoryWrite1_MIN, MemoryWrite2_MIN, MemoryRead_MIN, MemoryEnable_MIN: STD_LOGIC;
 SIGNAL MemoryAddress_MIN :STD_LOGIC_VECTOR(1 downto 0); 
 SIGNAL MemoryWriteData_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL CALL_STD_MIN: STD_LOGIC;
+SIGNAL ALUOut_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL pcPlus_MIN: STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL SecondOperand : STD_LOGIC_VECTOR(n-1 downto 0);
+SIGNAL SP_MIN: STD_LOGIC_VECTOR(2 downto 0);
+SIGNAL FreeProtectedStore_MIN: STD_LOGIC_VECTOR(1 downto 0);
+MemoryRead_MIN <= EMOUT(11);
+MemoryWrite1_MIN <= EMOUT(10);
+MemoryWrite2_MIN <= EMOUT(9);
+MemoryEnable_MIN <= EMOUT(8);
+MemoryAddress_MIN <= EMOUT(153 downto 152);
+MemoryWriteData_MIN <= EMOUT(45 downto 14) when EMOUT(13)='0' 
+else EMOUT(147 downto 116);
+CALL_STD_MIN <= EMOUT(13);
+ALUOut_MIN <= EMOUT(77 downto 46);
+pcPlus_MIN <= EMOUT(147 downto 116);
+
 
 -- Memory PORT MAP
 Memory1: Memory PORT MAP(
