@@ -30,7 +30,8 @@ COMPONENT FetchDecode_Reg is
 port (
     A: IN std_logic_vector(80 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out std_logic_vector(80 downto 0));
+    F: out std_logic_vector(80 downto 0);
+    Flush: IN std_logic);
 
 end COMPONENT;
 
@@ -142,7 +143,7 @@ SIGNAL WrongAddress_FDIN: STD_LOGIC;
 SIGNAL BranchSel, ExceptionSel, Stall,Interrupt: STD_LOGIC;
 SIGNAL BranchingAddress_FIN: STD_LOGIC_VECTOR(31 downto 0);
 SIGNAL Instruction_FDIN: STD_LOGIC_VECTOR(15 downto 0);
-SIGNAL Flush: STD_LOGIC:='0';
+SIGNAL Flush: STD_LOGIC;
 SIGNAL FDIN: STD_LOGIC_VECTOR(80 downto 0);
 SIGNAL FDOUT: STD_LOGIC_VECTOR(80 downto 0);
 SIGNAL Inport_FDIN: STD_LOGIC_VECTOR(31 downto 0);
@@ -219,17 +220,30 @@ FDIN<=InPort_FDIN & Instruction_FDIN & PCPlus_FDIN & WrongAddress_FDIN;
 process(Instruction_FDIN)
     begin
         for i in 31 downto 16 loop
-          ImmediateValue_DIN(i) <= Instruction_FDIN(15);
+          --ImmediateValue_DIN(i) <= Instruction_FDIN(15);
+          if AluSelector_DOUT = "1111" then
+            ImmediateValue_DIN(i) <= '0';
+          else
+            ImmediateValue_DIN(i) <= Instruction_FDIN(15);
+          end if;
         end loop;
         ImmediateValue_DIN(15 downto 0) <= Instruction_FDIN(15 downto 0);
     end process;
+-- process(AluSelector_DOUT)
+-- begin
+--   if AluSelector_DOUT = "1111" then
+--     FDIN <= (48=>'1',47=>'1',others=>'0');
+--   end if;
+-- end process;
 -- FetchDecode_Reg PORT MAP
+Flush <= DEOUT(185); -- zawed ba2i cases el flush f or gate
 FetchDecode_Reg1: FetchDecode_Reg PORT MAP(
     A => FDIN,
     clk => clk,
     en => en,
     rest => rst,
-    F => FDOUT
+    F => FDOUT,
+    Flush => Flush
 );
 
 -- Decode PORT MAP
