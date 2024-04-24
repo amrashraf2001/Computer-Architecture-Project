@@ -38,9 +38,9 @@ BEGIN
                 ELSE '0';
                     
 
-    WBdatasrc <= "10" WHEN opcode(5 downto 4) = "00" or opcode = "110101" or opcode = "110110"
+    WBdatasrc <= "10" WHEN opcode(5 downto 4) = "00" or opcode = "110101" or opcode = "110110" or opcode = "110111"
                  ELSE "00" WHEN opcode = "110010" -- IN
-                 ELSE "01" WHEN opcode = "010001" or opcode = "010010" or opcode = "110111"
+                 ELSE "01" WHEN opcode = "010001" or opcode = "010010" 
                  ELSE "11";
 
     AluSelector <= "0000" WHEN opcode = "000000" -- NOT
@@ -58,7 +58,8 @@ BEGIN
                  ELSE "1100" WHEN opcode = "110101" -- ADDI
                  ELSE "1101" WHEN opcode = "110110" -- SUBI 
                  ELSE "1110" WHEN opcode = "000100" --MOV
-                 ELSE "1111"; -- Default value NOP
+                 ELSE "1111" When opcode = "110111" -- LDM
+                 ELSE "1110";
 
 
     Branching <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100" -- Branching
