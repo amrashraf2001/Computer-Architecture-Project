@@ -12,8 +12,12 @@ entity Memory is
         MemoryEnable : IN std_logic;
         MemoryAddress : IN std_logic_vector(n-1 DOWNTO 0);
         MemoryWriteData : IN std_logic_vector(n-1 DOWNTO 0);
-        MemoryOut : OUT std_logic_vector(n-1 DOWNTO 0);
         ALUOut : IN std_logic_vector(n-1 DOWNTO 0);
+        SecondOperand : IN std_logic_vector(n-1 DOWNTO 0);
+        SP: IN std_logic_vector(2 DOWNTO 0);
+        FreeProtectedStore : IN std_logic_vector(1 DOWNTO 0);
+        MemoryOut : OUT std_logic_vector(n-1 DOWNTO 0);
+        WrongAddress : OUT std_logic
         
     );
 end entity Memory;
@@ -47,10 +51,9 @@ architecture Memory_Arch of Memory is
         q : OUT std_logic_vector (n-1 downto 0);
         clk,rst,en : IN std_logic );
     END component;
-
-
-    --Signal Declaration
-begin
+    signal ProtectedFlagsInput : std_logic_vector(n-1 DOWNTO 0);
+    signal ProtectedFlagsOutput : std_logic;
+    signal StackPointer : std_logic_vector(n-1 DOWNTO 0);
     
 
 end architecture Memory_Arch;
