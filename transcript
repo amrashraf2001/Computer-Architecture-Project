@@ -8893,3 +8893,1434 @@ run
 run
 run
 run
+quit -sim
+# End time: 05:14:10 on Apr 25,2024, Elapsed time: 0:10:53
+# Errors: 0, Warnings: 75
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6600 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6700 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 05:56:45 on Apr 25,2024, Elapsed time: 0:42:02
+# Errors: 0, Warnings: 14
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 05:57:04 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 06:02:05 on Apr 25,2024, Elapsed time: 0:05:01
+# Errors: 0, Warnings: 5
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 06:22:49 on Apr 25,2024, Elapsed time: 0:20:23
+# Errors: 0, Warnings: 5
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:23:11 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 06:28:42 on Apr 25,2024, Elapsed time: 0:05:31
+# Errors: 0, Warnings: 9
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:29:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7200 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7200 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 06:35:11 on Apr 25,2024, Elapsed time: 0:05:45
+# Errors: 0, Warnings: 15
+# Compile of ALU.vhd failed with 1 errors.
+# Compile of ALU.vhd failed with 1 errors.
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:37:32 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+quit -sim
+# End time: 06:41:28 on Apr 25,2024, Elapsed time: 0:03:56
+# Errors: 0, Warnings: 15
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:42:11 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+vsim -gui work.processor
+# End time: 06:42:50 on Apr 25,2024, Elapsed time: 0:00:39
+# Errors: 0, Warnings: 2
+# vsim -gui work.processor 
+# Start time: 06:42:50 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 06:46:15 on Apr 25,2024, Elapsed time: 0:03:25
+# Errors: 0, Warnings: 4
+# Compile of ALU.vhd was successful.
+vsim -gui work.processor
+# vsim -gui work.processor 
+# Start time: 06:46:34 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 06:02:26 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# vsim -gui work.processor 
+# Start time: 05:14:43 on Apr 25,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.processor(processor_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_arch)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /processor/Fetch1/IM1/ram
+add wave -position insertpoint  \
+sim:/processor/clk \
+sim:/processor/en \
+sim:/processor/rst \
+sim:/processor/Instruction_FDIN \
+sim:/processor/FlagReg_out_EOUT
+force -freeze sim:/processor/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/processor/en 1 0
+force -freeze sim:/processor/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Memory1/Data_Memory1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /processor/Fetch1/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /processor/Memory1/Data_Memory1
+force -freeze sim:/processor/rst 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6800 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6900 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7 ns  Iteration: 0  Instance: /processor/Decode1/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1

@@ -72,9 +72,10 @@ BEGIN
         ALUout<=ALUout_sig(31 downto 0);  -- Assign ALU output
 END PROCESS;
         -- Check for Overflow flag
-        overflow_flag <= '1' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31))
-        else '0' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) = extendedA(31))
-        else FlagFeedbackOverflow;
+        overflow_flag <= '1' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" ) AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31))
+            else '0' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) = extendedA(31))
+            else FlagFeedbackOverflow;
+
         -- Check for zero flag
         zero_flag <= '1' when ALUout_sig(31 downto 0) = zero_vector and ALU_selector /= "1010" and ALU_selector /= "1011" and ALU_selector /= "1110" and ALU_selector /= "1111"
         else '0' when ALUout_sig(31 downto 0) /= zero_vector and ALU_selector /= "1010" and ALU_selector /= "1011" and ALU_selector /= "1110" and ALU_selector /= "1111"
@@ -89,8 +90,8 @@ END PROCESS;
         --     else FlagFeedbackNeg;
         -- Check for carry flag
         -- Check for carry flag during CMP operation
-        carry_flag <= '1' when (ALU_selector = "1001" or ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '1')
-        else ALUout_sig(32) when ALU_selector = "0100"  or ALU_selector = "1100"  or ALU_selector = "0010" 
-        else '0' when (ALU_selector = "1001" or ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '0')
+        carry_flag <= '1' when (ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '1' and extendedA(31) = '0') and ALU_selector /= "0000" and ALU_selector /= "1000" and ALU_selector /= "1110" and ALU_selector /= "1111" and ALU_selector /= "1001"
+        else ALUout_sig(32) when (ALU_selector = "0100"  or ALU_selector = "1100"  or ALU_selector = "0010") and ALU_selector /= "0000" and ALU_selector /= "1000" and ALU_selector /= "1110" and ALU_selector /= "1111" and ALU_selector /= "1001"
+        else '0' when (ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '1' and extendedA(31) = '1') and ALU_selector /= "0000" and ALU_selector /= "1000" and ALU_selector /= "1110" and ALU_selector /= "1111" and ALU_selector /= "1001"
         else FlagFeedbackCarry;
 END ARCHITECTURE struct;
