@@ -74,6 +74,6 @@ begin
     -- ELSE flags WHEN ALU_selector="1010" OR ALU_selector="1011" or ALU_selector = "1110" --IN LDD & STD & MOV cases
     -- ELSE zero_flag_sig & neg_flag_sig & carry_flag_sig & overflow_flag_sig;    --Conctetaing the flags for thr flag register input  
     flags <= Zerocombtemp & Negcombtemp & Coutcombtemp & Overflowcombtemp;
-    FlagReg_out <= FlagReg_out_internal; --TODO: zabat 7ewarat el branching w probagation w kalam keber kda
+    FlagReg_out <= FlagReg_out_internal; --TODO: zabat 7ewarat el branching w propagation w kalam keber kda
 
 end Execute_Arch;
