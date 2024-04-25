@@ -6,8 +6,8 @@ GENERIC ( n : integer := 4);
     PORT( 
         clk,rst,en : IN std_logic;
         d : IN std_logic_vector(n-1 DOWNTO 0);
-        q : OUT std_logic_vector(n-1 DOWNTO 0);
-        q_internal : OUT std_logic_vector(n-1 DOWNTO 0)); 
+        q : OUT std_logic_vector(n-1 DOWNTO 0));
+        --q_internal : OUT std_logic_vector(n-1 DOWNTO 0)); 
 END FlagReg;
 
 ARCHITECTURE FlagReg_Arch OF FlagReg IS
@@ -16,10 +16,10 @@ ARCHITECTURE FlagReg_Arch OF FlagReg IS
         BEGIN
             IF rst = '1' THEN
                 q <= (OTHERS=>'0');
-                q_internal <= (OTHERS=>'0');
+                --q_internal <= (OTHERS=>'0');
             ELSIF rising_edge(clk) AND en='1' THEN
                 q <= d;
-                q_internal <= d; 
+                --q_internal <= d; 
             END IF;
         END PROCESS;
 END FlagReg_Arch;

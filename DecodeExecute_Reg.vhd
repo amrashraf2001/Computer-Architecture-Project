@@ -31,7 +31,7 @@ begin
 	process (clk,rest)
 	begin
 		if rest = '1' then 
-			F<= (others => '0'); -- lw 3mlt reset aw ha flush odam adman eni 7atet NOP
+			F<= (148=>'1',147=>'1',146=>'1',145=>'0',others => '0'); -- lw 3mlt reset aw ha flush odam adman eni 7atet NOP
 		elsif rising_edge(clk) and en='1' then 
 			F<=A;
 		end if;

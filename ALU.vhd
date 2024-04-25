@@ -10,7 +10,7 @@ ENTITY ALU is
         Reg1, Reg2: IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
         carry_flag, neg_flag, zero_flag, overflow_flag : OUT std_logic;
-        --FlagFeedbackCarry,FlagFeedbackNeg,FlagFeedbackZero : IN std_logic; 
+        FlagFeedbackCarry,FlagFeedbackNeg,FlagFeedbackZero,FlagFeedbackOverflow : IN std_logic; 
         ALUout : OUT std_logic_vector(n-1 downto 0)
     );
 END ENTITY ALU;
@@ -63,22 +63,31 @@ BEGIN
                 ALUout_sig <= extendedA;  -- Default case (NOP)
         END CASE;
 
-        -- Check for overflow flag
-        IF (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31)) THEN
-            overflow_flag <= '1';
-        ELSE
-            overflow_flag <= '0';
-        END IF;
+        -- -- Check for overflow flag
+        -- IF (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31)) THEN
+        --     overflow_flag <= '1';
+        -- ELSE
+        --     overflow_flag <= '0';
+        -- END IF;
         ALUout<=ALUout_sig(31 downto 0);  -- Assign ALU output
 END PROCESS;
+        -- Check for Overflow flag
+        overflow_flag <= '1' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) /= extendedA(31))
+        else '0' when (ALU_selector = "0100"  or ALU_selector ="0101" or ALU_selector ="1100" or ALU_selector ="1101" or ALU_selector = "0010" or ALU_selector = "0011") AND (extendedA(31) = extendedB(31)) AND (ALUout_sig(31) = extendedA(31))
+        else FlagFeedbackOverflow;
         -- Check for zero flag
-        zero_flag <= '1' when ALUout_sig(31 downto 0) = zero_vector and (ALU_selector /= "1010" or ALU_selector /= "1011")
-        else '0';
+        zero_flag <= '1' when ALUout_sig(31 downto 0) = zero_vector and ALU_selector /= "1010" and ALU_selector /= "1011" and ALU_selector /= "1110" and ALU_selector /= "1111"
+        else '0' when ALUout_sig(31 downto 0) /= zero_vector and ALU_selector /= "1010" and ALU_selector /= "1011" and ALU_selector /= "1110" and ALU_selector /= "1111"
+        else FlagFeedbackZero;
         -- Check for negative flag
 	    --neg_flag <= ALUout_sig(31);
-        neg_flag <= '1' when ALUout_sig(31) = '1' and (ALU_selector /= "1010" or ALU_selector /= "1011") AND (to_integer(signed(ALUout_sig(31 downto 0))) < 0)
-        else '0';
+        -- neg_flag <= '1' when ALUout_sig(31) = '1' and ALU_selector /= "1010" and ALU_selector /= "1011" AND (to_integer(signed(ALUout_sig(31 downto 0))) < 0)
+        -- else '0' when ALUout_sig(31) = '1' and ALU_selector /= "1010" and ALU_selector /= "1011" AND (to_integer(signed(ALUout_sig(31 downto 0))) >= 0)
+        -- else FlagFeedbackNeg;
+        neg_flag <= '1' when ALU_selector /= "1010" and ALU_selector /= "1011" AND (to_integer(signed(ALUout_sig(31 downto 0))) < 0)
+        else '0' when ALU_selector /= "1010" and ALU_selector /= "1011" AND (to_integer(signed(ALUout_sig(31 downto 0))) >= 0)
+        else FlagFeedbackNeg;
         -- Check for carry flag
         carry_flag <= ALUout_sig(32) when ALU_selector = "0100" or ALU_selector = "0101" or ALU_selector = "1100" or ALU_selector = "1101" or ALU_selector = "0010" or ALU_selector = "0011"
-            else '0';
+            else FlagFeedbackCarry;
 END ARCHITECTURE struct;
