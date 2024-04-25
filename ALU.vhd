@@ -88,7 +88,9 @@ END PROCESS;
         --     else '0' when ALU_selector /= "1010" and ALU_selector /= "1011" AND ALU_selector /= "1111" AND ALU_selector /= "1110" AND (to_integer(signed(ALUout_sig(31 downto 0))) >= 0)
         --     else FlagFeedbackNeg;
         -- Check for carry flag
-        carry_flag <= '1' when ALU_selector = "0011" and extendedA(31 downto 0) = zero_vector -- shuf el general beta3 el borrow
-        else ALUout_sig(32) when ALU_selector = "0100" or ALU_selector = "0101" or ALU_selector = "1100" or ALU_selector = "1101" or ALU_selector = "0010" or ALU_selector = "0011" 
-            else FlagFeedbackCarry;
+        -- Check for carry flag during CMP operation
+        carry_flag <= '1' when (ALU_selector = "1001" or ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '1')
+        else ALUout_sig(32) when ALU_selector = "0100"  or ALU_selector = "1100"  or ALU_selector = "0010" 
+        else '0' when (ALU_selector = "1001" or ALU_selector = "1101" or ALU_selector = "0101" or ALU_selector = "0011") and (ALUout_sig(31) = '0')
+        else FlagFeedbackCarry;
 END ARCHITECTURE struct;
