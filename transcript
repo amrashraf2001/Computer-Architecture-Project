@@ -153,3 +153,5 @@ do amr.do
 #    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 7100 ps  Iteration: 0  Instance: /processor/Decode1/RegFile1
+# End time: 18:38:53 on Apr 26,2024, Elapsed time: 34:29:56
+# Errors: 0, Warnings: 12
