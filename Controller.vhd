@@ -18,7 +18,7 @@ ENTITY Controller IS
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
         MemAddress: OUT std_logic_vector(1 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
-        Swap: out std_logic;
+        Swap: out std_logic
     );
 END Controller;
 

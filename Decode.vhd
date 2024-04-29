@@ -19,7 +19,7 @@ ENTITY Decode IS
         AluSelector: OUT std_logic_vector(3 DOWNTO 0); 
         Branching: OUT std_logic;
         alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-        MWrite1,MWrite2, MRead: OUT std_logic;
+        MWrite, MRead: OUT std_logic;
         WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
         RegWrite: OUT std_logic;
         SPPointer: OUT std_logic_vector(2 DOWNTO 0);
@@ -28,7 +28,8 @@ ENTITY Decode IS
         rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
         Swap: out std_logic; -- ana batal3ha lama bala2i el instruction Swap w bazabet el address w el data
-        MemAddress: OUT std_logic_vector(1 DOWNTO 0)
+        MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+        Ret: out std_logic_vector(1 downto 0)
     );
 END ENTITY Decode;
 
@@ -48,7 +49,7 @@ architecture Decode_Arch of Decode is
             FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
             MemAddress: OUT std_logic_vector(1 DOWNTO 0);
             Ret: out std_logic_vector(1 downto 0);
-            Swap: out std_logic;
+            Swap: out std_logic
         );
     END component;
     
@@ -73,7 +74,7 @@ architecture Decode_Arch of Decode is
     signal RAdd1, RAdd2: std_logic_vector(2 DOWNTO 0);
     signal WAdd1, WAdd2: std_logic_vector(2 DOWNTO 0);
     signal ExtendedImmediate: std_logic_vector(31 DOWNTO 0);
-    signal Swap: std_logic;
+    --signal Swap: std_logic;
     signal WData1, WData2: std_logic_vector(31 DOWNTO 0);
     signal PredictorInput: std_logic := '0';
     signal PredictorOutput: std_logic;
