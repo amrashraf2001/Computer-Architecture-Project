@@ -6,20 +6,19 @@ USE IEEE.numeric_std.all;
 ENTITY Controller IS
     PORT(
         opcode: IN std_logic_vector(5 DOWNTO 0); 
-        --ZeroFlag: IN std_logic; -- Branching
         AluSelector: OUT std_logic_vector(3 DOWNTO 0); -- 3 bits subcode and extra bit
         Branching: OUT std_logic;
         alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-        MWrite1,MWrite2, MRead: OUT std_logic;
+        MWrite, MRead: OUT std_logic;
         WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
         RegWrite: OUT std_logic;
         SPPointer: OUT std_logic_vector(2 DOWNTO 0);
-        --MemWRsrc: OUT std_logic;
         interruptsignal:  out std_logic;
         pcSource: OUT std_logic;
-        rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-        MemAddress: OUT std_logic_vector(1 DOWNTO 0)
+        MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+        Ret: out std_logic_vector(1 downto 0);
+        Swap: out std_logic;
     );
 END Controller;
 
@@ -68,11 +67,9 @@ BEGIN
     alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
                  ELSE '0';
 
-    MWrite1 <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" -- PUSH, STD , CALL
+    MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001" -- PUSH, STD , CALL, INT
               ELSE '0';
 
-    MWrite2 <= '1' WHEN opcode = "111001" 
-              ELSE '0';
 
     MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
              ELSE '0';
@@ -93,16 +90,21 @@ BEGIN
     interruptsignal <= '1' WHEN opcode = "111001" -- INT
                      ELSE '0';
     
-    rtisignal <= '1' WHEN opcode = "100100" -- RTI
-                ELSE '0';
-    -- TODO : 7OTAHA 3ADY W BALA4 FAZLAKA
-    FreeProtectStore <= "00" WHEN opcode(5 downto 4) = "00" or (opcode(5 downto 4) ="01" and opcode(3 downto 0) /= "0011") or opcode(5 downto 4) = "10" or (opcode(5 downto 4) ="11" and (opcode(3 downto 0) /= "0011" or opcode(3 downto 0) /= "0100"))
+
+    FreeProtectStore <= "11" WHEN opcode = "010011" --STD
                       ELSE "01" WHEN opcode = "110011" -- FREE
                       ELSE "10" WHEN opcode = "110100" -- PROTECT
-                      ELSE "11"; -- Default value STD
+                      ELSE "00"; -- Default value STD
 
     pcSource <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100"
                 ELSE '0';
+
+    Ret <= "00" WHEN opcode = "110000" -- NOP
+         ELSE "01" WHEN opcode = "100011" -- RET
+         ELSE "10" WHEN opcode = "100100" -- RTI
+         ELSE "00";
+
+    Swap <= '1' when opcode(5 downto 0) = "000101" else '0';
 
 END Controller_Arch;
 

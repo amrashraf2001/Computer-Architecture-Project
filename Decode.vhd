@@ -27,7 +27,7 @@ ENTITY Decode IS
         pcSource: OUT std_logic;
         rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-        swap: out std_logic; -- ana batal3ha lama bala2i el instruction swap w bazabet el address w el data
+        Swap: out std_logic; -- ana batal3ha lama bala2i el instruction Swap w bazabet el address w el data
         MemAddress: OUT std_logic_vector(1 DOWNTO 0)
     );
 END ENTITY Decode;
@@ -36,18 +36,19 @@ architecture Decode_Arch of Decode is
     component Controller IS
         PORT(
             opcode: IN std_logic_vector(5 DOWNTO 0); 
-            AluSelector: OUT std_logic_vector(3 DOWNTO 0); 
+            AluSelector: OUT std_logic_vector(3 DOWNTO 0); -- 3 bits subcode and extra bit
             Branching: OUT std_logic;
             alusource: OUT std_logic; -- ba4of ba5ud el second operand mn el register or immediate
-            MWrite1,MWrite2, MRead: OUT std_logic;
+            MWrite, MRead: OUT std_logic;
             WBdatasrc: OUT std_logic_vector(1 DOWNTO 0);
             RegWrite: OUT std_logic;
             SPPointer: OUT std_logic_vector(2 DOWNTO 0);
-            interruptsignal:  OUT std_logic;
+            interruptsignal:  out std_logic;
             pcSource: OUT std_logic;
-            rtisignal:  OUT std_logic;
             FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-            MemAddress: OUT std_logic_vector(1 DOWNTO 0)
+            MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+            Ret: out std_logic_vector(1 downto 0);
+            Swap: out std_logic;
         );
     END component;
     
@@ -72,7 +73,7 @@ architecture Decode_Arch of Decode is
     signal RAdd1, RAdd2: std_logic_vector(2 DOWNTO 0);
     signal WAdd1, WAdd2: std_logic_vector(2 DOWNTO 0);
     signal ExtendedImmediate: std_logic_vector(31 DOWNTO 0);
-    signal swapcheck: std_logic;
+    signal Swap: std_logic;
     signal WData1, WData2: std_logic_vector(31 DOWNTO 0);
     signal PredictorInput: std_logic := '0';
     signal PredictorOutput: std_logic;
@@ -86,20 +87,20 @@ begin
         ExtendedImmediate(15 downto 0) <= ImmediateValue(15 downto 0);
     end process;
     
-    swapcheck <= '1' when Instruction(15 downto 10) = "000101" else '0';
-    swap <= swapcheck;
+    --Swapcheck <= '1' when Instruction(15 downto 10) = "000101" else '0';
+    --Swap <= Swapcheck;
     opcode <= Instruction(15 downto 10);
     RAdd1 <= Instruction(6 downto 4);
-    RAdd2 <= Instruction(3 downto 1) when swapcheck ='0' else Instruction(9 downto 7);
+    RAdd2 <= Instruction(3 downto 1) when Swap ='0' else Instruction(9 downto 7);
     WAdd1 <= WriteAdd1;
-    WAdd2 <= WriteAdd2 when swaped = '1' else WriteAdd1;
+    WAdd2 <= WriteAdd2 when Swaped = '1' else WriteAdd1;
     WData1 <= writeport1;
-    WData2 <= writeport2 when swaped = '1' else writeport1;
+    WData2 <= writeport2 when Swaped = '1' else writeport1;
     PredictorInput <= PredictorOutput when flush = '0'
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite1,MWrite2, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, rtisignal, FreeProtectStore, MemAddress);
+    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress, Ret, Swap);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,
