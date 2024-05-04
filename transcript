@@ -970,3 +970,9 @@ force -freeze sim:/decode/Instruction 0001010000010000 0
 force -freeze sim:/decode/Swaped 1 0
 run
 run
+quit -sim
+# End time: 16:03:24 on May 04,2024, Elapsed time: 1:01:57
+# Errors: 0, Warnings: 5
+# Compile of Memory.vhd failed with 2 errors.
+# Compile of Memory.vhd failed with 1 errors.
+# Compile of Memory.vhd was successful.
