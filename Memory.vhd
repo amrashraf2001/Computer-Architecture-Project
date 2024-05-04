@@ -136,8 +136,6 @@ BEGIN
                         -- Store operation, check if address is protected
                         IF ProtectedFlag = '1' THEN
                             WrongAddress <= '1';
-                        ELSE
-                            ProtectedFlag <= '1';
                         END IF;
                     WHEN OTHERS =>
                         ProtectedFlag <= ProtectedFlag;
