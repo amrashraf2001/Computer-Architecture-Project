@@ -5,7 +5,7 @@ USE IEEE.math_real.all;
 ENTITY Instruction_Memory IS
 GENERIC(n : integer :=16);
 	PORT(
-        ReadAddress : IN STD_LOGIC_VECTOR(31 DOWNTO 0); -- manensa4 n handle fl exception eni a address makan m4 mawgud
+        ReadAddress : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
         ReadData: OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0);
         WrongAddress: OUT STD_LOGIC);
 END ENTITY Instruction_Memory;
