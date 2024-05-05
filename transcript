@@ -977,3 +977,6 @@ quit -sim
 # Compile of Memory.vhd failed with 1 errors.
 # Compile of Memory.vhd was successful.
 # Compile of Memory.vhd was successful.
+# Compile of ForwardingUnit.vhd failed with 8 errors.
+# Compile of ForwardingUnit.vhd failed with 1 errors.
+# Compile of ForwardingUnit.vhd was successful.

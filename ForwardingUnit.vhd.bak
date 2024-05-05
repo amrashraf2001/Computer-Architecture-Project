@@ -10,7 +10,7 @@ entity ForwardingUnit is
         WBsource_EX_MEM : in std_logic_vector(1 downto 0);  -- for load use case
         DestREG_EX_MEM , DestREG_MEM_WB : in std_logic_vector(2 downto 0);
         Src1_From_ID_EX , Src2_From_ID_EX : in std_logic_vector(2 downto 0);
-        Selector_Mux1 , Selector_Mux2 : out std_logic_vector (1 downto 0);
+        Selector_Mux1 , Selector_Mux2 : out std_logic (1 downto 0);
         stall : out std_logic
     );
 end entity ForwardingUnit;
