@@ -1,0 +1,29 @@
+entity ForwardingUnit is
+    port (
+        clk : in std_logic;
+        rst : in std_logic;
+        WBenable_EX_MEM , WBenable_MEM_WB : in std_logic;
+        WBsource_EX_MEM : in std_logic_vector(1 downto 0);  -- for load use case
+        DestREG_EX_MEM , DestREG_MEM_WB : in std_logic_vector(2 downto 0);
+        Src1_From_ID_EX , Src2_From_ID_EX : in std_logic_vector(2 downto 0);
+        Selector_Mux1 , Selector_Mux2 : out std_logic (1 downto 0);
+        stall : out std_logic
+    );
+end entity ForwardingUnit;
+
+architecture FU_arch of ForwardingUnit is
+begin
+Selector_Mux1 <= "00" when (DestREG_EX_MEM = Src1_From_ID_EX) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB /= '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM
+                 "01" when (DestREG_MEM_WB = Src1_From_ID_EX) and (WBenable_MEM_WB = '1') and (WBenable_EX_MEM /= '1') and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
+                 "10" when (DestREG_EX_MEM = Src1_From_ID_EX) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB = '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM brdo (mashro7a fl note eli gamb el FU)
+                 "11"; --no forwarding
+
+Selector_Mux2 <= "00" when (DestREG_EX_MEM = Src2_From_ID_EX) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB /= '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM
+                 "01" when (DestREG_MEM_WB = Src2_From_ID_EX) and (WBenable_MEM_WB = '1') and (WBenable_EX_MEM /= '1')and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
+                 "10" when (DestREG_EX_MEM = Src2_From_ID_EX) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB = '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM brdo
+                 "11"; --no forwarding
+
+stall<='1' when (WBsource_EX_MEM = "01" and  WBenable_EX_MEM='1' and ( Src1_From_ID_EX=DestREG_EX_MEM or Src2_From_ID_EX=DestREG_EX_MEM))
+else '0';
+
+end architecture;
