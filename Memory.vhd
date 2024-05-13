@@ -58,6 +58,8 @@ ARCHITECTURE Memory_Architecture OF Memory IS
 
     SIGNAL ProtectedFlag : STD_LOGIC;
     SIGNAL Stack : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL stackIn : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL stackEn : STD_LOGIC;
 
     SIGNAL DataMemoryReadData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL ReadDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -81,10 +83,18 @@ BEGIN
             WrongAddress => DataMemoryWrongAddress
         );
 
+    stackIn <= stack WHEN SP = "000" ELSE
+                std_logic_vector(unsigned(Stack) + 1) WHEN SP = "001" ELSE
+                std_logic_vector(unsigned(Stack) + 2) WHEN SP = "010" ELSE
+                std_logic_vector(unsigned(Stack) - 1) WHEN SP = "011" ELSE
+                std_logic_vector(unsigned(Stack) - 2) WHEN SP = "100" ELSE
+                std_logic_vector(unsigned(Stack) - 4) WHEN SP = "101" ELSE
+               stack;
+
     StackRegInstance : StackReg
         GENERIC MAP (n => 32)
         PORT MAP (
-            d => DataMemoryReadData,
+            d => stackIn,
             q => Stack,
             clk => clk,
             rst => rst,
@@ -133,23 +143,38 @@ BEGIN
                     WHEN OTHERS =>
                         MemoryOut <= (OTHERS => '0');
                         WrongAddress <= '1';
-                END CASE;
+            END CASE;
 
-                CASE FreeProtectedStore IS
-                    WHEN "00" =>
-                        ProtectedFlag <= ProtectedFlag;
-                    WHEN "01" =>
-                        ProtectedFlag <= '0';
-                    WHEN "10" =>
-                        ProtectedFlag <= '1';
-                    WHEN "11" =>
-                        -- Store operation, check if address is protected
-                        IF ProtectedFlag = '1' THEN
-                            WrongAddress <= '1';
-                        END IF;
+            IF MemoryRead = '1' THEN
+                MemoryOut <= DataMemoryReadData;
+            END IF;
+
+            IF MemoryWrite = '1' THEN
+                CASE CALL_STD IS
+                    WHEN '0' =>
+                        MemoryOut <= ALUOut;
+                    WHEN '1' =>
+                        MemoryOut <= pcPlus;
                     WHEN OTHERS =>
-                        ProtectedFlag <= ProtectedFlag;
+                        MemoryOut <= SecondOperand;
                 END CASE;
+            END IF;
+
+            CASE FreeProtectedStore IS
+                WHEN "00" =>
+                    ProtectedFlag <= ProtectedFlag;
+                WHEN "01" =>
+                    ProtectedFlag <= '0';
+                WHEN "10" =>
+                    ProtectedFlag <= '1';
+                WHEN "11" =>
+                    -- Store operation, check if address is protected
+                    IF ProtectedFlag = '1' THEN
+                        WrongAddress <= '1';
+                    END IF;
+                WHEN OTHERS =>
+                    ProtectedFlag <= ProtectedFlag;
+            END CASE;
             END IF;
         END IF;
     END PROCESS;

@@ -17,6 +17,7 @@ ENTITY Controller IS
         pcSource: OUT std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
         MemAddress: OUT std_logic_vector(2 DOWNTO 0);
+        CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
         Swap: out std_logic
     );
@@ -99,6 +100,11 @@ BEGIN
 
     pcSource <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100"
                 ELSE '0';
+
+    CallIntStore <= "00" WHEN opcode = "100010" -- CALL
+                  ELSE "01" WHEN opcode = "111001" -- INT
+                  ELSE "10" WHEN opcode = "010011" -- STD
+                  ELSE "10";
 
     Ret <= "00" WHEN opcode = "110000" -- NOP
          ELSE "01" WHEN opcode = "100011" -- RET

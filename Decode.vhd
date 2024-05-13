@@ -29,7 +29,8 @@ ENTITY Decode IS
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
         Swap: out std_logic; -- ana batal3ha lama bala2i el instruction Swap w bazabet el address w el data
         MemAddress: OUT std_logic_vector(2 DOWNTO 0);
-        Ret: out std_logic_vector(1 downto 0)
+        Ret: out std_logic_vector(1 downto 0);
+        CallIntStore: OUT std_logic_vector(1 DOWNTO 0)
     );
 END ENTITY Decode;
 
@@ -48,6 +49,7 @@ architecture Decode_Arch of Decode is
             pcSource: OUT std_logic;
             FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
             MemAddress: OUT std_logic_vector(2 DOWNTO 0);
+            CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
             Ret: out std_logic_vector(1 downto 0);
             Swap: out std_logic
         );
@@ -101,7 +103,7 @@ begin
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress, Ret, Swap);
+    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, Swap);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,
