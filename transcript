@@ -121,3 +121,5 @@ quit -sim
 # Compile of Controller.vhd was successful with warnings.
 # Compile of Controller.vhd was successful.
 # Compile of Decode.vhd was successful.
+# Compile of Memory.vhd was successful.
+# Compile of Memory.vhd was successful.

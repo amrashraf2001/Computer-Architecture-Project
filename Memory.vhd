@@ -11,9 +11,9 @@ ENTITY Memory IS
         MemoryRead : IN std_logic;
         MemoryEnable : IN std_logic;
         MemoryAddress : IN std_logic_vector(2 DOWNTO 0);
-        MemoryWriteData : IN std_logic_vector(n-1 DOWNTO 0);
-        CALL_STD: IN std_logic;
-        REt: IN std_logic_vector(1 DOWNTO 0);
+        --MemoryWriteData : IN std_logic_vector(n-1 DOWNTO 0);
+        CALLIntSTD: IN std_logic_vector(1 DOWNTO 0);
+        RET: IN std_logic_vector(1 DOWNTO 0);
         ALUOut : IN std_logic_vector(n-1 DOWNTO 0);
         pcPlus: IN std_logic_vector(n-1 DOWNTO 0);
         SecondOperand : IN std_logic_vector(n-1 DOWNTO 0);
@@ -56,7 +56,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
         );
     END COMPONENT;
 
-    SIGNAL ProtectedFlag : STD_LOGIC;
+    SIGNAL ProtectedFlag : STD_LOGIC:= '0';
     SIGNAL Stack : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL stackIn : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL stackEn : STD_LOGIC;
@@ -64,6 +64,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL DataMemoryReadData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL ReadDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL WriteDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL MemoryWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL DataMemoryWrongAddress : STD_LOGIC;
 
     SIGNAL ProtectedFlagRegReadData : STD_LOGIC;
@@ -110,13 +111,13 @@ BEGIN
             ReadAddress => ReadDataAddress,
             WriteAddress => WriteDataAddress,
             ReadData => ProtectedFlagRegReadData,
-            WriteData => '1',  -- Assuming writing '1' means setting the protected flag
+            WriteData => ProtectedFlag, 
             WrongAddress => ProtectedFlagRegWrongAddress
         );
 
     WrongAddress <= DataMemoryWrongAddress OR ProtectedFlagRegWrongAddress;
 
-    ProtectedFlag <= ProtectedFlagRegReadData;
+    --ProtectedFlag <= ProtectedFlagRegReadData;
 
     PROCESS(clk, rst)
     BEGIN
@@ -145,24 +146,24 @@ BEGIN
                         WrongAddress <= '1';
             END CASE;
 
-            IF MemoryRead = '1' THEN
-                MemoryOut <= DataMemoryReadData;
+            IF MemoryWrite = '1' THEN
+                CASE CALLIntSTD IS
+                    WHEN "00" =>
+                        MemoryWriteData <= pcPlus;
+                    WHEN "01" =>
+                        MemoryWriteData <= std_logic_vector(unsigned(pcPlus) - 1);
+                    WHEN "10" =>
+                        MemoryWriteData <= secondOperand;
+                    WHEN OTHERS =>
+                        MemoryWriteData <= secondOperand;
+                        WrongAddress <= '1';
+                END CASE;   
             END IF;
 
-            IF MemoryWrite = '1' THEN
-                CASE CALL_STD IS
-                    WHEN '0' =>
-                        MemoryOut <= ALUOut;
-                    WHEN '1' =>
-                        MemoryOut <= pcPlus;
-                    WHEN OTHERS =>
-                        MemoryOut <= SecondOperand;
-                END CASE;
-            END IF;
 
             CASE FreeProtectedStore IS
                 WHEN "00" =>
-                    ProtectedFlag <= ProtectedFlag;
+                    ProtectedFlag <= ProtectedFlagRegReadData;
                 WHEN "01" =>
                     ProtectedFlag <= '0';
                 WHEN "10" =>
