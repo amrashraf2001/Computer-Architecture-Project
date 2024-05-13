@@ -7,12 +7,13 @@ ENTITY Memory IS
     PORT (
         clk : IN std_logic;
         en,rst : IN std_logic;
-        MemoryWrite1 : IN std_logic;
+        MemoryWrite : IN std_logic;
         MemoryRead : IN std_logic;
         MemoryEnable : IN std_logic;
-        MemoryAddress : IN std_logic_vector(1 DOWNTO 0);
+        MemoryAddress : IN std_logic_vector(2 DOWNTO 0);
         MemoryWriteData : IN std_logic_vector(n-1 DOWNTO 0);
         CALL_STD: IN std_logic;
+        REt: IN std_logic_vector(1 DOWNTO 0);
         ALUOut : IN std_logic_vector(n-1 DOWNTO 0);
         pcPlus: IN std_logic_vector(n-1 DOWNTO 0);
         SecondOperand : IN std_logic_vector(n-1 DOWNTO 0);
@@ -59,6 +60,8 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL Stack : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
     SIGNAL DataMemoryReadData : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL ReadDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL WriteDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL DataMemoryWrongAddress : STD_LOGIC;
 
     SIGNAL ProtectedFlagRegReadData : STD_LOGIC;
@@ -70,9 +73,9 @@ BEGIN
         PORT MAP (
             Clk => clk,
             Rst => rst,
-            WriteEnable => MemoryWrite1,
-            ReadAddress => MemoryAddress,
-            WriteAddress => MemoryAddress,
+            WriteEnable => MemoryWrite,
+            ReadAddress => ReadDataAddress,
+            WriteAddress => WriteDataAddress,
             ReadData => DataMemoryReadData,
             WriteData => MemoryWriteData,
             WrongAddress => DataMemoryWrongAddress
@@ -93,9 +96,9 @@ BEGIN
         PORT MAP (
             Clk => clk,
             Rst => rst,
-            WriteEnable => MemoryWrite1,
-            ReadAddress => MemoryAddress,
-            WriteAddress => MemoryAddress,
+            WriteEnable => MemoryWrite,
+            ReadAddress => ReadDataAddress,
+            WriteAddress => WriteDataAddress,
             ReadData => ProtectedFlagRegReadData,
             WriteData => '1',  -- Assuming writing '1' means setting the protected flag
             WrongAddress => ProtectedFlagRegWrongAddress
@@ -112,14 +115,21 @@ BEGIN
         ELSIF rising_edge(clk) THEN
             IF MemoryEnable = '1' THEN
                 CASE MemoryAddress IS
-                    WHEN "00" =>
-                        MemoryOut <= ALUOut;
-                    WHEN "01" =>
-                        MemoryOut <= Stack;
-                    WHEN "10" =>
-                        MemoryOut <= std_logic_vector(unsigned(Stack) + 1);
-                    WHEN "11" =>
-                        MemoryOut <= std_logic_vector(unsigned(Stack) + 2);
+                    WHEN "000" =>
+                        ReadDataAddress <= ALUOut;
+                        WriteDataAddress <= ALUOut;
+                    WHEN "001" =>
+                        ReadDataAddress <= Stack;
+                        WriteDataAddress <= Stack;
+                    WHEN "010" =>
+                        ReadDataAddress <= std_logic_vector(unsigned(Stack) + 1);
+                        WriteDataAddress <= std_logic_vector(unsigned(Stack) + 1);
+                    WHEN "011" =>
+                        ReadDataAddress <= std_logic_vector(unsigned(Stack) + 2);
+                        WriteDataAddress <= std_logic_vector(unsigned(Stack) + 2);
+                    WHEN "100" =>
+                        ReadDataAddress <= std_logic_vector(unsigned(Stack) - 2);
+                        WriteDataAddress <= std_logic_vector(unsigned(Stack) - 2);
                     WHEN OTHERS =>
                         MemoryOut <= (OTHERS => '0');
                         WrongAddress <= '1';

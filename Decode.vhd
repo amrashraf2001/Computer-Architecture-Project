@@ -28,7 +28,7 @@ ENTITY Decode IS
         rtisignal:  out std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
         Swap: out std_logic; -- ana batal3ha lama bala2i el instruction Swap w bazabet el address w el data
-        MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+        MemAddress: OUT std_logic_vector(2 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0)
     );
 END ENTITY Decode;
@@ -47,7 +47,7 @@ architecture Decode_Arch of Decode is
             interruptsignal:  out std_logic;
             pcSource: OUT std_logic;
             FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-            MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+            MemAddress: OUT std_logic_vector(2 DOWNTO 0);
             Ret: out std_logic_vector(1 downto 0);
             Swap: out std_logic
         );

@@ -16,7 +16,7 @@ ENTITY Controller IS
         interruptsignal:  out std_logic;
         pcSource: OUT std_logic;
         FreeProtectStore: OUT std_logic_vector(1 DOWNTO 0);
-        MemAddress: OUT std_logic_vector(1 DOWNTO 0);
+        MemAddress: OUT std_logic_vector(2 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
         Swap: out std_logic
     );
@@ -81,11 +81,12 @@ BEGIN
                ELSE "100" WHEN opcode = "111001" -- INT
                ELSE "101";
 
-    MemAddress <= "00" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
-                ELSE "01" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,PUSH,CALL
-                ELSE "10" WHEN opcode = "010001" -- POP
-                ELSE "11" WHEN opcode = "100011" or opcode = "100100" -- RTI,RET
-                ELSE "00";
+    MemAddress <= "000" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
+                ELSE "001" WHEN opcode = "100010" or opcode = "010000" -- PUSH,CALL
+                ELSE "010" WHEN opcode = "010001" -- POP
+                ELSE "011" WHEN opcode = "100011" or opcode = "100100" -- RTI,RET
+                ELSE "100" WHEN opcode = "111001" -- INT
+                ELSE "000";
 
     interruptsignal <= '1' WHEN opcode = "111001" -- INT
                      ELSE '0';
