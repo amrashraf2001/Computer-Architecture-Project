@@ -123,3 +123,884 @@ quit -sim
 # Compile of Decode.vhd was successful.
 # Compile of Memory.vhd was successful.
 # Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 02:46:42 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.mpf).  File can not be renamed.
+# End time: 02:48:30 on May 14,2024, Elapsed time: 0:01:48
+# Errors: 1, Warnings: 11
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 02:51:20 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 02:46:42 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+quit -sim
+# Compile of ProtectedFlagReg.vhd was successful.
+# End time: 02:57:47 on May 14,2024, Elapsed time: 0:06:27
+# Errors: 0, Warnings: 3
+vsim -gui work.protectedflagreg
+# vsim -gui work.protectedflagreg 
+# Start time: 02:58:06 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.protectedflagreg(protectedflags_architecture)
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.mpf).  File can not be renamed.
+# End time: 02:59:41 on May 14,2024, Elapsed time: 0:01:35
+# Errors: 1, Warnings: 1
+# Compile of ProtectedFlagReg.vhd failed with 3 errors.
+# Compile of ProtectedFlagReg.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 100 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 150 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 150 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+quit -sim
+# End time: 03:06:25 on May 14,2024, Elapsed time: 0:04:52
+# Errors: 0, Warnings: 9
+# Compile of ALU.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of FlagReg.vhd was successful.
+# Compile of Instruction_Memory.vhd was successful.
+# Compile of PC.vhd was successful.
+# Compile of RegFile.vhd was successful.
+# Compile of StackReg.vhd was successful.
+# Compile of Fetch.vhd was successful.
+# Compile of PredictorReg.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+# Compile of ProtectedFlagReg.vhd was successful.
+# Compile of Decode.vhd was successful.
+# Compile of Execute.vhd was successful.
+# Compile of Memory.vhd was successful.
+# Compile of WriteBack.vhd was successful.
+# Compile of ExecuteMemory_Reg.vhd was successful.
+# Compile of FetchDecode_Reg.vhd was successful.
+# Compile of MemoryWriteBack_Reg.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of Processor.vhd was successful.
+# Compile of ForwardingUnit.vhd was successful.
+# 21 compiles, 0 failed with no errors.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+run
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.mpf).  File can not be renamed.
+# End time: 03:09:55 on May 14,2024, Elapsed time: 0:03:07
+# Errors: 1, Warnings: 5
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+run
+quit -sim
+# End time: 03:12:05 on May 14,2024, Elapsed time: 0:01:55
+# Errors: 0, Warnings: 5
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:12:12 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 03:12:51 on May 14,2024, Elapsed time: 0:00:39
+# Errors: 0, Warnings: 5
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:15:43 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000011 0
+run
+quit -sim
+# Compile of Memory.vhd was successful.
+# End time: 03:22:35 on May 14,2024, Elapsed time: 0:06:52
+# Errors: 0, Warnings: 6
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:22:43 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:15:43 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+run
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.mpf).  File can not be renamed.
+# End time: 03:24:18 on May 14,2024, Elapsed time: 0:01:35
+# Errors: 1, Warnings: 3
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:24:30 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:15:43 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run
+quit -sim
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.mpf).  File can not be renamed.
+# End time: 03:25:44 on May 14,2024, Elapsed time: 0:01:14
+# Errors: 1, Warnings: 3
+# Compile of Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 03:26:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:24:30 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:15:43 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:10:10 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:06:48 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:01:33 on May 14,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+mem load -filltype inc -filldata 0 -fillradix symbolic -skip 0 /memory/DataMemoryInstance/ram
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 000 0
+force -freeze sim:/memory/ALUOut 00000000000000000000000000000001 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/DataMemoryInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 50 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+run

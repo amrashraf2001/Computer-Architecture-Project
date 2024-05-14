@@ -160,6 +160,10 @@ BEGIN
                 END CASE;   
             END IF;
 
+            IF MemoryRead = '1' THEN
+                MemoryOut <= DataMemoryReadData;
+            END IF;
+
 
             CASE FreeProtectedStore IS
                 WHEN "00" =>
