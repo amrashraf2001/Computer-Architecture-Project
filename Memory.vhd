@@ -65,17 +65,24 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL WriteDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL MemoryWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL DataMemoryWrongAddress : STD_LOGIC;
+    SIGNAL MemoryEn: STD_LOGIC;
+    SIGNAL TempEn: STD_LOGIC;
 
     SIGNAL ProtectedFlagRegReadData : STD_LOGIC;
     SIGNAL ProtectedFlagRegWrongAddress : STD_LOGIC;
 
 BEGIN
+    --TempEn <= MemoryEnable AND MemoryWrite AND NOT ProtectedFlagRegReadData AND NOT DataMemoryWrongAddress AND NOT ProtectedFlagRegWrongAddress;
+    --MemoryEn <= '1' when TempEn = '1' AND FreeProtectedStore = "11"
+    --else '0';
+    --MemoryEn <= MemoryEnable AND NOT (DataMemoryWrongAddress OR ProtectedFlagRegWrongAddress OR ProtectedFlagRegReadData);
+    TempEn <= MemoryEnable AND NOT ProtectedFlagRegReadData;
     DataMemoryInstance : Data_Memory
         GENERIC MAP (n => 32)
         PORT MAP (
             Clk => clk,
             Rst => rst,
-            WriteEnable => MemoryWrite,
+            WriteEnable => TempEn,
             ReadAddress => ReadDataAddress,
             WriteAddress => WriteDataAddress,
             ReadData => DataMemoryReadData,
@@ -114,7 +121,7 @@ BEGIN
             WrongAddress => ProtectedFlagRegWrongAddress
         );
 
-    WrongAddress <= DataMemoryWrongAddress OR ProtectedFlagRegWrongAddress;
+    WrongAddress <= DataMemoryWrongAddress OR ProtectedFlagRegWrongAddress OR ProtectedFlagRegReadData;
 
     MemoryOut <= (OTHERS => '0') WHEN rst = '1' ELSE
                  DataMemoryReadData WHEN MemoryRead = '1' AND rst = '0';
@@ -142,7 +149,7 @@ BEGIN
     ProtectedFlag <= ProtectedFlagRegReadData WHEN FreeProtectedStore = "00" ELSE
                     '0' WHEN FreeProtectedStore = "01" ELSE
                     '1' WHEN FreeProtectedStore = "10" ELSE
-                    '1' WHEN FreeProtectedStore = "11" ELSE
-                    ProtectedFlag;
+                    ProtectedFlagRegReadData WHEN FreeProtectedStore = "11" ELSE
+                    ProtectedFlagRegReadData;
 
 END Memory_Architecture;

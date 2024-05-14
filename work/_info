@@ -520,11 +520,11 @@ R91
 R12
 R13
 Ememory
-Z92 w1715715106
+Z92 w1715728018
 R1
 R2
 R3
-!i122 728
+!i122 746
 R4
 Z93 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
 Z94 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
@@ -534,9 +534,9 @@ V7oKQ=2POYUXF15Rkjj]aC1
 !s100 Wc4=O3ScQ;PkPDMRO3?=12
 R7
 32
-Z95 !s110 1715715112
+Z95 !s110 1715728044
 !i10b 1
-Z96 !s108 1715715112.000000
+Z96 !s108 1715728043.000000
 Z97 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
 Z98 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
 !i113 1
@@ -547,11 +547,11 @@ R1
 R2
 R3
 Z99 DEx4 work 6 memory 0 22 7oKQ=2POYUXF15Rkjj]aC1
-!i122 728
-l72
-Z100 L26 123
-VolI;P5hdIJZhf79IVj5?i0
-!s100 ^@7_NP@9lPGB6KU;L:Pd;3
+!i122 746
+l74
+Z100 L26 130
+VkcCWfj]0XlVNQ03]_c[OS2
+!s100 7IdPA;TilC[WOa@@0TD8K0
 R7
 32
 R95
