@@ -120,14 +120,14 @@ BEGIN
                  DataMemoryReadData WHEN MemoryRead = '1' AND rst = '0';
 
     ReadDataAddress <= ALUOut WHEN MemoryEnable = '1' AND MemoryAddress = "000" ELSE
-                       Stack WHEN MemoryEnable = '1' AND falling_edge(clk) AND MemoryAddress = "001" ELSE
+                       Stack WHEN MemoryEnable = '1' AND MemoryAddress = "001" ELSE
                        std_logic_vector(unsigned(Stack) + 1) WHEN MemoryEnable = '1' AND MemoryAddress = "010" ELSE
                        std_logic_vector(unsigned(Stack) + 2) WHEN MemoryEnable = '1' AND MemoryAddress = "011" ELSE
                        std_logic_vector(unsigned(Stack) - 2) WHEN MemoryEnable = '1' AND MemoryAddress = "100" ELSE
                        (OTHERS => '0');
 
-    WriteDataAddress <= ALUOut WHEN MemoryEnable = '1' AND falling_edge(clk) AND MemoryAddress = "000" ELSE
-                        Stack WHEN MemoryEnable = '1' AND falling_edge(clk) AND MemoryAddress = "001" ELSE
+    WriteDataAddress <= ALUOut WHEN MemoryEnable = '1' AND MemoryAddress = "000" ELSE
+                        Stack WHEN MemoryEnable = '1' AND MemoryAddress = "001" ELSE
                         std_logic_vector(unsigned(Stack) + 1) WHEN MemoryEnable = '1' AND MemoryAddress = "010" ELSE
                         std_logic_vector(unsigned(Stack) + 2) WHEN MemoryEnable = '1' AND MemoryAddress = "011" ELSE
                         std_logic_vector(unsigned(Stack) - 2) WHEN MemoryEnable = '1' AND MemoryAddress = "100" ELSE
