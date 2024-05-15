@@ -17,9 +17,13 @@ ENTITY Memory IS
         pcPlus : IN std_logic_vector(n-1 DOWNTO 0);
         SecondOperand : IN std_logic_vector(n-1 DOWNTO 0);
         SP : IN std_logic_vector(2 DOWNTO 0);
+        FlagReg: IN std_logic_vector(3 DOWNTO 0);
         FreeProtectedStore : IN std_logic_vector(1 DOWNTO 0);
         MemoryOut : OUT std_logic_vector(n-1 DOWNTO 0);
-        WrongAddress : OUT std_logic
+        WrongAddress : OUT std_logic;
+        FlushAllBack : OUT std_logic;
+        FlushINT_RTI: OUT std_logic;
+        INTDetected: OUT std_logic
     );
 END Memory;
 
@@ -64,19 +68,19 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL ReadDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL WriteDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL MemoryWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL TempWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL counter : STD_LOGIC := '0';
     SIGNAL DataMemoryWrongAddress : STD_LOGIC;
     SIGNAL MemoryEn: STD_LOGIC;
     SIGNAL TempEn: STD_LOGIC;
+    SIGNAL Temp: STD_LOGIC;
 
     SIGNAL ProtectedFlagRegReadData : STD_LOGIC;
     SIGNAL ProtectedFlagRegWrongAddress : STD_LOGIC;
 
 BEGIN
-    --TempEn <= MemoryEnable AND MemoryWrite AND NOT ProtectedFlagRegReadData AND NOT DataMemoryWrongAddress AND NOT ProtectedFlagRegWrongAddress;
-    --MemoryEn <= '1' when TempEn = '1' AND FreeProtectedStore = "11"
-    --else '0';
-    --MemoryEn <= MemoryEnable AND NOT (DataMemoryWrongAddress OR ProtectedFlagRegWrongAddress OR ProtectedFlagRegReadData);
     TempEn <= MemoryEnable AND NOT ProtectedFlagRegReadData;
+
     DataMemoryInstance : Data_Memory
         GENERIC MAP (n => 32)
         PORT MAP (
@@ -90,13 +94,6 @@ BEGIN
             WrongAddress => DataMemoryWrongAddress
         );
 
-    stackIn <= Stack WHEN SP = "000" ELSE
-                std_logic_vector(unsigned(Stack) + 1) WHEN SP = "001" ELSE
-                std_logic_vector(unsigned(Stack) + 2) WHEN SP = "010" ELSE
-                std_logic_vector(unsigned(Stack) - 1) WHEN SP = "011" ELSE
-                std_logic_vector(unsigned(Stack) - 2) WHEN SP = "100" ELSE
-                std_logic_vector(unsigned(Stack) - 4) WHEN SP = "101" ELSE
-                Stack;
 
     StackRegInstance : StackReg
         GENERIC MAP (n => 32)
@@ -105,8 +102,16 @@ BEGIN
             q => Stack,
             clk => clk,
             rst => rst,
-            en => '1'
+            en => en
         );
+
+        stackIn <= Stack WHEN SP = "000" ELSE
+                std_logic_vector(unsigned(Stack) + 1) WHEN SP = "001" AND rst = '0' ELSE
+                std_logic_vector(unsigned(Stack) + 2) WHEN SP = "010" AND rst = '0' ELSE
+                std_logic_vector(unsigned(Stack) - 1) WHEN SP = "011" AND rst = '0' ELSE
+                std_logic_vector(unsigned(Stack) - 2) WHEN SP = "100" AND rst = '0' ELSE
+                std_logic_vector(unsigned(Stack) - 4) WHEN SP = "101" AND rst = '0' ELSE
+                Stack;
 
     ProtectedFlagRegInstance : ProtectedFlagReg
         GENERIC MAP (n => 32)
@@ -140,8 +145,23 @@ BEGIN
                         std_logic_vector(unsigned(Stack) - 2) WHEN MemoryEnable = '1' AND MemoryAddress = "100" ELSE
                         (OTHERS => '0');
 
+    PROCESS (clk, rst)
+    BEGIN
+        IF rst = '1' THEN
+            counter <= '0';
+        ELSIF rising_edge(clk) THEN
+            IF CALLIntSTD = "01" OR RET = "10" THEN
+                counter <= NOT counter;
+                INTDetected <= NOT counter;
+            END IF;
+        END IF;
+    END PROCESS;
+     
+    TempWriteData <= std_logic_vector(unsigned(pcPlus) - 1) WHEN counter = '0' ELSE
+                     "0000000000000000000000000000" & FlagReg;
+
     MemoryWriteData <= pcPlus WHEN MemoryWrite = '1' AND CALLIntSTD = "00" ELSE
-                       std_logic_vector(unsigned(pcPlus) - 1) WHEN MemoryWrite = '1' AND CALLIntSTD = "01" ELSE
+                       TempWriteData WHEN MemoryWrite = '1' AND CALLIntSTD = "01" ELSE
                        SecondOperand WHEN MemoryWrite = '1' AND CALLIntSTD = "10" ELSE
                        SecondOperand WHEN MemoryWrite = '1' AND CALLIntSTD = "11" ELSE
                        (OTHERS => '0');
@@ -151,5 +171,8 @@ BEGIN
                     '1' WHEN FreeProtectedStore = "10" ELSE
                     ProtectedFlagRegReadData WHEN FreeProtectedStore = "11" ELSE
                     ProtectedFlagRegReadData;
+
+    FlushAllBack <= NOT RET(0) AND RET(1);
+    FlushINT_RTI <= '1' WHEN CALLIntSTD = "01" OR RET = "10" ELSE '0';
 
 END Memory_Architecture;

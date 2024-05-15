@@ -15,7 +15,7 @@ END ProtectedFlagReg;
 
 ARCHITECTURE ProtectedFlags_Architecture OF ProtectedFlagReg IS
     
-	TYPE ram_type IS ARRAY(0 TO 1023) OF STD_LOGIC;
+	TYPE ram_type IS ARRAY(0 TO 4096) OF STD_LOGIC;
 	SIGNAL ram : ram_type ;
 
 BEGIN
@@ -27,7 +27,8 @@ BEGIN
 							ram(i) <= '0';
 						END LOOP;
 					ELSIF WriteEnable = '1' THEN
-						IF WriteAddress < "00000000000000000000010000000000" THEN
+						IF WriteAddress < "00000000000000000001000000000000" THEN
+							ram(to_integer(unsigned(WriteAddress) + 1)) <= WriteData;
 							ram(to_integer(unsigned(WriteAddress))) <= WriteData;
 							WrongAddress <= '0';
 						ELSE
@@ -35,8 +36,8 @@ BEGIN
 						END IF;
 					END IF;
 				END IF;
-				IF ReadAddress < "00000000000000000000010000000000" THEN
-                    ReadData <= ram(to_integer(unsigned(ReadAddress)));
+				IF ReadAddress < "00000000000000000001000000000000" THEN
+                    ReadData <= ram(to_integer(unsigned(ReadAddress))) and ram(to_integer(unsigned(ReadAddress) + 1));
                     WrongAddress <= '0';
                 ELSE
                     WrongAddress <= '1';
