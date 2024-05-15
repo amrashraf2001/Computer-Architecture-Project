@@ -3272,3 +3272,5 @@ run
 force -freeze sim:/memory/rst 0 0
 run
 run
+run
+run
