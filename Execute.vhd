@@ -9,6 +9,11 @@ entity Execute is
         en,rst : IN std_logic;
         Reg1, Reg2 : IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
+        Destination_Reg_EX_MEM, Destination_Reg_MEM_WB: IN std_logic_vector(2 downto 0);
+        Src1_From_ID_EX, Src2_From_ID_EX : IN std_logic_vector(2 downto 0);
+        WBenable_EX_MEM, WBenable_MEM_WB : IN std_logic;
+        WBsource_EX_MEM : IN std_logic_vector(1 downto 0);
+        swap : IN std_logic;
         ALUout : OUT std_logic_vector(n-1 downto 0);
         FlagReg_out : OUT std_logic_vector(3 downto 0)
     );
@@ -33,11 +38,28 @@ architecture Execute_Arch of Execute is
             q : OUT std_logic_vector(3 DOWNTO 0));
             --q_internal : OUT std_logic_vector(3 DOWNTO 0)); 
     END COMPONENT;
+    COMPONENT ForwardingUnit is
+        port (
+            clk : in std_logic;
+            rst : in std_logic;
+            swap: in std_logic;
+            WBenable_EX_MEM , WBenable_MEM_WB : in std_logic; --enables for the write back stage
+            WBsource_EX_MEM : in std_logic_vector(1 downto 0);  -- for load use case
+            DestREG_EX_MEM , DestREG_MEM_WB : in std_logic_vector(2 downto 0); --destination register for the write back stage
+            Src1_From_ID_EX , Src2_From_ID_EX : in std_logic_vector(2 downto 0); --source registers from the execute stage
+            Selector_Mux1 , Selector_Mux2 : out std_logic_vector (1 downto 0); --selecting the source for the mux
+            stall : out std_logic
+        );
+    END COMPONENT;
+    
     --The signals used in the Execute stage
     --signal zero_flag_sig, neg_flag_sig, carry_flag_sig, overflow_flag_sig : STD_LOGIC;
     signal flags : STD_LOGIC_VECTOR(3 downto 0):="0000";
     signal FlagReg_out_internal : std_logic_vector(3 downto 0);
-    Signal Coutcombtemp,Negcombtemp,Zerocombtemp,Overflowcombtemp: std_logic; 
+    Signal Coutcombtemp,Negcombtemp,Zerocombtemp,Overflowcombtemp: std_logic;
+    signal Selector_Mux1, Selector_Mux2 : std_logic_vector(1 downto 0);
+    signal stall : std_logic;
+
 begin
     --The ALU Mapping
     ALU1: ALU PORT MAP(
@@ -69,6 +91,21 @@ begin
         q => FlagReg_out_internal
         --q_internal => FlagReg_out_internal 
 
+    );
+    ForwardingUnit1: ForwardingUnit PORT MAP(
+    clk => clk,
+    rst => rst,
+    swap => swap, 
+    WBenable_EX_MEM => WBenable_EX_MEM,
+    WBenable_MEM_WB => WBenable_MEM_WB, 
+    WBsource_EX_MEM => WBsource_EX_MEM, 
+    DestREG_EX_MEM => Destination_Reg_EX_MEM, 
+    DestREG_MEM_WB => Destination_Reg_MEM_WB, 
+    Src1_From_ID_EX => Src1_From_ID_EX,
+    Src2_From_ID_EX => Src2_From_ID_EX,
+    Selector_Mux1 => Selector_Mux1,
+    Selector_Mux2 => Selector_Mux2,
+    stall => stall
     );
     -- flags <= zero_flag_sig & neg_flag_sig & FlagReg_out_internal(1 downto 0) WHEN ALU_selector ="1100" -- IN CMP case ZERO & NEGATIVE flags only
     -- ELSE flags WHEN ALU_selector="1010" OR ALU_selector="1011" or ALU_selector = "1110" --IN LDD & STD & MOV cases
