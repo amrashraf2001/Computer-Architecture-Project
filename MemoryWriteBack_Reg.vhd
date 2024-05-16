@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 entity MemoryWriteBack_Reg is
 port (
-    A: IN std_logic_vector(169 downto 0); 
+    A: IN std_logic_vector(172 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(169 downto 0));
+    F: out STD_LOGIC_VECTOR(172 downto 0));
 
 end entity MemoryWriteBack_Reg;
 -- RET 2 bits (172 downto 171)

@@ -3,9 +3,9 @@ use ieee.std_logic_1164.all;
 
 entity ExecuteMemory_Reg is
 port (
-    A: IN std_logic_vector(153 downto 0); 
+    A: IN std_logic_vector(156 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(153 downto 0));
+    F: out STD_LOGIC_VECTOR(156 downto 0));
 
 end entity ExecuteMemory_Reg;
 -- RET 2 bits (156 downto 155)
