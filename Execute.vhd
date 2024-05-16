@@ -8,6 +8,8 @@ entity Execute is
         clk : in STD_LOGIC;
         en,rst : IN std_logic;
         Reg1, Reg2 : IN std_logic_vector(n-1 downto 0);
+        Forwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB : IN std_logic_vector(n-1 downto 0);
+        Forwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB : IN std_logic_vector(n-1 downto 0);
         ALU_selector : IN std_logic_vector(3 downto 0);
         Destination_Reg_EX_MEM, Destination_Reg_MEM_WB: IN std_logic_vector(2 downto 0);
         Src1_From_ID_EX, Src2_From_ID_EX : IN std_logic_vector(2 downto 0);
@@ -59,12 +61,13 @@ architecture Execute_Arch of Execute is
     Signal Coutcombtemp,Negcombtemp,Zerocombtemp,Overflowcombtemp: std_logic;
     signal Selector_Mux1, Selector_Mux2 : std_logic_vector(1 downto 0);
     signal stall : std_logic;
+    signal Mux1_Output, Mux2_Output : std_logic_vector(n-1 downto 0); -- MUX outputs from FU selectors and forwarded values
 
 begin
     --The ALU Mapping
     ALU1: ALU PORT MAP(
-        Reg1 => Reg1,
-        Reg2 => Reg2,
+        Reg1 => Mux1_Output,
+        Reg2 => Mux2_Output,
         ALU_selector => ALU_selector,
         carry_flag => Coutcombtemp,
         neg_flag => Negcombtemp,
@@ -112,5 +115,16 @@ begin
     -- ELSE zero_flag_sig & neg_flag_sig & carry_flag_sig & overflow_flag_sig;    --Conctetaing the flags for thr flag register input  
     flags <= Zerocombtemp & Negcombtemp & Coutcombtemp & Overflowcombtemp;
     FlagReg_out <= FlagReg_out_internal; --TODO: zabat 7ewarat el branching w propagation w kalam keber kda
+    --Forwarding unit Mux results
+    Mux1_Output <= Forwarded_Src_1_EX_MEM WHEN Selector_Mux1 = "00" ELSE
+                   Forwarded_Src_1_MEM_WB WHEN Selector_Mux1 = "01" ELSE
+                   Forwarded_Src_1_EX_MEM WHEN Selector_Mux1 = "10" ELSE
+                     Reg1;
+
+    Mux2_Output <= Forwarded_Src_2_EX_MEM WHEN Selector_Mux2 = "00" ELSE
+                     Forwarded_Src_2_MEM_WB WHEN Selector_Mux2 = "01" ELSE
+                     Forwarded_Src_2_EX_MEM WHEN Selector_Mux2 = "10" ELSE
+                        Reg2;
+
 
 end Execute_Arch;

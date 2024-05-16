@@ -75,18 +75,18 @@ BEGIN
     MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
              ELSE '0';
 
-    SPPointer <= "010" WHEN opcode = "010000" -- PUSH
-               ELSE "000" WHEN opcode = "010001" -- POP
+    SPPointer <= "010" WHEN opcode = "010001" or opcode = "100100" or opcode = "100011" -- POP,RTI,RET
+               ELSE "000" WHEN opcode = "010011" or opcode = "010010" -- STD,LDD
                --ELSE "001" WHEN opcode = "100100" or opcode = "100011" -- 
-               ELSE "010" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
+               --ELSE "010" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
                --ELSE "011" WHEN opcode = "100010" -- 
-               ELSE "100" WHEN opcode = "111001" or opcode = "100010" -- INT,CALL
+               ELSE "100" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH
                ELSE "101";
 
     MemAddress <= "000" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
-                ELSE "001" WHEN opcode = "111001" or opcode = "100010" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH,CALL
-                ELSE "010" WHEN opcode = "010001" -- POP
-                ELSE "011" WHEN opcode = "100011" or opcode = "100100" -- RTI,RET
+                ELSE "001" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH,CALL
+                --ELSE "010" WHEN opcode = "010001" -- POP
+                ELSE "011" WHEN opcode = "100011" or opcode = "100100" or opcode = "010001" -- RTI,RET,POP
                 --ELSE "100" WHEN  -- INT
                 ELSE "000";
 
@@ -104,10 +104,10 @@ BEGIN
 
     CallIntStore <= "00" WHEN opcode = "100010" -- CALL
                   ELSE "01" WHEN opcode = "111001" -- INT
-                  ELSE "10" WHEN opcode = "010011" -- STD
+                  ELSE "10" WHEN opcode = "010011" or opcode = "010000" -- STD, PUSH
                   ELSE "10";
 
-    Ret <= "00" WHEN opcode = "110000" -- NOP
+    Ret <= "00" WHEN opcode = "110000" or opcode = "010011" or opcode = "010010" or opcode = "010000" or opcode = "010001" -- NOP,STD,LDD,PUSH,POP
          ELSE "01" WHEN opcode = "100011" -- RET
          ELSE "10" WHEN opcode = "100100" -- RTI
          ELSE "00";
