@@ -14,7 +14,7 @@ Z0 w1714020356
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 764
+!i122 811
 Z4 dD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project
 Z5 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ALU.vhd
 Z6 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ALU.vhd
@@ -24,9 +24,9 @@ VUN^C`f=7?R[kbm?A4OghD1
 !s100 71Q@Nz<Q_:^SBbMPTS;3Q2
 Z7 OV;C;2020.1;71
 32
-Z8 !s110 1715789800
+Z8 !s110 1715900616
 !i10b 1
-Z9 !s108 1715789800.000000
+Z9 !s108 1715900616.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ALU.vhd|
 Z11 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ALU.vhd|
 !i113 1
@@ -37,7 +37,7 @@ R1
 R2
 R3
 DEx4 work 3 alu 0 22 UN^C`f=7?R[kbm?A4OghD1
-!i122 764
+!i122 811
 l23
 L19 79
 VYho?[;I5S[OMY^]Hnk]g]3
@@ -57,7 +57,7 @@ Z14 w1715887576
 R1
 R2
 R3
-!i122 809
+!i122 812
 R4
 Z15 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd
 Z16 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd
@@ -67,11 +67,11 @@ VeZcTCVW8z<?l^QgLL:WOQ1
 !s100 de5[VGb5B4C;lQ=:M3m0=3
 R7
 32
-Z17 !s110 1715894263
+Z17 !s110 1715900617
 !i10b 1
-Z18 !s108 1715894262.000000
-Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd|
-Z20 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd|
+R9
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd|
+Z19 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Controller.vhd|
 !i113 1
 R12
 R13
@@ -80,7 +80,7 @@ R1
 R2
 R3
 DEx4 work 10 controller 0 22 eZcTCVW8z<?l^QgLL:WOQ1
-!i122 809
+!i122 812
 l27
 L26 92
 VIegUBO7UZ^N_C17h?E8``2
@@ -89,32 +89,32 @@ R7
 32
 R17
 !i10b 1
+R9
 R18
 R19
-R20
 !i113 1
 R12
 R13
 Edata_memory
-Z21 w1715857186
+Z20 w1715857186
 R1
 R2
 R3
-!i122 801
+!i122 820
 R4
-Z22 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd
-Z23 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd
+Z21 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd
+Z22 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd
 l0
 L5 1
 VjdIaGYg9D1eQ83^i[nRCe2
 !s100 c`370io8cb;b^BAGGAaMP1
 R7
 32
-Z24 !s110 1715857950
+Z23 !s110 1715900620
 !i10b 1
-Z25 !s108 1715857949.000000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd|
-Z27 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd|
+Z24 !s108 1715900620.000000
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd|
+Z26 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Data_Memory.vhd|
 !i113 1
 R12
 R13
@@ -123,125 +123,125 @@ R1
 R2
 R3
 DEx4 work 11 data_memory 0 22 jdIaGYg9D1eQ83^i[nRCe2
-!i122 801
+!i122 820
 l20
 L16 33
 V@2m3i];=?hF3cmMd15J1l2
 !s100 H7fRFJhC4m_MF7UTaC8LH2
 R7
 32
-R24
+R23
 !i10b 1
+R24
 R25
 R26
-R27
 !i113 1
 R12
 R13
 Edecode
-Z28 w1715894244
+Z27 w1715894244
 R1
 R2
 R3
-!i122 808
+!i122 822
 R4
-Z29 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd
-Z30 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd
+Z28 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd
+Z29 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd
 l0
 L5 1
 VEh3><9H^SJ2I820B52N?81
 !s100 N12`GgO[GY@HM?LJEim7z2
 R7
 33
-Z31 !s110 1715894254
+R23
 !i10b 1
-Z32 !s108 1715894254.000000
-Z33 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd|
-Z34 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd|
+R24
+Z30 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd|
+Z31 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Decode.vhd|
 !i113 1
-Z35 o-work work -2008 -explicit
+Z32 o-work work -2008 -explicit
 R13
 Adecode_arch
 R1
 R2
 R3
 DEx4 work 6 decode 0 22 Eh3><9H^SJ2I820B52N?81
-!i122 808
+!i122 822
 l86
 L38 90
 Vf7kJGE;[DP=;C3<<lnhf;3
 !s100 ;=h4YKO_ZLeUL]lZ7^Nm^1
 R7
 33
-R31
+R23
 !i10b 1
-R32
-R33
-R34
+R24
+R30
+R31
 !i113 1
-R35
+R32
 R13
 Edecodeexecute_reg
-Z36 w1714007134
+Z33 w1715899987
 R2
 R3
-!i122 782
+!i122 829
 R4
-Z37 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd
-Z38 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd
+Z34 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd
+Z35 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd
 l0
 L4 1
-V5`5GDhmXf1Nz8RgO>RRB50
-!s100 >633iP_Veh]dQNH<VAfVb2
+VBMRmzR0`<Ab2cJ@KSc<463
+!s100 7Fm77kZ^zbjIh_D[kGSNO1
 R7
 32
-Z39 !s110 1715789808
+Z36 !s110 1715900622
 !i10b 1
-Z40 !s108 1715789808.000000
-Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd|
-Z42 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd|
+Z37 !s108 1715900622.000000
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd|
+Z39 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/DecodeExecute_Reg.vhd|
 !i113 1
 R12
 R13
 Adecodeexecute_reg
 R2
 R3
-DEx4 work 17 decodeexecute_reg 0 22 5`5GDhmXf1Nz8RgO>RRB50
-!i122 782
-l30
-L29 11
-VW21Z91KfZ@g`h@EgHmoh72
-!s100 7_Ef1C`n5gDb9:Ez8ZB7c2
+DEx4 work 17 decodeexecute_reg 0 22 BMRmzR0`<Ab2cJ@KSc<463
+!i122 829
+l33
+L32 11
+V@:hGF[Z_dIjChhW0OY00:0
+!s100 1RzRhQCldfahXEC3;IWdz3
 R7
 32
-R39
+R36
 !i10b 1
-R40
-R41
-R42
+R37
+R38
+R39
 !i113 1
 R12
 R13
 Eexecute
-Z43 w1715897547
+Z40 w1715897547
 R1
 R2
 R3
-!i122 810
+!i122 823
 R4
-Z44 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd
-Z45 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd
+Z41 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd
+Z42 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd
 l0
 L5 1
 V<>CRWgFNcl7hRj2?g?ddH2
 !s100 K5Ugmj[5cJ8@C]:^HC`WN0
 R7
 32
-Z46 !s110 1715897557
+Z43 !s110 1715900621
 !i10b 1
-Z47 !s108 1715897556.000000
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd|
-Z49 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd|
+Z44 !s108 1715900621.000000
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd|
+Z46 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd|
 !i113 1
 R12
 R13
@@ -250,82 +250,82 @@ R1
 R2
 R3
 DEx4 work 7 execute 0 22 <>CRWgFNcl7hRj2?g?ddH2
-!i122 810
+!i122 823
 l71
 L28 112
 VDS>]XTSgQXP@Ib[j==`We1
 !s100 Rcko:izSA^h_;2ceJb@Nf0
 R7
 32
-R46
+R43
 !i10b 1
-R47
-R48
-R49
+R44
+R45
+R46
 !i113 1
 R12
 R13
 Eexecutememory_reg
-Z50 w1713926810
+Z47 w1715900567
 R2
 R3
-!i122 779
+!i122 826
 R4
-Z51 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd
-Z52 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd
+Z48 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd
+Z49 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd
 l0
 L4 1
-Vjm1?HMOSSD45DDDz050]N3
-!s100 ;`R<:a2M9^8V12P^=Zne^0
+VOMRYC6<F1>]mA1cPMmhQY1
+!s100 [m1@;XTjdK195?fM^`gF01
 R7
 32
-Z53 !s110 1715789807
+R36
 !i10b 1
-Z54 !s108 1715789807.000000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd|
-Z56 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd|
+R44
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd|
+Z51 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ExecuteMemory_Reg.vhd|
 !i113 1
 R12
 R13
 Aexecutememory_reg
 R2
 R3
-DEx4 work 17 executememory_reg 0 22 jm1?HMOSSD45DDDz050]N3
-!i122 779
-l28
-L27 11
-Vo@M^QmUh6Zjc6RNZAb7`:0
-!s100 eVVPRm9`iWYfR?kMbz[ko1
+DEx4 work 17 executememory_reg 0 22 OMRYC6<F1>]mA1cPMmhQY1
+!i122 826
+l30
+L29 11
+ViWKdn:o<]302`3d>FbbO62
+!s100 zAQJNQhMXdP3Kb1PDh4R@0
 R7
 32
-R53
+R36
 !i10b 1
-R54
-R55
-R56
+R44
+R50
+R51
 !i113 1
 R12
 R13
 Efetch
-Z57 w1713802989
+Z52 w1715898599
 R1
 R2
 R3
-!i122 771
+!i122 818
 R4
-Z58 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd
-Z59 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd
+Z53 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd
+Z54 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd
 l0
 L5 1
 Vk7WCQ<ko=7g]FSRTTWom00
 !s100 JFR?o^1fOWAO<J1fY`LVB0
 R7
 32
-Z60 !s110 1715789804
+Z55 !s110 1715900619
 !i10b 1
-Z61 !s108 1715789804.000000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd|
-Z63 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd|
+Z56 !s108 1715900619.000000
+Z57 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd|
+Z58 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Fetch.vhd|
 !i113 1
 R12
 R13
@@ -334,40 +334,40 @@ R1
 R2
 R3
 DEx4 work 5 fetch 0 22 k7WCQ<ko=7g]FSRTTWom00
-!i122 771
+!i122 818
 l35
 L17 38
-V_HcDDMPc@m=3bBVhMNUXQ3
-!s100 c_;6Ze^9Le>Z52N`GF5Oo1
+VcZ4HKm?N;DUlF6ERgU=>k0
+!s100 n7>AP=_egD=KX:l7;2:VP2
 R7
 32
-R60
+R55
 !i10b 1
-R61
-R62
-R63
+R56
+R57
+R58
 !i113 1
 R12
 R13
 Efetchdecode_reg
-Z64 w1713996974
+Z59 w1713996974
 R2
 R3
-!i122 780
+!i122 827
 R4
-Z65 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd
-Z66 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd
+Z60 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd
+Z61 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd
 l0
 L4 1
 Vb<MhUlC`l0U885[@ZioH42
 !s100 Hn03L<TEnSf^nJB`jO]Po3
 R7
 32
-R39
+R36
 !i10b 1
-R54
-Z67 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd|
-Z68 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd|
+R37
+Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd|
+Z63 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FetchDecode_Reg.vhd|
 !i113 1
 R12
 R13
@@ -375,40 +375,40 @@ Afetchdecode_reg
 R2
 R3
 DEx4 work 15 fetchdecode_reg 0 22 b<MhUlC`l0U885[@ZioH42
-!i122 780
+!i122 827
 l19
 L18 11
 Vl<9O9kgP60[=[D0ZjjH[A1
 !s100 Fi;Ccmg4g1;Tg[3`]MA[f2
 R7
 32
-R39
+R36
 !i10b 1
-R54
-R67
-R68
+R37
+R62
+R63
 !i113 1
 R12
 R13
 Eflagreg
-Z69 w1714002293
+Z64 w1714002293
 R2
 R3
-!i122 766
+!i122 813
 R4
-Z70 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd
-Z71 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd
+Z65 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd
+Z66 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd
 l0
 L4 1
 V;WZ;bfX;]Qj31eX8BHPT=2
 !s100 KoY:O6_?ceATf;6<;lLS]2
 R7
 32
-Z72 !s110 1715789801
+Z67 !s110 1715900618
 !i10b 1
-Z73 !s108 1715789801.000000
-Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd|
-Z75 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd|
+Z68 !s108 1715900617.000000
+Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd|
+Z70 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/FlagReg.vhd|
 !i113 1
 R12
 R13
@@ -416,41 +416,41 @@ Aflagreg_arch
 R2
 R3
 DEx4 work 7 flagreg 0 22 ;WZ;bfX;]Qj31eX8BHPT=2
-!i122 766
+!i122 813
 l14
-Z76 L13 13
+Z71 L13 13
 VR_0N=PhzT[dl?Wh<EaT>S3
 !s100 IoVVf^0QRWE?T2NDIP5?@1
 R7
 32
-R72
+R67
 !i10b 1
-R73
-R74
-R75
+R68
+R69
+R70
 !i113 1
 R12
 R13
 Eforwardingunit
-Z77 w1715794487
+Z72 w1715794487
 R1
 R2
 R3
-!i122 788
+!i122 831
 R4
-Z78 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd
-Z79 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd
+Z73 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd
+Z74 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd
 l0
 L5 1
 VQ4zkH4@Va:U0OIWzkIQ^J1
 !s100 VYDjjK[5j[@B1O1m669W:3
 R7
 32
-Z80 !s110 1715794503
+Z75 !s110 1715900623
 !i10b 1
-Z81 !s108 1715794502.000000
-Z82 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd|
-Z83 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd|
+Z76 !s108 1715900623.000000
+Z77 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd|
+Z78 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd|
 !i113 1
 R12
 R13
@@ -458,87 +458,87 @@ Afu_arch
 R1
 R2
 R3
-DEx4 work 14 forwardingunit 0 22 Q4zkH4@Va:U0OIWzkIQ^J1
-!i122 788
+Z79 DEx4 work 14 forwardingunit 0 22 Q4zkH4@Va:U0OIWzkIQ^J1
+!i122 831
 l21
-L19 26
-VS<hb^X6FdSm<L3b@X4dTL1
-!s100 CFfijZB9ihXccFe>]F[7E2
+Z80 L19 26
+Z81 VS<hb^X6FdSm<L3b@X4dTL1
+Z82 !s100 CFfijZB9ihXccFe>]F[7E2
 R7
 32
-R80
+R75
 !i10b 1
-R81
-R82
-R83
+R76
+R77
+R78
 !i113 1
 R12
 R13
 Einstruction_memory
-Z84 w1714819814
-Z85 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
+Z83 w1714819814
+Z84 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
 R1
 R2
 R3
-!i122 767
+!i122 814
 R4
-Z86 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd
-Z87 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd
+Z85 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd
+Z86 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd
 l0
 L5 1
 VTNiKcJ[Q8`FV2_OKmaB:B0
 !s100 48oWVQEGhFK1MLDA0EV`:2
 R7
 32
-Z88 !s110 1715789802
+R67
 !i10b 1
-Z89 !s108 1715789802.000000
-Z90 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd|
-Z91 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd|
+Z87 !s108 1715900618.000000
+Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd|
+Z89 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Instruction_Memory.vhd|
 !i113 1
 R12
 R13
 Ainstruction_memory_architecture
-R85
+R84
 R1
 R2
 R3
 DEx4 work 18 instruction_memory 0 22 TNiKcJ[Q8`FV2_OKmaB:B0
-!i122 767
+!i122 814
 l18
 L13 18
 V?C_Q>B2RDR[1UeId39]4I0
 !s100 0V;C7Jj@n[<lOIZaG^CUV2
 R7
 32
-R88
+R67
 !i10b 1
+R87
+R88
 R89
-R90
-R91
 !i113 1
 R12
 R13
 Ememory
-Z92 w1715893186
+Z90 w1715893186
 R1
 R2
 R3
-!i122 804
+!i122 824
 R4
-Z93 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
-Z94 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
+Z91 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
+Z92 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd
 l0
 L5 1
 VRIzi8o>_O;g<njkIA<9bn3
 !s100 HZNfC7CCSh7BdjkgToNH]1
 R7
 32
-Z95 !s110 1715894030
+R43
 !i10b 1
-Z96 !s108 1715894029.000000
-Z97 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
-Z98 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
+R44
+Z93 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
+Z94 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Memory.vhd|
 !i113 1
 R12
 R13
@@ -547,18 +547,18 @@ R1
 R2
 R3
 DEx4 work 6 memory 0 22 RIzi8o>_O;g<njkIA<9bn3
-!i122 804
+!i122 824
 l83
 L31 154
 Vl>NTEZ`z3V763=[05[zX]0
 !s100 >EzKN3l660EAbdDz@V>3f0
 R7
 32
-R95
+R43
 !i10b 1
-R96
-R97
-R98
+R44
+R93
+R94
 !i113 1
 R12
 R13
@@ -577,73 +577,73 @@ R7
 !s110 1714820456
 !i10b 1
 !s108 1714820456.000000
-R97
-R98
+R93
+R94
 !i113 1
 R12
 R13
 w1713964673
 Ememorywriteback_reg
-Z99 w1713975568
+Z95 w1715900532
 R2
 R3
-!i122 781
+!i122 828
 R4
-Z100 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd
-Z101 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd
+Z96 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd
+Z97 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd
 l0
 L4 1
-V>QU8e63=n<cbdfBa8nFj>0
-!s100 TOi34@l:DcdzbL`G1^Ja72
+VglF2_aPMnVIQ3]FkFmc]W1
+!s100 6odW^9K5R?I=GWl0O<S;J0
 R7
 32
-R39
+R36
 !i10b 1
-R40
-Z102 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd|
-Z103 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd|
+R37
+Z98 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd|
+Z99 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/MemoryWriteBack_Reg.vhd|
 !i113 1
 R12
 R13
 Amemorywriteback_reg
 R2
 R3
-DEx4 work 19 memorywriteback_reg 0 22 >QU8e63=n<cbdfBa8nFj>0
-!i122 781
-l23
-L22 11
-VzGfZ[Bj[4_jYD<PYz<9@J2
-!s100 QR>Zd9ZH;_7R2^DWmb4e42
+DEx4 work 19 memorywriteback_reg 0 22 glF2_aPMnVIQ3]FkFmc]W1
+!i122 828
+l24
+L23 11
+VQa3`l6<jc6dQPC=iF3];i3
+!s100 J9g4OEdMWlh>CSMKD_^WY3
 R7
 32
-R39
+R36
 !i10b 1
-R40
-R102
-R103
+R37
+R98
+R99
 !i113 1
 R12
 R13
 Epc
-Z104 w1713530997
+Z100 w1713530997
 R1
 R2
 R3
-!i122 768
+!i122 815
 R4
-Z105 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd
-Z106 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd
+Z101 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd
+Z102 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd
 l0
 L5 1
 VIbBD:zLizGWU`DEXnaWAO3
 !s100 BEDgT[dc83d]kd`lFgab>0
 R7
 32
-Z107 !s110 1715789803
+R67
 !i10b 1
-R89
-Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd|
-Z109 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd|
+R87
+Z103 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd|
+Z104 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC.vhd|
 !i113 1
 R12
 R13
@@ -652,41 +652,41 @@ R1
 R2
 R3
 DEx4 work 2 pc 0 22 IbBD:zLizGWU`DEXnaWAO3
-!i122 768
+!i122 815
 l15
 L14 13
 V=b4i7>=FHRWe:@401g7cK1
 !s100 of9J62X]UDmce>]kz^fnF2
 R7
 32
-R107
+R67
 !i10b 1
-R89
-R108
-R109
+R87
+R103
+R104
 !i113 1
 R12
 R13
 Epredictorreg
-Z110 w1713791475
+Z105 w1713791475
 R1
 R2
 R3
-!i122 772
+!i122 819
 R4
-Z111 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd
-Z112 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd
+Z106 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd
+Z107 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd
 l0
 L5 1
 VDcQIi1_UH[M2UalO3fJ:_1
 !s100 V]Kf25fHfIedig8ZFHHH]0
 R7
 32
-R60
+R55
 !i10b 1
-R61
-Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd|
-Z114 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd|
+R56
+Z108 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd|
+Z109 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PredictorReg.vhd|
 !i113 1
 R12
 R13
@@ -695,41 +695,41 @@ R1
 R2
 R3
 DEx4 work 12 predictorreg 0 22 DcQIi1_UH[M2UalO3fJ:_1
-!i122 772
+!i122 819
 l14
-R76
+R71
 V`Je;[461kLI]W:oNKFO2T1
 !s100 VS9[n?4P8cW@hAF3G8GmU1
 R7
 32
-R60
+R55
 !i10b 1
-R61
-R113
-R114
+R56
+R108
+R109
 !i113 1
 R12
 R13
 Eprocessor
-Z115 w1713997269
+Z110 w1713997269
 R1
 R2
 R3
-!i122 783
+!i122 830
 R4
-Z116 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
-Z117 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
+Z111 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
+Z112 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
 l0
 L5 1
 VS3SOnd68R?`4Q=;Lz_BC83
 !s100 lX^3<ANCN9em?L;7=`e7e1
 R7
 32
-Z118 !s110 1715789809
+R75
 !i10b 1
-Z119 !s108 1715789809.000000
-Z120 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
-Z121 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
+R37
+Z113 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
+Z114 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
 !i113 1
 R12
 R13
@@ -738,41 +738,41 @@ R1
 R2
 R3
 DEx4 work 9 processor 0 22 S3SOnd68R?`4Q=;Lz_BC83
-!i122 783
+!i122 830
 l200
 L15 368
 VLGE9Kf81C09InJ=5P93ge2
 !s100 Y5KzeiToKJ2k_D=AMhCo;3
 R7
 32
-R118
+R75
 !i10b 1
-R119
-R120
-R121
+R37
+R113
+R114
 !i113 1
 R12
 R13
 Eprotectedflagreg
-Z122 w1715857335
+Z115 w1715857335
 R1
 R2
 R3
-!i122 799
+!i122 821
 R4
-Z123 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd
-Z124 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd
+Z116 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd
+Z117 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd
 l0
 L5 1
 VO=If@A@o7SIg<:dKG_z]53
 !s100 f:9i@0:kH5H@c[VQ6ndcE1
 R7
 32
-Z125 !s110 1715857353
+R23
 !i10b 1
-Z126 !s108 1715857353.000000
-Z127 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd|
-Z128 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd|
+R24
+Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd|
+Z119 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProtectedFlagReg.vhd|
 !i113 1
 R12
 R13
@@ -781,41 +781,41 @@ R1
 R2
 R3
 DEx4 work 16 protectedflagreg 0 22 O=If@A@o7SIg<:dKG_z]53
-!i122 799
+!i122 821
 l21
 L16 37
 V_dY?09lDYC8do:SQcGjkY3
 !s100 DMPD]oM23UPMPfSPDXQFG3
 R7
 32
-R125
+R23
 !i10b 1
-R126
-R127
-R128
+R24
+R118
+R119
 !i113 1
 R12
 R13
 Eregfile
-Z129 w1714823895
+Z120 w1714823895
 R1
 R2
 R3
-!i122 769
+!i122 816
 R4
-Z130 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
-Z131 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
+Z121 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
+Z122 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd
 l0
 L5 1
 VEfBNA:g9eNdoPlkfeSLbU1
 !s100 QXYhz_15INZ2WLgiXY33j2
 R7
 32
-R107
+R55
 !i10b 1
-Z132 !s108 1715789803.000000
-Z133 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
-Z134 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
+R87
+Z123 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
+Z124 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/RegFile.vhd|
 !i113 1
 R12
 R13
@@ -824,40 +824,40 @@ R1
 R2
 R3
 DEx4 work 7 regfile 0 22 EfBNA:g9eNdoPlkfeSLbU1
-!i122 769
+!i122 816
 l19
 L15 26
 Vl5llEcGKlGg92Ci6@YIm@0
 !s100 11eTZA;K51QIP<S2;i3LM3
 R7
 32
-R107
+R55
 !i10b 1
-R132
-R133
-R134
+R87
+R123
+R124
 !i113 1
 R12
 R13
 Estackreg
-Z135 w1715795440
+Z125 w1715795440
 R2
 R3
-!i122 789
+!i122 817
 R4
-Z136 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
-Z137 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
+Z126 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
+Z127 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd
 l0
 L3 1
 VNkKKSYiI1G`V^<cEU1]N13
 !s100 WLcJTFz=7AIifk=9lE<920
 R7
 32
-Z138 !s110 1715795878
+R55
 !i10b 1
-Z139 !s108 1715795878.000000
-Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
-Z141 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
+R56
+Z128 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
+Z129 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/StackReg.vhd|
 !i113 1
 R12
 R13
@@ -865,41 +865,41 @@ Astackreg_arch
 R2
 R3
 DEx4 work 8 stackreg 0 22 NkKKSYiI1G`V^<cEU1]N13
-!i122 789
+!i122 817
 l11
 L10 13
 VCT6]hBD`CW]>gbzJnHhIc0
 !s100 l^FmHgT[S4HV;H_bD8QIM3
 R7
 32
-R138
+R55
 !i10b 1
-R139
-R140
-R141
+R56
+R128
+R129
 !i113 1
 R12
 R13
 Etb_pc
-Z142 w1713380591
+Z130 w1713380591
 R1
 R2
 R3
 !i122 76
 R4
-Z143 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
-Z144 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
+Z131 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
+Z132 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd
 l0
 L5 1
 V^E7FB[Nb@OF>c2jM1O8Ef0
 !s100 C4`ki=ZkD:]7]TGCPJaJg0
 R7
 32
-Z145 !s110 1713397957
+Z133 !s110 1713397957
 !i10b 1
-Z146 !s108 1713397956.000000
-Z147 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
-Z148 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
+Z134 !s108 1713397956.000000
+Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
+Z136 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/PC_tb.vhd|
 !i113 1
 R12
 R13
@@ -915,34 +915,34 @@ Vm:Y=214A6?5>G2aX^ElMH2
 !s100 0FhHc;9?m=0hAl;GDaeUc0
 R7
 32
-R145
+R133
 !i10b 1
-R146
-R147
-R148
+R134
+R135
+R136
 !i113 1
 R12
 R13
 Ewriteback
-Z149 w1715642645
+Z137 w1715642645
 R1
 R2
 R3
-!i122 778
+!i122 825
 R4
-Z150 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd
-Z151 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd
+Z138 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd
+Z139 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd
 l0
 L6 1
 VBNHP_3e[OU7H4`PznUEh43
 !s100 G><@e21khVfSNljScVmK`0
 R7
 32
-R53
+R43
 !i10b 1
-Z152 !s108 1715789806.000000
-Z153 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd|
-Z154 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd|
+R44
+Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd|
+Z141 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/WriteBack.vhd|
 !i113 1
 R12
 R13
@@ -951,18 +951,18 @@ R1
 R2
 R3
 DEx4 work 9 writeback 0 22 BNHP_3e[OU7H4`PznUEh43
-!i122 778
+!i122 825
 l31
 L28 12
 V@>_5E6kekWXbQUbVXc[K?0
 !s100 275K^i6`2R[b9E2V6VDan1
 R7
 32
-R53
+R43
 !i10b 1
-R152
-R153
-R154
+R44
+R140
+R141
 !i113 1
 R12
 R13
