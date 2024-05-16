@@ -36,7 +36,7 @@ BEGIN
             END IF;
 
             IF ReadAddress < "00000000000000000001000000000000" THEN
-                ReadData <= ram(to_integer(unsigned(ReadAddress)+ 1)) & ram(to_integer(unsigned(ReadAddress)));
+                ReadData <= ram(to_integer(unsigned(ReadAddress))) & ram(to_integer(unsigned(ReadAddress)+ 1));
                 WrongAddress <= '0';
             ELSE
                 WrongAddress <= '1';

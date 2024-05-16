@@ -17,13 +17,14 @@ ENTITY Memory IS
         pcPlus : IN std_logic_vector(n-1 DOWNTO 0);
         SecondOperand : IN std_logic_vector(n-1 DOWNTO 0);
         SP : IN std_logic_vector(2 DOWNTO 0);
-        FlagReg: IN std_logic_vector(3 DOWNTO 0);
+        FlagReg: IN std_logic_vector(3 DOWNTO 0); -- da5el mn el buffer 3ady
         FreeProtectedStore : IN std_logic_vector(1 DOWNTO 0);
         MemoryOut : OUT std_logic_vector(n-1 DOWNTO 0);
         WrongAddress : OUT std_logic;
         FlushAllBack : OUT std_logic;
         FlushINT_RTI: OUT std_logic;
-        INTDetected: OUT std_logic
+        INTDetected: OUT std_logic;
+        FlagRegOut: OUT std_logic_vector(3 DOWNTO 0) -- ha4edo lel execute f 7alet el RTI
     );
 END Memory;
 
@@ -69,6 +70,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL WriteDataAddress : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL MemoryWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL TempWriteData : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL TempReadData : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL counter : STD_LOGIC := '0';
     SIGNAL DataMemoryWrongAddress : STD_LOGIC;
     SIGNAL MemoryEn: STD_LOGIC;
@@ -131,6 +133,9 @@ BEGIN
     MemoryOut <= (OTHERS => '0') WHEN rst = '1' ELSE
                  DataMemoryReadData WHEN MemoryRead = '1' AND rst = '0';
 
+    -- TempReadData <= std_logic_vector(unsigned(pcPlus) - 1) WHEN counter = '0' ELSE
+    --                  "0000000000000000000000000000" & FlagReg;
+
     ReadDataAddress <= ALUOut WHEN MemoryEnable = '1' AND MemoryAddress = "000" ELSE
                        Stack WHEN MemoryEnable = '1' AND MemoryAddress = "001" ELSE
                        std_logic_vector(unsigned(Stack) + 1) WHEN MemoryEnable = '1' AND MemoryAddress = "010" ELSE
@@ -174,5 +179,6 @@ BEGIN
 
     FlushAllBack <= NOT RET(0) AND RET(1);
     FlushINT_RTI <= '1' WHEN CALLIntSTD = "01" OR RET = "10" ELSE '0';
+    FlagRegOut <= DataMemoryReadData(3 downto 0) WHEN (CALLIntSTD = "01" OR RET = "10") and counter = '0';
 
 END Memory_Architecture;
