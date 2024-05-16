@@ -7633,3 +7633,143 @@ force -freeze sim:/memory/FlagReg 1110 0
 force -freeze sim:/memory/MemoryAddress 001 0
 run
 run
+quit -sim
+# End time: 14:12:19 on May 16,2024, Elapsed time: 0:09:27
+# Errors: 0, Warnings: 5
+# Compile of Controller.vhd was successful.
+# Compile of Data_Memory.vhd was successful.
+vsim -gui work.memory
+# vsim -gui work.memory 
+# Start time: 14:12:38 on May 16,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# vsim -gui work.memory 
+# Start time: 03:20:16 on May 16,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+add wave -position insertpoint  \
+sim:/memory/n \
+sim:/memory/clk \
+sim:/memory/en \
+sim:/memory/rst \
+sim:/memory/MemoryWrite \
+sim:/memory/MemoryRead \
+sim:/memory/MemoryEnable \
+sim:/memory/MemoryAddress \
+sim:/memory/CALLIntSTD \
+sim:/memory/RET \
+sim:/memory/ALUOut \
+sim:/memory/pcPlus \
+sim:/memory/SecondOperand \
+sim:/memory/SP \
+sim:/memory/FlagReg \
+sim:/memory/FreeProtectedStore \
+sim:/memory/MemoryOut \
+sim:/memory/WrongAddress \
+sim:/memory/FlushAllBack \
+sim:/memory/FlushINT_RTI \
+sim:/memory/INTDetected \
+sim:/memory/FlagRegOut \
+sim:/memory/ProtectedFlag \
+sim:/memory/Stack \
+sim:/memory/stackIn \
+sim:/memory/stackEn \
+sim:/memory/DataMemoryReadData \
+sim:/memory/ReadDataAddress \
+sim:/memory/WriteDataAddress \
+sim:/memory/MemoryWriteData \
+sim:/memory/TempWriteData \
+sim:/memory/TempReadData \
+sim:/memory/counter \
+sim:/memory/DataMemoryWrongAddress \
+sim:/memory/MemoryEn \
+sim:/memory/TempEn \
+sim:/memory/Temp \
+sim:/memory/ProtectedFlagRegReadData \
+sim:/memory/ProtectedFlagRegWrongAddress
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 0 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+force -freeze sim:/memory/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/memory/en 1 0
+force -freeze sim:/memory/rst 1 0
+force -freeze sim:/memory/MemoryWrite 1 0
+force -freeze sim:/memory/MemoryRead 0 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 100 0
+force -freeze sim:/memory/CALLIntSTD 01 0
+force -freeze sim:/memory/pcPlus 00000000000000000000000000100000 0
+force -freeze sim:/memory/SP 100 0
+force -freeze sim:/memory/FlagReg 1110 0
+
+run
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /memory/ProtectedFlagRegInstance
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /memory/ProtectedFlagRegInstance
+force -freeze sim:/memory/rst 0 0
+force -freeze sim:/memory/MemoryAddress 001 0
+force -freeze sim:/memory/CALLIntSTD 01 0
+force -freeze sim:/memory/pcPlus 00000000000000000000000000100000 0
+force -freeze sim:/memory/SP 100 0
+run
+run
+force -freeze sim:/memory/CALLIntSTD 00 0
+run
+force -freeze sim:/memory/MemoryWrite 0 0
+force -freeze sim:/memory/MemoryRead 1 0
+force -freeze sim:/memory/MemoryAddress 011 0
+force -freeze sim:/memory/RET 01 0
+force -freeze sim:/memory/SP 010 0
+run
+force -freeze sim:/memory/RET 10 0
+run
+run
+force -freeze sim:/memory/MemoryWrite 1 0
+force -freeze sim:/memory/MemoryRead 0 0
+force -freeze sim:/memory/MemoryEnable 1 0
+force -freeze sim:/memory/MemoryAddress 100 0
+force -freeze sim:/memory/CALLIntSTD 01 0
+force -freeze sim:/memory/pcPlus 00000000000000000000000000100000 0
+force -freeze sim:/memory/SP 100 0
+force -freeze sim:/memory/FlagReg 1110 0
+force -freeze sim:/memory/MemoryAddress 001 0
+run
+run

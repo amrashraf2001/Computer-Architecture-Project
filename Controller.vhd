@@ -77,16 +77,17 @@ BEGIN
 
     SPPointer <= "010" WHEN opcode = "010000" -- PUSH
                ELSE "000" WHEN opcode = "010001" -- POP
-               ELSE "001" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
-               ELSE "011" WHEN opcode = "100010" -- CALL
-               ELSE "100" WHEN opcode = "111001" -- INT
+               --ELSE "001" WHEN opcode = "100100" or opcode = "100011" -- 
+               ELSE "010" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
+               --ELSE "011" WHEN opcode = "100010" -- 
+               ELSE "100" WHEN opcode = "111001" or opcode = "100010" -- INT,CALL
                ELSE "101";
 
     MemAddress <= "000" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
-                ELSE "001" WHEN opcode = "100010" or opcode = "010000" -- PUSH,CALL
+                ELSE "001" WHEN opcode = "111001" or opcode = "100010" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH,CALL
                 ELSE "010" WHEN opcode = "010001" -- POP
                 ELSE "011" WHEN opcode = "100011" or opcode = "100100" -- RTI,RET
-                ELSE "100" WHEN opcode = "111001" -- INT
+                --ELSE "100" WHEN  -- INT
                 ELSE "000";
 
     interruptsignal <= '1' WHEN opcode = "111001" -- INT
