@@ -7,6 +7,7 @@ entity Execute is
     Port ( 
         clk : in STD_LOGIC;
         en,rst : IN std_logic;
+        opcode : IN std_logic_vector(5 downto 0);
         Reg1, Reg2 : IN std_logic_vector(n-1 downto 0);
         Forwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB : IN std_logic_vector(n-1 downto 0);
         Forwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB : IN std_logic_vector(n-1 downto 0);
@@ -16,8 +17,12 @@ entity Execute is
         WBenable_EX_MEM, WBenable_MEM_WB : IN std_logic;
         WBsource_EX_MEM : IN std_logic_vector(1 downto 0);
         swap : IN std_logic;
+        PredictorIn : IN std_logic; -- gayaly mn el decode stage
         ALUout : OUT std_logic_vector(n-1 downto 0);
-        FlagReg_out : OUT std_logic_vector(3 downto 0)
+        FlagReg_out : OUT std_logic_vector(3 downto 0);
+        FlushOut : OUT std_logic;
+        NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
+        TakenWrongBranch : OUT std_logic -- el and eli ta7t taken w kan el mafroud a not take it
     );
 end Execute;
 architecture Execute_Arch of Execute is
@@ -125,6 +130,10 @@ begin
                      Forwarded_Src_2_MEM_WB WHEN Selector_Mux2 = "01" ELSE
                      Forwarded_Src_2_EX_MEM WHEN Selector_Mux2 = "10" ELSE
                         Reg2;
+
+    NotTakenWrongBranch <= '1' when Zerocombtemp = '1' and PredictorIn = '1' and opcode = "100001" else '0';
+    TakenWrongBranch <= '1' when Zerocombtemp = '0' and PredictorIn = '1' and opcode = "100001" else '0';
+    FlushOut <= '1' when (Zerocombtemp = '1' and PredictorIn = '1' and opcode = "100001") or (Zerocombtemp = '0' and PredictorIn = '1' and opcode = "100001") else '0';
 
 
 end Execute_Arch;
