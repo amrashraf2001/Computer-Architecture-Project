@@ -8,7 +8,8 @@ port (
     F: out STD_LOGIC_VECTOR(169 downto 0));
 
 end entity MemoryWriteBack_Reg;
-
+-- RET 2 bits (172 downto 171)
+-- swap 1 bit (170)
 --RWrtie signal -> 1 Bit (169)
 --Write Back Source signal → 2 Bit (168 downto 167)
 --OUT Enable signal → 1 Bit (166)
