@@ -36,18 +36,18 @@ begin
     PC1: PC PORT MAP (d=>pcIn, q=>pcOut, clk=>clk, rst=>rst, en=>en);
     IM1: Instruction_Memory PORT MAP (ReadAddress=>pcOut, ReadData=>instruction, WrongAddress=>WrongAddress);
 
-    --en <= '1' when stall = '0' and interrupt = '0' else '0'; fl integration matensa4 ya amr nta w sarraa
+    --TODO:en <= '1' when stall = '0' and interrupt = '0' else '0'; fl integration matensa4 ya amr nta w sarraa
 
-    pcIn <= std_logic_vector(unsigned(pcOut) + "00000000000000000000000000000001") when branchingSel = '0' and exceptionSel = '0' 
+    pcIn <= std_logic_vector(unsigned(pcOut) + "00000000000000000000000000000001") when branchingSel = '0' and exceptionSel = '0' and stall = '0'
         else "00000000000000000000111111111100" when branchingSel = '0' and exceptionSel = '1'
-        else branchingAddress when branchingSel = '1' and exceptionSel = '0' 
+        else branchingAddress when branchingSel = '1' and exceptionSel = '0' and stall = '0'
         else "00000000000000000000111111111100" when exceptionSel = '1' and branchingSel = '1' 
-        else "00000000000000000000111111111100";
+        else std_logic_vector(unsigned(pcOut));
 
     dataout <= instruction when (stall = '0' and interrupt = '0') 
         else "1100000000000000" when interrupt = '0' and stall = '1'
         else "1110010000000000" when interrupt = '1' and stall = '0'
-        else "1110010000000000" when interrupt = '1' and stall = '1' -- alah 23lm el prio lel stall wala interrupt
+        else "1100000000000000" when interrupt = '1' and stall = '1' -- alah 23lm el prio lel stall wala interrupt (7atet nop)
         else "1100000000000000"; 
 
     pcPlus <= std_logic_vector(unsigned(pcOut) + 1);
