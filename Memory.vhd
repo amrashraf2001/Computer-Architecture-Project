@@ -81,7 +81,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     SIGNAL ProtectedFlagRegWrongAddress : STD_LOGIC;
 
 BEGIN
-    TempEn <= MemoryEnable AND NOT ProtectedFlagRegReadData;
+    TempEn <= MemoryEnable AND NOT ProtectedFlagRegReadData AND MemoryWrite;
 
     DataMemoryInstance : Data_Memory
         GENERIC MAP (n => 32)
