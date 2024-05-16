@@ -177,7 +177,7 @@ BEGIN
                     ProtectedFlagRegReadData WHEN FreeProtectedStore = "11" ELSE
                     ProtectedFlagRegReadData;
 
-    FlushAllBack <= NOT RET(0) AND RET(1);
+    FlushAllBack <= '1' WHEN RET = "01" ELSE '0';
     FlushINT_RTI <= '1' WHEN CALLIntSTD = "01" OR RET = "10" ELSE '0';
     FlagRegOut <= DataMemoryReadData(3 downto 0) WHEN (CALLIntSTD = "01" OR RET = "10") and counter = '0';
 

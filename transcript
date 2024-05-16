@@ -8730,3 +8730,12 @@ force -freeze sim:/memory/MemoryAddress 011 0
 force -freeze sim:/memory/SP 010 0
 run
 run
+quit -sim
+# End time: 00:13:44 on May 17,2024, Elapsed time: 1:59:49
+# Errors: 0, Warnings: 5
+# Compile of Memory.vhd was successful.
+# Compile of Execute.vhd was successful.
+# Compile of Decode.vhd failed with 5 errors.
+# Compile of Decode.vhd failed with 5 errors.
+# Compile of Decode.vhd was successful.
+# Compile of Controller.vhd was successful.

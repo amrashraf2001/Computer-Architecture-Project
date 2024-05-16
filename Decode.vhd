@@ -11,7 +11,7 @@ ENTITY Decode IS
         writeport2:in std_logic_vector(n-1 downto 0);
         WriteAdd1: in  std_logic_vector (2 downto 0);
         WriteAdd2: in  std_logic_vector (2 downto 0);
-        Flush: IN std_logic;
+        Flush: IN std_logic; -- selket el flush eli tal3a mn el execute stage
         Swaped: IN std_logic; -- gayaly mn el writeback stage
         ImmediateValue: IN std_logic_vector(15 DOWNTO 0);
         ReadData1:out std_logic_vector(n-1 downto 0);
@@ -30,7 +30,8 @@ ENTITY Decode IS
         Swap: out std_logic; -- ana batal3ha lama bala2i el instruction Swap w bazabet el address w el data
         MemAddress: OUT std_logic_vector(2 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
-        CallIntStore: OUT std_logic_vector(1 DOWNTO 0)
+        CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
+        FlushOut: OUT std_logic
     );
 END ENTITY Decode;
 
@@ -80,6 +81,7 @@ architecture Decode_Arch of Decode is
     signal WData1, WData2: std_logic_vector(31 DOWNTO 0);
     signal PredictorInput: std_logic := '0';
     signal PredictorOutput: std_logic;
+    SIGNAL tempFlush: std_logic;
 
 begin
     process(ImmediateValue)
@@ -120,4 +122,6 @@ begin
     );
     
     PredictorReg1: PredictorReg PORT MAP(PredictorInput, PredictorOutput, Clk, Rst, PredictorEnable);
+    tempFlush <= '1' when (Instruction(15 downto 10) = "100001") else '0';
+    FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (Branching));
 end architecture Decode_Arch;
