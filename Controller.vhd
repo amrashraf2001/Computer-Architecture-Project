@@ -36,8 +36,8 @@ BEGIN
                         opcode(5 downto 0) = "110110" or
                         opcode(5 downto 0) = "111000" or
                         opcode(5 downto 0) = "110111" or
-                        opcode(5 downto 0) = "110010"
-
+                        opcode(5 downto 0) = "110010" or
+                        opcode(5 downto 0) /= "110000" 
                 ELSE '0';
                     
 

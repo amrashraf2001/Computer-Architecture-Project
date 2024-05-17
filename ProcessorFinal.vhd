@@ -356,6 +356,7 @@ SIGNAL FDFlush : std_logic;
 SIGNAL DEFlush : std_logic;
 SIGNAL EMFlush : std_logic;
 SIGNAL MWFlush : std_logic;
+SIGNAL InPortValue : std_logic_vector(31 downto 0);
 
 
 BEGIN
@@ -376,10 +377,12 @@ FetchStall <= '1' when ExecuteStall = '1' else '0';
 FetchINT <= '1' when MemoryINTDetected = '1' else '0'; -- not sure about that
 FetchStage: Fetch port map (clk => clk, branchingAddress => FetchBranchingAddress, en => en, rst => rst, interrupt => FetchINT, branchingSel => FetchBranchingSel, exceptionSel => FetchExceptionSel, stall => FetchStall, dataout => FetchDataOut, pcPlus => FetchPCPlus, WrongAddress => FetchWrongAddress);
 FetchDecodeBuffer: FetchDecode_Reg port map (A => FetchDecodeBufferIN, clk => clk, en => en, rst => FDFlush, F => FetchDecodeBufferOUT, Flush => FetchStall);
-FetchDecodeBufferIN(80 downto 49) <= InPort;
+FetchDecodeBufferIN(80 downto 49) <= InPortValue;
 FetchDecodeBufferIN(48 downto 33) <= FetchDataOut;
 FetchDecodeBufferIN(32 downto 1) <= FetchPCPlus;
 FetchDecodeBufferIN(0) <= FetchWrongAddress;
+
+InPortValue <= InPort;
 
 FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeAluSource = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
 
@@ -439,26 +442,26 @@ DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or Memor
 ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall);
 ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => EMFlush, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
-ExecuteReg1 <= DecodeReadData1;
-ExecuteReg2 <= DecodeReadData2;
-ExecuteForwarded_Src_1_EX_MEM <= ExecuteMemoryBufferIN(115 downto 84) when ExecuteMemoryBufferIN(3 downto 2) = "00"
-else ExecuteMemoryBufferIN(77 downto 46);  --(ALU output or IN value from EX MEM buffer)
-ExecuteForwarded_Src_1_MEM_WB <= MemoryWriteBackBufferIN(165 downto 134) when MemoryWriteBackBufferIN(168 downto 167) = "01"
-else MemoryWriteBackBufferIN(133 downto 102) when MemoryWriteBackBufferIN(168 downto 167) = "10"
-else MemoryWriteBackBufferIN(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
-ExecuteForwarded_Src_2_EX_MEM <= ExecuteMemoryBufferIN(115 downto 84) when ExecuteMemoryBufferIN(3 downto 2) = "00"
-else ExecuteMemoryBufferIN(77 downto 46); --(ALU output or IN value from EX MEM buffer)
-ExecuteForwarded_Src_2_MEM_WB <= MemoryWriteBackBufferIN(165 downto 134) when MemoryWriteBackBufferIN(168 downto 167) = "01"
-else MemoryWriteBackBufferIN(133 downto 102) when MemoryWriteBackBufferIN(168 downto 167) = "10"
-else MemoryWriteBackBufferIN(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
+ExecuteReg1 <= DecodeExecuteBufferOUT(133 downto 102);
+ExecuteReg2 <= DecodeExecuteBufferOUT(101 downto 70);
+ExecuteForwarded_Src_1_EX_MEM <= ExecuteMemoryBufferOUT(115 downto 84) when ExecuteMemoryBufferOUT(3 downto 2) = "00"
+else ExecuteMemoryBufferOUT(77 downto 46);  --(ALU output or IN value from EX MEM buffer)
+ExecuteForwarded_Src_1_MEM_WB <= MemoryWriteBackBufferOUT(165 downto 134) when MemoryWriteBackBufferOUT(168 downto 167) = "01"
+else MemoryWriteBackBufferOUT(133 downto 102) when MemoryWriteBackBufferOUT(168 downto 167) = "10"
+else MemoryWriteBackBufferOUT(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
+ExecuteForwarded_Src_2_EX_MEM <= ExecuteMemoryBufferOUT(115 downto 84) when ExecuteMemoryBufferOUT(3 downto 2) = "00"
+else ExecuteMemoryBufferOUT(77 downto 46); --(ALU output or IN value from EX MEM buffer)
+ExecuteForwarded_Src_2_MEM_WB <= MemoryWriteBackBufferOUT(165 downto 134) when MemoryWriteBackBufferOUT(168 downto 167) = "01"
+else MemoryWriteBackBufferOUT(133 downto 102) when MemoryWriteBackBufferOUT(168 downto 167) = "10"
+else MemoryWriteBackBufferOUT(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
 ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145);
-ExecuteDestination_Reg_EX_MEM <=ExecuteMemoryBufferIN(83 downto 81); --5odha mn el execute memory buffer
-ExecuteDestination_Reg_MEM_WB <=MemoryWriteBackBufferIN (69 downto 67);--5odha mn el memory write back buffer
-ExecuteSrc1_From_ID_EX <= DecodeExecuteBufferIN(202 downto 200);--5odha mn el decode execute buffer
-ExecuteSrc2_From_ID_EX <= DecodeExecuteBufferIN(199 downto 197);--5odha mn el decode execute buffer
-ExecuteWBenable_EX_MEM <= ExecuteMemoryBufferIN(8);--5odha mn el execute memory buffer
-ExecuteWBenable_MEM_WB <= MemoryWriteBackBufferIN(169);--5odha mn el memory write back buffer
-ExecuteWBsource_EX_MEM <= ExecuteMemoryBufferIN(3 downto 2); --5odha mn el execute memory buffer
+ExecuteDestination_Reg_EX_MEM <=ExecuteMemoryBufferOUT(83 downto 81); --5odha mn el execute memory buffer
+ExecuteDestination_Reg_MEM_WB <=MemoryWriteBackBufferOUT (69 downto 67);--5odha mn el memory write back buffer
+ExecuteSrc1_From_ID_EX <= DecodeExecuteBufferOUT(202 downto 200);--5odha mn el decode execute buffer
+ExecuteSrc2_From_ID_EX <= DecodeExecuteBufferOUT(199 downto 197);--5odha mn el decode execute buffer
+ExecuteWBenable_EX_MEM <= ExecuteMemoryBufferOUT(8);--5odha mn el execute memory buffer
+ExecuteWBenable_MEM_WB <= MemoryWriteBackBufferOUT(169);--5odha mn el memory write back buffer
+ExecuteWBsource_EX_MEM <= ExecuteMemoryBufferOUT(3 downto 2); --5odha mn el execute memory buffer
 ExecuteSwap <= DecodeExecuteBufferOUT(187);
 ExecutePredictorIn <= DecodeExecuteBufferOUT(196);
 ExecuteMemoryBufferIN(157 downto 156) <= DecodeExecuteBufferOUT(189 downto 188);
@@ -466,7 +469,7 @@ ExecuteMemoryBufferIN(155) <= DecodeExecuteBufferOUT(187);
 ExecuteMemoryBufferIN(154 downto 152) <= DecodeExecuteBufferOUT(153 downto 151);
 ExecuteMemoryBufferIN(151 downto 148) <= ExecuteFlagReg_out;
 ExecuteMemoryBufferIN(147 downto 116) <= DecodeExecuteBufferOUT(31 downto 0);
-ExecuteMemoryBufferIN(115 downto 84) <= FetchDecodeBufferOUT(69 downto 38);
+ExecuteMemoryBufferIN(115 downto 84) <= DecodeExecuteBufferOUT(69 downto 38);
 ExecuteMemoryBufferIN(83 downto 78) <= DecodeExecuteBufferOUT(37 downto 32);
 ExecuteMemoryBufferIN(77 downto 46) <= ExecuteALUout;
 ExecuteMemoryBufferIN(45 downto 14) <= DecodeExecuteBufferOUT(101 downto 70);
@@ -505,6 +508,7 @@ MemoryWriteBackBufferIN(101 downto 70) <= ExecuteMemoryBufferOUT(45 downto 14);
 MemoryWriteBackBufferIN(69 downto 64) <= ExecuteMemoryBufferOUT(83 downto 78);
 MemoryWriteBackBufferIN(63 downto 32) <= ExecuteMemoryBufferOUT(115 downto 84);
 MemoryWriteBackBufferIN(31 downto 0) <= ExecuteMemoryBufferOUT(147 downto 116);
+MWFlush <= '1' when rst = '1' else '0';
 
 ------------------------------WRITEBACK--------------------------------------
 WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => WriteBackAddress1, WriteBackAddress2 => WriteBackAddress2, Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
