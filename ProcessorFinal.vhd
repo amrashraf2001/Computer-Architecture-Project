@@ -378,7 +378,6 @@ DecodeInstruction <= FetchDecodeBufferOUT(48 downto 33);
 -- DecodeWriteAdd2 <= 5odha mn el write back;
 -- DecodeFlush <= 5odha mn el execution;
 -- DecodeSwaped <= 5odha mn el write back;
---DecodeImmediateValue <= FetchDataOut(15 downto 0);
 DecodeStage: Decode port map (Clk => clk, Rst => rst, writeBackEnable => DecodeWriteBackEnable, PredictorEnable => DecodePredictorEnable, Instruction => DecodeInstruction, writeport1 => DecodeWritePort1, writeport2 => DecodeWritePort2, WriteAdd1 => DecodeWriteAdd1, WriteAdd2 => DecodeWriteAdd2, Flush => DecodeFlush, Swaped => DecodeSwaped, ImmediateValue => FetchDataOut(15 downto 0), ReadData1 => DecodeReadData1, ReadData2 => DecodeReadData2, AluSelector => DecodeAluSelector, Branching => DecodeBranching, alusource => DecodeAluSource, MWrite => DecodeMWrite, MRead => DecodeMRead, WBdatasrc => DecodeWBdatasrc, RegWrite => DecodeRegWrite, SPPointer => DecodeSPPointer, interruptsignal => DecodeInterruptSignal, pcSource => DecodePcSource, rtisignal => DecodeRtiSignal, FreeProtectStore => DecodeFreeProtectStore, Swap => DecodeSwap, MemAddress => DecodeMemAddress, Ret => DecodeRet, CallIntStore => DecodeCallIntStore, FlushOut => DecodeFlushOut, OutEnable => DecodeOutEnable);
 DecodeExecuteBuffer: DecodeExecute_Reg port map (A => DecodeExecuteBufferIN, clk => clk, en => en, rst => rst, F => DecodeExecuteBufferOUT);
 DecodeExecuteBufferIN(195 downto 190) <= FetchDecodeBufferOUT(48 downto 43);
@@ -400,9 +399,43 @@ DecodeExecuteBufferIN(69 downto 38) <= FetchDecodeBufferOUT(80 downto 49);
 DecodeExecuteBufferIN(37 downto 32) <= DecodeWriteAdd1 & DecodeWriteAdd2;
 DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
+------------------------------EXECUTE--------------------------------------
 
-
-
+ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch);
+ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => rst, F => ExecuteMemoryBufferOUT);
+ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
+ExecuteReg1 <= DecodeReadData1;
+ExecuteReg2 <= DecodeReadData2;
+--ExecuteForwarded_Src_1_EX_MEM <= 5odha mn el execute memory buffer
+--ExecuteForwarded_Src_1_MEM_WB <= 5odha mn el memory write back buffer
+--ExecuteForwarded_Src_2_EX_MEM <= 5odha mn el execute memory buffer
+--ExecuteForwarded_Src_2_MEM_WB <= 5odha mn el memory write back buffer
+ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145);
+--ExecuteDestination_Reg_EX_MEM <= 5odha mn el execute memory buffer
+--ExecuteDestination_Reg_MEM_WB <= 5odha mn el memory write back buffer
+--ExecuteSrc1_From_ID_EX <= 5odha mn el decode execute buffer
+--ExecuteSrc2_From_ID_EX <= 5odha mn el decode execute buffer
+--ExecuteWBenable_EX_MEM <= 5odha mn el execute memory buffer
+--ExecuteWBenable_MEM_WB <= 5odha mn el memory write back buffer
+--ExecuteWBsource_EX_MEM <= 5odha mn el execute memory buffer
+--ExecuteSwap <= 5odha mn el decode stage
+--ExecutePredictorIn <= 5odha mn el decode stage
+ExecuteMemoryBufferIN(157 downto 156) <= DecodeExecuteBufferOUT(189 downto 188);
+ExecuteMemoryBufferIN(155) <= DecodeExecuteBufferOUT(187);
+ExecuteMemoryBufferIN(154 downto 152) <= DecodeExecuteBufferOUT(153 downto 151);
+ExecuteMemoryBufferIN(151 downto 148) <= ExecuteFlagReg_out;
+ExecuteMemoryBufferIN(147 downto 116) <= DecodeExecuteBufferOUT(31 downto 0);
+ExecuteMemoryBufferIN(115 downto 84) <= FetchDecodeBufferOUT(69 downto 38);
+ExecuteMemoryBufferIN(83 downto 78) <= DecodeExecuteBufferOUT(37 downto 32);
+ExecuteMemoryBufferIN(77 downto 46) <= ExecuteALUout;
+ExecuteMemoryBufferIN(45 downto 14) <= DecodeExecuteBufferOUT(101 downto 70);
+ExecuteMemoryBufferIN(13 downto 12) <= DecodeExecuteBufferOUT(135 downto 134);
+ExecuteMemoryBufferIN(11) <= DecodeExecuteBufferOUT(141);
+ExecuteMemoryBufferIN(10 downto 8) <= DecodeExecuteBufferOUT(138 downto 136);
+ExecuteMemoryBufferIN(7) <= DecodeExecuteBufferOUT(186);
+ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
+ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
+ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
 
 END ProccessorFinal_Arch;
 
