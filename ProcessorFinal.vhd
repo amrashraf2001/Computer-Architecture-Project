@@ -346,8 +346,8 @@ SIGNAL WriteBackMux_result : std_logic_vector(31 downto 0);
 SIGNAL WriteBackOutputPortEnable : std_logic;
 SIGNAL WriteBackSwap : std_logic;
 SIGNAL WriteBackSecond_operand : std_logic_vector(31 downto 0);
-SIGNAL WriteBackAddress1 : std_logic_vector(2 downto 0);
-SIGNAL WriteBackAddress2 : std_logic_vector(2 downto 0);
+SIGNAL WriteBackAddress1Value : std_logic_vector(2 downto 0);
+SIGNAL WriteBackAddress2Value : std_logic_vector(2 downto 0);
 
 ----------------------------VARIABLES----------------------------
 SIGNAL FirstMuxResult : std_logic_vector(31 downto 0);
@@ -405,8 +405,8 @@ DecodePredictorEnable <= '1';
 DecodeInstruction <= FetchDecodeBufferOUT(48 downto 33);
 DecodeWritePort1 <= WriteBackMux_result;
 DecodeWritePort2 <= WriteBackSecond_operand;
-DecodeWriteAdd1 <= WriteBackAddress1;
-DecodeWriteAdd2 <= WriteBackAddress2;
+DecodeWriteAdd1 <= WriteBackAddress1Value;
+DecodeWriteAdd2 <= WriteBackAddress2Value;
 DecodeFlush <= ExecuteFlushOut;
 DecodeSwaped <= WriteBackSwap;
 DecodeStage: Decode port map (Clk => clk, Rst => rst, writeBackEnable => DecodeWriteBackEnable, PredictorEnable => DecodePredictorEnable, Instruction => DecodeInstruction, writeport1 => DecodeWritePort1, writeport2 => DecodeWritePort2, WriteAdd1 => DecodeWriteAdd1, WriteAdd2 => DecodeWriteAdd2, Flush => DecodeFlush, Swaped => DecodeSwaped, ImmediateValue => FetchDataOut(15 downto 0), ReadData1 => DecodeReadData1, ReadData2 => DecodeReadData2, AluSelector => DecodeAluSelector, Branching => DecodeBranching, alusource => DecodeAluSource, MWrite => DecodeMWrite, MRead => DecodeMRead, WBdatasrc => DecodeWBdatasrc, RegWrite => DecodeRegWrite, SPPointer => DecodeSPPointer, interruptsignal => DecodeInterruptSignal, pcSource => DecodePcSource, rtisignal => DecodeRtiSignal, FreeProtectStore => DecodeFreeProtectStore, Swap => DecodeSwap, MemAddress => DecodeMemAddress, Ret => DecodeRet, CallIntStore => DecodeCallIntStore, FlushOut => DecodeFlushOut, OutEnable => DecodeOutEnable, PredictorValue => DecodePredictorValue);
@@ -511,14 +511,14 @@ MemoryWriteBackBufferIN(31 downto 0) <= ExecuteMemoryBufferOUT(147 downto 116);
 MWFlush <= '1' when rst = '1' else '0';
 
 ------------------------------WRITEBACK--------------------------------------
-WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => WriteBackAddress1, WriteBackAddress2 => WriteBackAddress2, Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
+WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => WriteBackAddress1Value, WriteBackAddress2 => WriteBackAddress2Value, Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
 WriteBackALUout <= MemoryWriteBackBufferOUT(133 downto 102);
 WriteBackData_in <= MemoryWriteBackBufferOUT(63 downto 32);
 WriteBackMemoryOut <= MemoryWriteBackBufferOUT(165 downto 134);
 WriteBackWriteBackSource <= MemoryWriteBackBufferOUT(168 downto 167);
 WriteBackWrite_enable <= MemoryWriteBackBufferOUT(169);
-WriteBackAddress1 <= MemoryWriteBackBufferOUT(69 downto 67);
-WriteBackAddress2 <= MemoryWriteBackBufferOUT(66 downto 64);
+WriteBackAddress1Value <= MemoryWriteBackBufferOUT(69 downto 67);
+WriteBackAddress2Value <= MemoryWriteBackBufferOUT(66 downto 64);
 
 
 ------------------------------OUTPORT--------------------------------------

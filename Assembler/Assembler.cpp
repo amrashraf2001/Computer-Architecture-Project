@@ -435,7 +435,9 @@ void ReadFile(string fileinName)
 						if (temp != "XXX")
 						{
 							Rdest = temp;
+							Rsrc1 = temp;
 							destflag = 1;
+							src1flag = 1;
 							break;
 						}
 						else
@@ -446,7 +448,8 @@ void ReadFile(string fileinName)
 				}
 			}
 			instcode.append(Rdest);
-			instcode.append("0000000");
+			instcode.append(Rsrc1);
+			instcode.append("0000");
 			destflag = 0;
 			src1flag = 0;
 			src2flag = 0;
