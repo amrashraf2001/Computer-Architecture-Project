@@ -7,6 +7,8 @@ GENERIC(n : integer :=16);
 	PORT(
         ReadAddress : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
         ReadData: OUT STD_LOGIC_VECTOR(n-1 DOWNTO 0);
+        instmem0: out  std_logic_vector (15 downto 0);
+        instmem2: out  std_logic_vector (15 downto 0);
         WrongAddress: OUT STD_LOGIC);
 END ENTITY Instruction_Memory;
 
@@ -20,6 +22,8 @@ BEGIN
         begin
             if ReadAddress < "0000000000000000001000000000000" THEN
                 ReadData <= ram(to_integer(unsigned(ReadAddress)));
+                instmem2 <=ram(2);
+                instmem0<=ram(0);
                 WrongAddress <= '0';
             else
                 ReadData <= (others => '0');

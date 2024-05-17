@@ -108,7 +108,7 @@ begin
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, Swap);
+    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, Swap,OutEnable);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,
