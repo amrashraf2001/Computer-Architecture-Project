@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity DecodeExecute_Reg is
 port (
     A: IN std_logic_vector(196 downto 0); 
-    clk,en,rest: in std_logic ; 
+    clk,en,rst: in std_logic ; 
     F: out STD_LOGIC_VECTOR(196 downto 0));
 end entity DecodeExecute_Reg;
 -- predictor 1 bit (196)
@@ -32,9 +32,9 @@ end entity DecodeExecute_Reg;
 
 Architecture DecodeExecute_Reg of DecodeExecute_Reg is
 begin
-	process (clk,rest)
+	process (clk,rst)
 	begin
-		if rest = '1' then 
+		if rst = '1' then 
 			F<= (148=>'1',147=>'1',146=>'1',145=>'0',others => '0'); -- lw 3mlt reset aw ha flush odam adman eni 7atet NOP
 		elsif rising_edge(clk) and en='1' then 
 			F<=A;

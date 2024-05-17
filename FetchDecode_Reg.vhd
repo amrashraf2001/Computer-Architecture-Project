@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity FetchDecode_Reg is
 port (
     A: IN std_logic_vector(80 downto 0); 
-    clk,en,rest: in std_logic ; 
+    clk,en,rst: in std_logic; 
     F: out std_logic_vector(80 downto 0);
 	Flush: in std_logic);
 
@@ -17,9 +17,9 @@ end entity FetchDecode_Reg;
 
 Architecture FetchDecode_Reg of FetchDecode_Reg is
 begin
-	process (clk,rest,Flush)
+	process (clk,rst,Flush)
 	begin
-		if rest = '1' or Flush = '1' then 
+		if rst = '1' or Flush = '1' then 
 			F<=(48=>'1',47=>'1',others=>'0'); -- lw 3mlt reset aw ha flush odam adman eni 7atet NOP
 		elsif rising_edge(clk) and en='1' then 
 			F<=A;

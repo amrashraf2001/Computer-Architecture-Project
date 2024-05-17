@@ -4,7 +4,7 @@ use ieee.std_logic_1164.all;
 entity MemoryWriteBack_Reg is
 port (
     A: IN std_logic_vector(172 downto 0); 
-    clk,en,rest: in std_logic ; 
+    clk,en,rst: in std_logic ; 
     F: out STD_LOGIC_VECTOR(172 downto 0));
 
 end entity MemoryWriteBack_Reg;
@@ -22,9 +22,9 @@ end entity MemoryWriteBack_Reg;
 
 Architecture MemoryWriteBack_Reg of MemoryWriteBack_Reg is
 begin
-	process (clk,rest)
+	process (clk,rst)
 	begin
-		if rest = '1' then 
+		if rst = '1' then 
 			F<= (others => '0'); -- lw 3mlt reset aw ha flush odam adman eni 7atet NOP
 		elsif rising_edge(clk) and en='1' then 
 			F<=A;
