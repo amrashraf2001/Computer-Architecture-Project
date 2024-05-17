@@ -361,10 +361,10 @@ else DecodeExecuteBufferOUT(31 downto 0) when ExecuteNotTakenWrongBranch = '0' a
 else DecodeExecuteBufferOUT(133 downto 102) when ExecuteNotTakenWrongBranch = '1' and ExecuteTakenWrongBranch = '0'
 else DecodeReadData1;
 FetchBranchingAddress <= SecondMuxResult;
---FetchBranchingSel <= bla bla blaa
---FetchExceptionSel <= bla bla blaa
+FetchBranchingSel <= '1' when ExecuteTakenWrongBranch = '1' or ExecuteNotTakenWrongBranch = '1' or DecodeFlushOut = '1' else '0';
+FetchExceptionSel <= MemoryWrongAddress;
 --FetchStall <= bla bla blaa
---FetchINT <= bla bla blaa
+FetchINT <= '1' when MemoryINTDetected = '1' else '0'; -- not sure about that
 FetchStage: Fetch port map (clk => clk, branchingAddress => FetchBranchingAddress, en => en, rst => rst, interrupt => FetchINT, branchingSel => FetchBranchingSel, exceptionSel => FetchExceptionSel, stall => FetchStall, dataout => FetchDataOut, pcPlus => FetchPCPlus, WrongAddress => FetchWrongAddress);
 FetchDecodeBuffer: FetchDecode_Reg port map (A => FetchDecodeBufferIN, clk => clk, en => en, rst => rst, F => FetchDecodeBufferOUT, Flush => FetchStall);
 FetchDecodeBufferIN(80 downto 49) <= InPort;
@@ -414,7 +414,7 @@ DecodeExecuteBufferIN(135 downto 134) <= DecodeCallIntStore;
 DecodeExecuteBufferIN(133 downto 102) <= DecodeReadData1;
 DecodeExecuteBufferIN(101 downto 70) <= DecodeReadData2;
 DecodeExecuteBufferIN(69 downto 38) <= FetchDecodeBufferOUT(80 downto 49);
-DecodeExecuteBufferIN(37 downto 32) <= DecodeWriteAdd1 & DecodeWriteAdd2;
+DecodeExecuteBufferIN(37 downto 32) <= FetchDecodeBufferOUT(42 downto 40) & FetchDecodeBufferOUT(39 downto 37); -- add1 then add2
 DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
 ------------------------------EXECUTE--------------------------------------
