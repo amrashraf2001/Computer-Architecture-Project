@@ -22,7 +22,8 @@ entity Execute is
         FlagReg_out : OUT std_logic_vector(3 downto 0);
         FlushOut : OUT std_logic;
         NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
-        TakenWrongBranch : OUT std_logic -- el and eli ta7t taken w kan el mafroud a not take it
+        TakenWrongBranch : OUT std_logic; -- el and eli ta7t taken w kan el mafroud a not take it
+        stalling : out std_logic
     );
 end Execute;
 architecture Execute_Arch of Execute is

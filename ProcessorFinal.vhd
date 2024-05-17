@@ -84,8 +84,9 @@ COMPONENT Execute is
         FlagReg_out : OUT std_logic_vector(3 downto 0);
         FlushOut : OUT std_logic;
         NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
-        TakenWrongBranch : OUT std_logic -- el and eli ta7t taken w kan el mafroud a not take it
-    );
+        TakenWrongBranch : OUT std_logic; -- el and eli ta7t taken w kan el mafroud a not take it
+        stalling : out std_logic
+        );
 end COMPONENT;
 
 --------------------------MEMORY--------------------------
@@ -311,6 +312,7 @@ SIGNAL ExecuteFlagReg_out : std_logic_vector(3 downto 0);
 SIGNAL ExecuteFlushOut : std_logic;
 SIGNAL ExecuteNotTakenWrongBranch : std_logic;
 SIGNAL ExecuteTakenWrongBranch : std_logic;
+SIGNAl ExecuteStall : std_logic;
 
 --------------------------MEMORY--------------------------
 SIGNAL MemoryWriteBackBufferIN : std_logic_vector(172 downto 0);
@@ -366,7 +368,7 @@ else DecodeReadData1;
 FetchBranchingAddress <= SecondMuxResult;
 FetchBranchingSel <= '1' when ExecuteTakenWrongBranch = '1' or ExecuteNotTakenWrongBranch = '1' or DecodeFlushOut = '1' else '0';
 FetchExceptionSel <= MemoryWrongAddress;
---FetchStall <= bla bla blaa
+FetchStall <= ExecuteStall;
 FetchINT <= '1' when MemoryINTDetected = '1' else '0'; -- not sure about that
 FetchStage: Fetch port map (clk => clk, branchingAddress => FetchBranchingAddress, en => en, rst => rst, interrupt => FetchINT, branchingSel => FetchBranchingSel, exceptionSel => FetchExceptionSel, stall => FetchStall, dataout => FetchDataOut, pcPlus => FetchPCPlus, WrongAddress => FetchWrongAddress);
 FetchDecodeBuffer: FetchDecode_Reg port map (A => FetchDecodeBufferIN, clk => clk, en => en, rst => rst, F => FetchDecodeBufferOUT, Flush => FetchStall);
@@ -426,7 +428,7 @@ DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
 ------------------------------EXECUTE--------------------------------------
 
-ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch);
+ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall);
 ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => rst, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeReadData1;

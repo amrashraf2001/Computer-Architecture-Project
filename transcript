@@ -104,3 +104,8 @@ quit -sim
 # Compile of ProcessorFinal.vhd was successful.
 # Compile of ProcessorFinal.vhd failed with 1 errors.
 # Compile of ProcessorFinal.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of ProcessorFinal.vhd was successful.
+# Compile of Execute.vhd failed with 1 errors.
+# Compile of Execute.vhd was successful.
+# Compile of ProcessorFinal.vhd was successful.
