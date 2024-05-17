@@ -8165,3 +8165,44 @@ run
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 1500 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
 run
+quit -sim
+# End time: 00:31:10 on May 18,2024, Elapsed time: 0:19:27
+# Errors: 0, Warnings: 16
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 00:42:27 on May 18,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# Loading work.my_dff(a_my_dff)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+quit -sim
+# End time: 00:42:52 on May 18,2024, Elapsed time: 0:00:25
+# Errors: 0, Warnings: 3
+# Compile of ForwardingUnit.vhd was successful.

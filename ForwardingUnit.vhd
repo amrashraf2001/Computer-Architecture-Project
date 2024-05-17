@@ -28,11 +28,13 @@ begin
 
     Selector_Mux1 <= "00" when (DestREG_EX_MEM = Src1_signal) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB /= '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM
                      "01" when (DestREG_MEM_WB = Src1_signal) and (WBenable_MEM_WB = '1') and (WBenable_EX_MEM /= '1') and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
+                     "01" when (DestREG_MEM_WB = Src1_signal) and (WBenable_MEM_WB = '1') and (DestREG_EX_MEM /= Src1_signal) and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
                      "10" when (DestREG_EX_MEM = Src1_signal) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB = '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM brdo (mashro7a fl note eli gamb el FU)
                      "11"; --no forwarding
 
     Selector_Mux2 <= "00" when (DestREG_EX_MEM = Src2_signal) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB /= '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM
                      "01" when (DestREG_MEM_WB = Src2_signal) and (WBenable_MEM_WB = '1') and (WBenable_EX_MEM /= '1') and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
+                     "01" when (DestREG_MEM_WB = Src2_signal) and (WBenable_MEM_WB = '1') and (DestREG_EX_MEM /= Src2_signal) and (WBsource_EX_MEM /= "01") else --forward from MEM_WB
                      "10" when (DestREG_EX_MEM = Src2_signal) and (WBenable_EX_MEM = '1') and (WBenable_MEM_WB = '1') and (WBsource_EX_MEM /= "01") else --forward from EX_MEM brdo
                      "11"; --no forwarding
 
