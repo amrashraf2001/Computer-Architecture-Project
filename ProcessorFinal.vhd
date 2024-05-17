@@ -244,7 +244,7 @@ SIGNAL FetchBranchingAddress : std_logic_vector(31 downto 0);
 SIGNAL FetchINT : std_logic;
 SIGNAL FetchBranchingSel : std_logic;
 SIGNAL FetchExceptionSel : std_logic;
-SIGNAL FetchStall : std_logic:='0';
+SIGNAL FetchStall : std_logic;
 SIGNAL FetchDataOut : std_logic_vector(15 downto 0);
 SIGNAL FetchPCPlus : std_logic_vector(31 downto 0);
 SIGNAL FetchWrongAddress : std_logic;
@@ -352,6 +352,10 @@ SIGNAL WriteBackAddress2 : std_logic_vector(2 downto 0);
 ----------------------------VARIABLES----------------------------
 SIGNAL FirstMuxResult : std_logic_vector(31 downto 0);
 SIGNAL SecondMuxResult : std_logic_vector(31 downto 0);
+SIGNAL FDFlush : std_logic;
+SIGNAL DEFlush : std_logic;
+SIGNAL EMFlush : std_logic;
+SIGNAL MWFlush : std_logic;
 
 
 BEGIN
@@ -367,15 +371,17 @@ else DecodeExecuteBufferOUT(133 downto 102) when ExecuteNotTakenWrongBranch = '1
 else DecodeReadData1;
 FetchBranchingAddress <= SecondMuxResult;
 FetchBranchingSel <= '1' when ExecuteTakenWrongBranch = '1' or ExecuteNotTakenWrongBranch = '1' or DecodeFlushOut = '1' else '0';
-FetchExceptionSel <= MemoryWrongAddress;
-FetchStall <= ExecuteStall;
+FetchExceptionSel <= '1' when MemoryWrongAddress = '1' else '0';
+FetchStall <= '1' when ExecuteStall = '1' else '0';
 FetchINT <= '1' when MemoryINTDetected = '1' else '0'; -- not sure about that
 FetchStage: Fetch port map (clk => clk, branchingAddress => FetchBranchingAddress, en => en, rst => rst, interrupt => FetchINT, branchingSel => FetchBranchingSel, exceptionSel => FetchExceptionSel, stall => FetchStall, dataout => FetchDataOut, pcPlus => FetchPCPlus, WrongAddress => FetchWrongAddress);
-FetchDecodeBuffer: FetchDecode_Reg port map (A => FetchDecodeBufferIN, clk => clk, en => en, rst => rst, F => FetchDecodeBufferOUT, Flush => FetchStall);
+FetchDecodeBuffer: FetchDecode_Reg port map (A => FetchDecodeBufferIN, clk => clk, en => en, rst => FDFlush, F => FetchDecodeBufferOUT, Flush => FetchStall);
 FetchDecodeBufferIN(80 downto 49) <= InPort;
 FetchDecodeBufferIN(48 downto 33) <= FetchDataOut;
 FetchDecodeBufferIN(32 downto 1) <= FetchPCPlus;
 FetchDecodeBufferIN(0) <= FetchWrongAddress;
+
+FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeAluSource = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
 
 process(FetchDataOut)
     begin
@@ -401,7 +407,7 @@ DecodeWriteAdd2 <= WriteBackAddress2;
 DecodeFlush <= ExecuteFlushOut;
 DecodeSwaped <= WriteBackSwap;
 DecodeStage: Decode port map (Clk => clk, Rst => rst, writeBackEnable => DecodeWriteBackEnable, PredictorEnable => DecodePredictorEnable, Instruction => DecodeInstruction, writeport1 => DecodeWritePort1, writeport2 => DecodeWritePort2, WriteAdd1 => DecodeWriteAdd1, WriteAdd2 => DecodeWriteAdd2, Flush => DecodeFlush, Swaped => DecodeSwaped, ImmediateValue => FetchDataOut(15 downto 0), ReadData1 => DecodeReadData1, ReadData2 => DecodeReadData2, AluSelector => DecodeAluSelector, Branching => DecodeBranching, alusource => DecodeAluSource, MWrite => DecodeMWrite, MRead => DecodeMRead, WBdatasrc => DecodeWBdatasrc, RegWrite => DecodeRegWrite, SPPointer => DecodeSPPointer, interruptsignal => DecodeInterruptSignal, pcSource => DecodePcSource, rtisignal => DecodeRtiSignal, FreeProtectStore => DecodeFreeProtectStore, Swap => DecodeSwap, MemAddress => DecodeMemAddress, Ret => DecodeRet, CallIntStore => DecodeCallIntStore, FlushOut => DecodeFlushOut, OutEnable => DecodeOutEnable, PredictorValue => DecodePredictorValue);
-DecodeExecuteBuffer: DecodeExecute_Reg port map (A => DecodeExecuteBufferIN, clk => clk, en => en, rst => rst, F => DecodeExecuteBufferOUT);
+DecodeExecuteBuffer: DecodeExecute_Reg port map (A => DecodeExecuteBufferIN, clk => clk, en => en, rst => DEFlush, F => DecodeExecuteBufferOUT);
 DecodeSrcAdd1 <= FetchDecodeBufferOUT(39 downto 37);
 DecodeSrcAdd2 <= FetchDecodeBufferOUT(36 downto 34);
 DecodeExecuteBufferIN(202 downto 197) <= DecodeSrcAdd1 & DecodeSrcAdd2;
@@ -425,11 +431,13 @@ DecodeExecuteBufferIN(69 downto 38) <= FetchDecodeBufferOUT(80 downto 49);
 DecodeExecuteBufferIN(37 downto 32) <= FetchDecodeBufferOUT(42 downto 40) & FetchDecodeBufferOUT(39 downto 37); -- add1 then add2
 DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
+DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+
 
 ------------------------------EXECUTE--------------------------------------
 
 ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall);
-ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => rst, F => ExecuteMemoryBufferOUT);
+ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => EMFlush, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeReadData1;
 ExecuteReg2 <= DecodeReadData2;
@@ -481,6 +489,8 @@ ExecuteMemoryBufferIN(7) <= DecodeExecuteBufferOUT(186);
 ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
 ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
+
+EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
 
 ------------------------------MEMORY--------------------------------------
 MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg,FreeProtectedStore => MemoryFreeProtectedStore , MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);
