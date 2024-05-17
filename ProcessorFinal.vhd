@@ -433,11 +433,29 @@ ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeReadData1;
 ExecuteReg2 <= DecodeReadData2;
+ExecuteForwarded_Src_1_EX_MEM <= ExecuteMemoryBufferIN(115 downto 84) when ExecuteMemoryBufferIN(3 downto 2) = "00"
+else ExecuteMemoryBufferIN(77 downto 46);  --(ALU output or IN value from EX MEM buffer)
+ExecuteForwarded_Src_1_MEM_WB <= MemoryWriteBackBufferIN(165 downto 134) when MemoryWriteBackBufferIN(168 downto 167) = "01"
+else MemoryWriteBackBufferIN(133 downto 102) when MemoryWriteBackBufferIN(168 downto 167) = "10"
+else MemoryWriteBackBufferIN(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
+ExecuteForwarded_Src_2_EX_MEM <= ExecuteMemoryBufferIN(115 downto 84) when ExecuteMemoryBufferIN(3 downto 2) = "00"
+else ExecuteMemoryBufferIN(77 downto 46); --(ALU output or IN value from EX MEM buffer)
+ExecuteForwarded_Src_2_MEM_WB <= MemoryWriteBackBufferIN(165 downto 134) when MemoryWriteBackBufferIN(168 downto 167) = "01"
+else MemoryWriteBackBufferIN(133 downto 102) when MemoryWriteBackBufferIN(168 downto 167) = "10"
+else MemoryWriteBackBufferIN(63 downto 32);-- (Memory or ALU or IN value output from MEM WB buffer)
+ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145);
+ExecuteDestination_Reg_EX_MEM <=ExecuteMemoryBufferIN(83 downto 81); --5odha mn el execute memory buffer
+ExecuteDestination_Reg_MEM_WB <=MemoryWriteBackBufferIN (69 downto 67);--5odha mn el memory write back buffer
+ExecuteSrc1_From_ID_EX <= DecodeExecuteBufferIN(202 downto 200);--5odha mn el decode execute buffer
+ExecuteSrc2_From_ID_EX <= DecodeExecuteBufferIN(199 downto 197);--5odha mn el decode execute buffer
+ExecuteWBenable_EX_MEM <= ExecuteMemoryBufferIN(8);--5odha mn el execute memory buffer
+ExecuteWBenable_MEM_WB <= MemoryWriteBackBufferIN(169);--5odha mn el memory write back buffer
+ExecuteWBsource_EX_MEM <= ExecuteMemoryBufferIN(3 downto 2); --5odha mn el execute memory buffer
 --ExecuteForwarded_Src_1_EX_MEM <= 5odha mn el execute memory buffer
 --ExecuteForwarded_Src_1_MEM_WB <= 5odha mn el memory write back buffer
 --ExecuteForwarded_Src_2_EX_MEM <= 5odha mn el execute memory buffer
 --ExecuteForwarded_Src_2_MEM_WB <= 5odha mn el memory write back buffer
-ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145);
+--ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145); bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 --ExecuteDestination_Reg_EX_MEM <= 5odha mn el execute memory buffer
 --ExecuteDestination_Reg_MEM_WB <= 5odha mn el memory write back buffer
 --ExecuteSrc1_From_ID_EX <= 5odha mn el decode execute buffer

@@ -711,11 +711,11 @@ R106
 R12
 R13
 Eproccessorfinal
-Z107 w1715918941
+Z107 w1715919209
 R1
 R2
 R3
-!i122 887
+!i122 888
 R4
 Z108 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProcessorFinal.vhd
 Z109 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProcessorFinal.vhd
@@ -725,9 +725,9 @@ VG@M5H>n;VzCZ5]1:A;:eI1
 !s100 W46l0CUB@[bQD1MWd_Z851
 R7
 32
-Z110 !s110 1715918954
+Z110 !s110 1715919219
 !i10b 1
-Z111 !s108 1715918953.000000
+Z111 !s108 1715919219.000000
 Z112 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProcessorFinal.vhd|
 Z113 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ProcessorFinal.vhd|
 !i113 1
@@ -738,11 +738,11 @@ R1
 R2
 R3
 Z114 DEx4 work 15 proccessorfinal 0 22 G@M5H>n;VzCZ5]1:A;:eI1
-!i122 887
+!i122 888
 l357
-L15 495
-VB1n;b5:5e7K`TC]YiX^VC0
-!s100 KN_kMK96636MBU0NC]5X`0
+L15 513
+VSTXhI0n^jh_NGlm7zRVdz3
+!s100 ZO@NeC5gH8Xl@XX[RJHR73
 R7
 32
 R110
