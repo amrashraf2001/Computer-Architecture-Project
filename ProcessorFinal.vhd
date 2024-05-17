@@ -391,7 +391,7 @@ DecodeExecuteBufferIN(148 downto 145) <= DecodeAluSelector;
 DecodeExecuteBufferIN(144 downto 142) <= DecodeSPPointer;
 DecodeExecuteBufferIN(141) <= DecodeOutEnable;
 DecodeExecuteBufferIN(140 downto 139) <= DecodeWBdatasrc;
-DecodeExecuteBufferIN(138 downto 136) <= DecodeMWrite & DecodeMRead & DecodeRegWrite;
+DecodeExecuteBufferIN(138 downto 136) <= DecodeMRead & DecodeMWrite & DecodeRegWrite;
 DecodeExecuteBufferIN(135 downto 134) <= DecodeCallIntStore;
 DecodeExecuteBufferIN(133 downto 102) <= DecodeReadData1;
 DecodeExecuteBufferIN(101 downto 70) <= DecodeReadData2;
@@ -436,6 +436,36 @@ ExecuteMemoryBufferIN(7) <= DecodeExecuteBufferOUT(186);
 ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
 ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
+
+------------------------------MEMORY--------------------------------------
+MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg, MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);
+MemoryWriteBackBuffer: MemoryWriteBack_Reg port map (A => MemoryWriteBackBufferIN, clk => clk, en => en, rst => rst, F => MemoryWriteBackBufferOUT);
+MemoryWrite <= ExecuteMemoryBufferOUT(9);
+MemoryRead <= ExecuteMemoryBufferOUT(10);
+MemoryEnable <= '1';
+MemoryAddress <= ExecuteMemoryBufferOUT(154 downto 152);
+MemoryCALLIntSTD <= ExecuteMemoryBufferOUT(13 downto 12);
+MemoryRET <= ExecuteMemoryBufferOUT(157 downto 156);
+MemoryALUOut <= ExecuteMemoryBufferOUT(77 downto 46);
+MemoryPCPlus <= ExecuteMemoryBufferOUT(147 downto 116);
+MemorySecondOperand <= ExecuteMemoryBufferOUT(45 downto 14);
+MemorySP <= ExecuteMemoryBufferOUT(6 downto 4);
+MemoryFlagReg <= ExecuteMemoryBufferOUT(151 downto 148);
+MemoryWriteBackBufferIN(172 downto 171) <= ExecuteMemoryBufferOUT(157 downto 156);
+MemoryWriteBackBufferIN(170) <= ExecuteMemoryBufferOUT(155);
+MemoryWriteBackBufferIN(169) <= ExecuteMemoryBufferOUT(8);
+MemoryWriteBackBufferIN(168 downto 167) <= ExecuteMemoryBufferOUT(3 downto 2);
+MemoryWriteBackBufferIN(166) <= ExecuteMemoryBufferOUT(11);
+MemoryWriteBackBufferIN(165 downto 134) <= MemoryOut;
+MemoryWriteBackBufferIN(133 downto 102) <= ExecuteMemoryBufferOUT(77 downto 46);
+MemoryWriteBackBufferIN(101 downto 70) <= ExecuteMemoryBufferOUT(45 downto 14);
+MemoryWriteBackBufferIN(69 downto 64) <= ExecuteMemoryBufferOUT(83 downto 78);
+MemoryWriteBackBufferIN(63 downto 32) <= ExecuteMemoryBufferOUT(115 downto 84);
+MemoryWriteBackBufferIN(31 downto 0) <= ExecuteMemoryBufferOUT(147 downto 116);
+
+------------------------------WRITEBACK--------------------------------------
+WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => "00000", WriteBackAddress2 => "00000", Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
+
 
 END ProccessorFinal_Arch;
 
