@@ -71,11 +71,11 @@ BEGIN
     alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
                  ELSE '0';
 
-    MWrite <= '1' WHEN opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001" -- PUSH, STD , CALL, INT
+    MWrite <= '1' WHEN (opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000"  -- PUSH, STD , CALL, INT
               ELSE '0';
 
 
-    MRead <= '1' WHEN opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010" -- LDD RTI,RET,POP
+    MRead <= '1' WHEN (opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000" -- LDD RTI,RET,POP
              ELSE '0';
 
     SPPointer <= "010" WHEN opcode = "010001" or opcode = "100100" or opcode = "100011" -- POP,RTI,RET
@@ -84,7 +84,7 @@ BEGIN
                --ELSE "010" WHEN opcode = "100100" or opcode = "100011" -- RTI,RET
                --ELSE "011" WHEN opcode = "100010" -- 
                ELSE "100" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH
-               ELSE "101";
+               ELSE "000";
 
     MemAddress <= "000" WHEN opcode(5 downto 1) = "01001" -- LDD,STD
                 ELSE "001" WHEN opcode = "111001" or opcode = "100010" or opcode = "010000" -- INT,CALL,PUSH,CALL

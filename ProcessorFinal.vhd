@@ -123,20 +123,12 @@ COMPONENT WriteBack is
     GENERIC(n : integer :=32);
     Port ( 
         clk : IN STD_LOGIC;
-        reset : IN STD_LOGIC;
+        rst : IN STD_LOGIC;
         ALUout : IN STD_LOGIC_VECTOR(n-1 downto 0);
         data_in : IN STD_LOGIC_VECTOR(n-1 downto 0); -- Input port
         MemoryOut : IN STD_LOGIC_VECTOR(n-1 downto 0);
         WriteBackSource : IN STD_LOGIC_VECTOR(1 downto 0);
-        -- OutPutPort : OUT STD_LOGIC_VECTOR(n-1 downto 0); -- Output port
-        write_enable : in STD_LOGIC;
-        WriteBackAddress1 : out STD_LOGIC_VECTOR(2 downto 0);
-        WriteBackAddress2 : out STD_LOGIC_VECTOR(2 downto 0);
-        Mux_result : OUT STD_LOGIC_VECTOR(n-1 downto 0);
-        OutputPortEnable : OUT STD_LOGIC;-- Output port enable
-        swap : out STD_LOGIC;
-        second_operand : out STD_LOGIC_VECTOR(31 downto 0)
-
+        Mux_result : OUT STD_LOGIC_VECTOR(n-1 downto 0)
     );
 end COMPONENT;
 
@@ -497,6 +489,7 @@ MemoryPCPlus <= ExecuteMemoryBufferOUT(147 downto 116);
 MemorySecondOperand <= ExecuteMemoryBufferOUT(45 downto 14);
 MemorySP <= ExecuteMemoryBufferOUT(6 downto 4);
 MemoryFlagReg <= ExecuteMemoryBufferOUT(151 downto 148);
+MemoryFreeProtectedStore <= ExecuteMemoryBufferOUT(1 downto 0);
 MemoryWriteBackBufferIN(172 downto 171) <= ExecuteMemoryBufferOUT(157 downto 156);
 MemoryWriteBackBufferIN(170) <= ExecuteMemoryBufferOUT(155);
 MemoryWriteBackBufferIN(169) <= ExecuteMemoryBufferOUT(8);
@@ -511,7 +504,7 @@ MemoryWriteBackBufferIN(31 downto 0) <= ExecuteMemoryBufferOUT(147 downto 116);
 MWFlush <= '1' when rst = '1' else '0';
 
 ------------------------------WRITEBACK--------------------------------------
-WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => WriteBackAddress1Value, WriteBackAddress2 => WriteBackAddress2Value, Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
+WriteBackStage: WriteBack port map (clk => clk, rst => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, Mux_result => WriteBackMux_result);
 WriteBackALUout <= MemoryWriteBackBufferOUT(133 downto 102);
 WriteBackData_in <= MemoryWriteBackBufferOUT(63 downto 32);
 WriteBackMemoryOut <= MemoryWriteBackBufferOUT(165 downto 134);
