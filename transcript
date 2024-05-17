@@ -100,3 +100,4 @@ vsim -gui work.proccessorfinal
 quit -sim
 # End time: 05:45:24 on May 17,2024, Elapsed time: 0:00:20
 # Errors: 0, Warnings: 14
+# Compile of ProcessorFinal.vhd was successful.

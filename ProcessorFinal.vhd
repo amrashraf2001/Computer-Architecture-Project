@@ -344,12 +344,23 @@ SIGNAL WriteBackSecond_operand : std_logic_vector(31 downto 0);
 SIGNAL WriteBackAddress1 : std_logic_vector(2 downto 0);
 SIGNAL WriteBackAddress2 : std_logic_vector(2 downto 0);
 
+----------------------------VARIABLES----------------------------
+SIGNAL FirstMuxResult : std_logic_vector(31 downto 0);
+SIGNAL SecondMuxResult : std_logic_vector(31 downto 0);
+
 
 BEGIN
 --------------------------PIPELINE-BUFFERS--------------------------
 ------------------------------FETCH--------------------------------------
 -- TODO: do not forget to handle the branching
---FetchBranchingAddress <= bla bla blaa
+FirstMuxResult <= DecodeReadData1 when ExecuteMemoryBufferOUT(157 downto 156) /= "01" and ExecuteMemoryBufferOUT(157 downto 156) /= "10"
+else MemoryOut when ExecuteMemoryBufferOUT(157 downto 156) = "01" or ExecuteMemoryBufferOUT(157 downto 156) = "10"
+else DecodeReadData1;
+SecondMuxResult <= FirstMuxResult when ExecuteNotTakenWrongBranch = '0' and ExecuteTakenWrongBranch = '0'
+else DecodeExecuteBufferOUT(31 downto 0) when ExecuteNotTakenWrongBranch = '0' and ExecuteTakenWrongBranch = '1'
+else DecodeExecuteBufferOUT(133 downto 102) when ExecuteNotTakenWrongBranch = '1' and ExecuteTakenWrongBranch = '0'
+else DecodeReadData1;
+FetchBranchingAddress <= SecondMuxResult;
 --FetchBranchingSel <= bla bla blaa
 --FetchExceptionSel <= bla bla blaa
 --FetchStall <= bla bla blaa
