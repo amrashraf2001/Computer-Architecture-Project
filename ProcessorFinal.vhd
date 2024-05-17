@@ -244,7 +244,7 @@ SIGNAL FetchBranchingAddress : std_logic_vector(31 downto 0);
 SIGNAL FetchINT : std_logic;
 SIGNAL FetchBranchingSel : std_logic;
 SIGNAL FetchExceptionSel : std_logic;
-SIGNAL FetchStall : std_logic;
+SIGNAL FetchStall : std_logic:='0';
 SIGNAL FetchDataOut : std_logic_vector(15 downto 0);
 SIGNAL FetchPCPlus : std_logic_vector(31 downto 0);
 SIGNAL FetchWrongAddress : std_logic;

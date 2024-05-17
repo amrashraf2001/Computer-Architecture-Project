@@ -42,6 +42,7 @@ begin
         else "00000000000000000000111111111100" when branchingSel = '0' and exceptionSel = '1'
         else branchingAddress when branchingSel = '1' and exceptionSel = '0' and stall = '0'
         else "00000000000000000000111111111100" when exceptionSel = '1' and branchingSel = '1' 
+        else instruction when rst ='1'
         else std_logic_vector(unsigned(pcOut));
 
     dataout <= instruction when (stall = '0' and interrupt = '0') 
