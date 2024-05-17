@@ -7355,3 +7355,813 @@ run
 #    Time: 1600 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 1600 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+quit -sim
+# End time: 23:21:39 on May 17,2024, Elapsed time: 0:15:33
+# Errors: 0, Warnings: 17
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd failed with 1 errors.
+# Compile of Controller.vhd was successful.
+# Compile of Controller.vhd was successful.
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 23:40:20 on May 17,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+quit -sim
+# End time: 23:41:24 on May 17,2024, Elapsed time: 0:01:04
+# Errors: 0, Warnings: 10
+# Compile of my_DFF.vhd was successful.
+# Compile of ProcessorFinal.vhd was successful.
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 23:49:30 on May 17,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# Loading work.my_dff(a_my_dff)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /proccessorfinal/FetchStage/IM1/ram
+add wave -position insertpoint  \
+sim:/proccessorfinal/N \
+sim:/proccessorfinal/clk \
+sim:/proccessorfinal/en \
+sim:/proccessorfinal/rst \
+sim:/proccessorfinal/InPort \
+sim:/proccessorfinal/OutPort \
+sim:/proccessorfinal/FetchDecodeBufferIN \
+sim:/proccessorfinal/FetchDecodeBufferOUT \
+sim:/proccessorfinal/FetchBranchingAddress \
+sim:/proccessorfinal/FetchINT \
+sim:/proccessorfinal/FetchBranchingSel \
+sim:/proccessorfinal/FetchExceptionSel \
+sim:/proccessorfinal/FetchStall \
+sim:/proccessorfinal/FetchDataOut \
+sim:/proccessorfinal/FetchPCPlus \
+sim:/proccessorfinal/FetchWrongAddress \
+sim:/proccessorfinal/DecodeExecuteBufferIN \
+sim:/proccessorfinal/DecodeExecuteBufferOUT \
+sim:/proccessorfinal/DecodeWriteBackEnable \
+sim:/proccessorfinal/DecodePredictorEnable \
+sim:/proccessorfinal/DecodeInstruction \
+sim:/proccessorfinal/DecodeWritePort1 \
+sim:/proccessorfinal/DecodeWritePort2 \
+sim:/proccessorfinal/DecodeWriteAdd1 \
+sim:/proccessorfinal/DecodeWriteAdd2 \
+sim:/proccessorfinal/DecodeFlush \
+sim:/proccessorfinal/DecodeSwaped \
+sim:/proccessorfinal/DecodeImmediateValue \
+sim:/proccessorfinal/DecodeReadData1 \
+sim:/proccessorfinal/DecodeReadData2 \
+sim:/proccessorfinal/DecodeAluSelector \
+sim:/proccessorfinal/DecodeBranching \
+sim:/proccessorfinal/DecodeAluSource \
+sim:/proccessorfinal/DecodeMWrite \
+sim:/proccessorfinal/DecodeMRead \
+sim:/proccessorfinal/DecodeWBdatasrc \
+sim:/proccessorfinal/DecodeRegWrite \
+sim:/proccessorfinal/DecodeSPPointer \
+sim:/proccessorfinal/DecodeOutEnable \
+sim:/proccessorfinal/DecodeInterruptSignal \
+sim:/proccessorfinal/DecodePcSource \
+sim:/proccessorfinal/DecodeRtiSignal \
+sim:/proccessorfinal/DecodeFreeProtectStore \
+sim:/proccessorfinal/DecodeSwap \
+sim:/proccessorfinal/DecodeMemAddress \
+sim:/proccessorfinal/DecodeRet \
+sim:/proccessorfinal/DecodeCallIntStore \
+sim:/proccessorfinal/DecodeFlushOut \
+sim:/proccessorfinal/DecodePredictorValue \
+sim:/proccessorfinal/DecodeSrcAdd1 \
+sim:/proccessorfinal/DecodeSrcAdd2 \
+sim:/proccessorfinal/ExecuteMemoryBufferIN \
+sim:/proccessorfinal/ExecuteMemoryBufferOUT \
+sim:/proccessorfinal/ExecuteOpcode \
+sim:/proccessorfinal/ExecuteReg1 \
+sim:/proccessorfinal/ExecuteReg2 \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_MEM_WB \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_MEM_WB \
+sim:/proccessorfinal/ExecuteALU_selector \
+sim:/proccessorfinal/ExecuteDestination_Reg_EX_MEM \
+sim:/proccessorfinal/ExecuteDestination_Reg_MEM_WB \
+sim:/proccessorfinal/ExecuteSrc1_From_ID_EX \
+sim:/proccessorfinal/ExecuteSrc2_From_ID_EX \
+sim:/proccessorfinal/ExecuteWBenable_EX_MEM \
+sim:/proccessorfinal/ExecuteWBenable_MEM_WB \
+sim:/proccessorfinal/ExecuteWBsource_EX_MEM \
+sim:/proccessorfinal/ExecuteSwap \
+sim:/proccessorfinal/ExecutePredictorIn \
+sim:/proccessorfinal/ExecuteALUout \
+sim:/proccessorfinal/ExecuteFlagReg_out \
+sim:/proccessorfinal/ExecuteFlushOut \
+sim:/proccessorfinal/ExecuteNotTakenWrongBranch \
+sim:/proccessorfinal/ExecuteTakenWrongBranch \
+sim:/proccessorfinal/ExecuteStall \
+sim:/proccessorfinal/MemoryWriteBackBufferIN \
+sim:/proccessorfinal/MemoryWriteBackBufferOUT \
+sim:/proccessorfinal/MemoryWrite \
+sim:/proccessorfinal/MemoryRead \
+sim:/proccessorfinal/MemoryEnable \
+sim:/proccessorfinal/MemoryAddress \
+sim:/proccessorfinal/MemoryCALLIntSTD \
+sim:/proccessorfinal/MemoryRET \
+sim:/proccessorfinal/MemoryALUOut \
+sim:/proccessorfinal/MemoryPCPlus \
+sim:/proccessorfinal/MemorySecondOperand \
+sim:/proccessorfinal/MemorySP \
+sim:/proccessorfinal/MemoryFlagReg \
+sim:/proccessorfinal/MemoryFreeProtectedStore \
+sim:/proccessorfinal/MemoryOut \
+sim:/proccessorfinal/MemoryWrongAddress \
+sim:/proccessorfinal/MemoryFlushAllBack \
+sim:/proccessorfinal/MemoryFlushINT_RTI \
+sim:/proccessorfinal/MemoryINTDetected \
+sim:/proccessorfinal/MemoryFlagRegOut \
+sim:/proccessorfinal/WriteBackALUout \
+sim:/proccessorfinal/WriteBackData_in \
+sim:/proccessorfinal/WriteBackMemoryOut \
+sim:/proccessorfinal/WriteBackWriteBackSource \
+sim:/proccessorfinal/WriteBackWrite_enable \
+sim:/proccessorfinal/WriteBackMux_result \
+sim:/proccessorfinal/WriteBackOutputPortEnable \
+sim:/proccessorfinal/WriteBackSwap \
+sim:/proccessorfinal/WriteBackSecond_operand \
+sim:/proccessorfinal/WriteBackAddress1Value \
+sim:/proccessorfinal/WriteBackAddress2Value \
+sim:/proccessorfinal/FirstMuxResult \
+sim:/proccessorfinal/SecondMuxResult \
+sim:/proccessorfinal/FDFlush \
+sim:/proccessorfinal/DEFlush \
+sim:/proccessorfinal/EMFlush \
+sim:/proccessorfinal/MWFlush \
+sim:/proccessorfinal/InPortValue
+force -freeze sim:/proccessorfinal/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/proccessorfinal/en 1 0
+force -freeze sim:/proccessorfinal/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/FetchStage/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/FetchStage/IM1
+force -freeze sim:/proccessorfinal/rst 0 0
+run
+run
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000000101 0
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000001010 0
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 23:58:53 on May 17,2024, Elapsed time: 0:09:23
+# Errors: 0, Warnings: 12
+# Compile of ProcessorFinal.vhd was successful.
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 23:59:35 on May 17,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# Loading work.my_dff(a_my_dff)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /proccessorfinal/FetchStage/IM1/ram
+add wave -position insertpoint  \
+sim:/proccessorfinal/N \
+sim:/proccessorfinal/clk \
+sim:/proccessorfinal/en \
+sim:/proccessorfinal/rst \
+sim:/proccessorfinal/InPort \
+sim:/proccessorfinal/OutPort \
+sim:/proccessorfinal/FetchDecodeBufferIN \
+sim:/proccessorfinal/FetchDecodeBufferOUT \
+sim:/proccessorfinal/FetchBranchingAddress \
+sim:/proccessorfinal/FetchINT \
+sim:/proccessorfinal/FetchBranchingSel \
+sim:/proccessorfinal/FetchExceptionSel \
+sim:/proccessorfinal/FetchStall \
+sim:/proccessorfinal/FetchDataOut \
+sim:/proccessorfinal/FetchPCPlus \
+sim:/proccessorfinal/FetchWrongAddress \
+sim:/proccessorfinal/DecodeExecuteBufferIN \
+sim:/proccessorfinal/DecodeExecuteBufferOUT \
+sim:/proccessorfinal/DecodeWriteBackEnable \
+sim:/proccessorfinal/DecodePredictorEnable \
+sim:/proccessorfinal/DecodeInstruction \
+sim:/proccessorfinal/DecodeWritePort1 \
+sim:/proccessorfinal/DecodeWritePort2 \
+sim:/proccessorfinal/DecodeWriteAdd1 \
+sim:/proccessorfinal/DecodeWriteAdd2 \
+sim:/proccessorfinal/DecodeFlush \
+sim:/proccessorfinal/DecodeSwaped \
+sim:/proccessorfinal/DecodeImmediateValue \
+sim:/proccessorfinal/DecodeReadData1 \
+sim:/proccessorfinal/DecodeReadData2 \
+sim:/proccessorfinal/DecodeAluSelector \
+sim:/proccessorfinal/DecodeBranching \
+sim:/proccessorfinal/DecodeAluSource \
+sim:/proccessorfinal/DecodeMWrite \
+sim:/proccessorfinal/DecodeMRead \
+sim:/proccessorfinal/DecodeWBdatasrc \
+sim:/proccessorfinal/DecodeRegWrite \
+sim:/proccessorfinal/DecodeSPPointer \
+sim:/proccessorfinal/DecodeOutEnable \
+sim:/proccessorfinal/DecodeInterruptSignal \
+sim:/proccessorfinal/DecodePcSource \
+sim:/proccessorfinal/DecodeRtiSignal \
+sim:/proccessorfinal/DecodeFreeProtectStore \
+sim:/proccessorfinal/DecodeSwap \
+sim:/proccessorfinal/DecodeMemAddress \
+sim:/proccessorfinal/DecodeRet \
+sim:/proccessorfinal/DecodeCallIntStore \
+sim:/proccessorfinal/DecodeFlushOut \
+sim:/proccessorfinal/DecodePredictorValue \
+sim:/proccessorfinal/DecodeSrcAdd1 \
+sim:/proccessorfinal/DecodeSrcAdd2 \
+sim:/proccessorfinal/ExecuteMemoryBufferIN \
+sim:/proccessorfinal/ExecuteMemoryBufferOUT \
+sim:/proccessorfinal/ExecuteOpcode \
+sim:/proccessorfinal/ExecuteReg1 \
+sim:/proccessorfinal/ExecuteReg2 \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_MEM_WB \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_MEM_WB \
+sim:/proccessorfinal/ExecuteALU_selector \
+sim:/proccessorfinal/ExecuteDestination_Reg_EX_MEM \
+sim:/proccessorfinal/ExecuteDestination_Reg_MEM_WB \
+sim:/proccessorfinal/ExecuteSrc1_From_ID_EX \
+sim:/proccessorfinal/ExecuteSrc2_From_ID_EX \
+sim:/proccessorfinal/ExecuteWBenable_EX_MEM \
+sim:/proccessorfinal/ExecuteWBenable_MEM_WB \
+sim:/proccessorfinal/ExecuteWBsource_EX_MEM \
+sim:/proccessorfinal/ExecuteSwap \
+sim:/proccessorfinal/ExecutePredictorIn \
+sim:/proccessorfinal/ExecuteALUout \
+sim:/proccessorfinal/ExecuteFlagReg_out \
+sim:/proccessorfinal/ExecuteFlushOut \
+sim:/proccessorfinal/ExecuteNotTakenWrongBranch \
+sim:/proccessorfinal/ExecuteTakenWrongBranch \
+sim:/proccessorfinal/ExecuteStall \
+sim:/proccessorfinal/MemoryWriteBackBufferIN \
+sim:/proccessorfinal/MemoryWriteBackBufferOUT \
+sim:/proccessorfinal/MemoryWrite \
+sim:/proccessorfinal/MemoryRead \
+sim:/proccessorfinal/MemoryEnable \
+sim:/proccessorfinal/MemoryAddress \
+sim:/proccessorfinal/MemoryCALLIntSTD \
+sim:/proccessorfinal/MemoryRET \
+sim:/proccessorfinal/MemoryALUOut \
+sim:/proccessorfinal/MemoryPCPlus \
+sim:/proccessorfinal/MemorySecondOperand \
+sim:/proccessorfinal/MemorySP \
+sim:/proccessorfinal/MemoryFlagReg \
+sim:/proccessorfinal/MemoryFreeProtectedStore \
+sim:/proccessorfinal/MemoryOut \
+sim:/proccessorfinal/MemoryWrongAddress \
+sim:/proccessorfinal/MemoryFlushAllBack \
+sim:/proccessorfinal/MemoryFlushINT_RTI \
+sim:/proccessorfinal/MemoryINTDetected \
+sim:/proccessorfinal/MemoryFlagRegOut \
+sim:/proccessorfinal/WriteBackALUout \
+sim:/proccessorfinal/WriteBackData_in \
+sim:/proccessorfinal/WriteBackMemoryOut \
+sim:/proccessorfinal/WriteBackWriteBackSource \
+sim:/proccessorfinal/WriteBackWrite_enable \
+sim:/proccessorfinal/WriteBackMux_result \
+sim:/proccessorfinal/WriteBackOutputPortEnable \
+sim:/proccessorfinal/WriteBackSwap \
+sim:/proccessorfinal/WriteBackSecond_operand \
+sim:/proccessorfinal/WriteBackAddress1Value \
+sim:/proccessorfinal/WriteBackAddress2Value \
+sim:/proccessorfinal/FirstMuxResult \
+sim:/proccessorfinal/SecondMuxResult \
+sim:/proccessorfinal/FDFlush \
+sim:/proccessorfinal/DEFlush \
+sim:/proccessorfinal/EMFlush \
+sim:/proccessorfinal/MWFlush \
+sim:/proccessorfinal/InPortValue \
+sim:/proccessorfinal/OutPortValue
+force -freeze sim:/proccessorfinal/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/proccessorfinal/en 1 0
+force -freeze sim:/proccessorfinal/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/FetchStage/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/FetchStage/IM1
+force -freeze sim:/proccessorfinal/rst 0 0
+run
+run
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000000101 0
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000001010 0
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 00:02:52 on May 18,2024, Elapsed time: 0:03:17
+# Errors: 0, Warnings: 10
+# Compile of my_DFF.vhd was successful.
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 00:04:02 on May 18,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# Loading work.my_dff(a_my_dff)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /proccessorfinal/FetchStage/IM1/ram
+add wave -position insertpoint  \
+sim:/proccessorfinal/N \
+sim:/proccessorfinal/clk \
+sim:/proccessorfinal/en \
+sim:/proccessorfinal/rst \
+sim:/proccessorfinal/InPort \
+sim:/proccessorfinal/OutPort \
+sim:/proccessorfinal/FetchDecodeBufferIN \
+sim:/proccessorfinal/FetchDecodeBufferOUT \
+sim:/proccessorfinal/FetchBranchingAddress \
+sim:/proccessorfinal/FetchINT \
+sim:/proccessorfinal/FetchBranchingSel \
+sim:/proccessorfinal/FetchExceptionSel \
+sim:/proccessorfinal/FetchStall \
+sim:/proccessorfinal/FetchDataOut \
+sim:/proccessorfinal/FetchPCPlus \
+sim:/proccessorfinal/FetchWrongAddress \
+sim:/proccessorfinal/DecodeExecuteBufferIN \
+sim:/proccessorfinal/DecodeExecuteBufferOUT \
+sim:/proccessorfinal/DecodeWriteBackEnable \
+sim:/proccessorfinal/DecodePredictorEnable \
+sim:/proccessorfinal/DecodeInstruction \
+sim:/proccessorfinal/DecodeWritePort1 \
+sim:/proccessorfinal/DecodeWritePort2 \
+sim:/proccessorfinal/DecodeWriteAdd1 \
+sim:/proccessorfinal/DecodeWriteAdd2 \
+sim:/proccessorfinal/DecodeFlush \
+sim:/proccessorfinal/DecodeSwaped \
+sim:/proccessorfinal/DecodeImmediateValue \
+sim:/proccessorfinal/DecodeReadData1 \
+sim:/proccessorfinal/DecodeReadData2 \
+sim:/proccessorfinal/DecodeAluSelector \
+sim:/proccessorfinal/DecodeBranching \
+sim:/proccessorfinal/DecodeAluSource \
+sim:/proccessorfinal/DecodeMWrite \
+sim:/proccessorfinal/DecodeMRead \
+sim:/proccessorfinal/DecodeWBdatasrc \
+sim:/proccessorfinal/DecodeRegWrite \
+sim:/proccessorfinal/DecodeSPPointer \
+sim:/proccessorfinal/DecodeOutEnable \
+sim:/proccessorfinal/DecodeInterruptSignal \
+sim:/proccessorfinal/DecodePcSource \
+sim:/proccessorfinal/DecodeRtiSignal \
+sim:/proccessorfinal/DecodeFreeProtectStore \
+sim:/proccessorfinal/DecodeSwap \
+sim:/proccessorfinal/DecodeMemAddress \
+sim:/proccessorfinal/DecodeRet \
+sim:/proccessorfinal/DecodeCallIntStore \
+sim:/proccessorfinal/DecodeFlushOut \
+sim:/proccessorfinal/DecodePredictorValue \
+sim:/proccessorfinal/DecodeSrcAdd1 \
+sim:/proccessorfinal/DecodeSrcAdd2 \
+sim:/proccessorfinal/ExecuteMemoryBufferIN \
+sim:/proccessorfinal/ExecuteMemoryBufferOUT \
+sim:/proccessorfinal/ExecuteOpcode \
+sim:/proccessorfinal/ExecuteReg1 \
+sim:/proccessorfinal/ExecuteReg2 \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_MEM_WB \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_MEM_WB \
+sim:/proccessorfinal/ExecuteALU_selector \
+sim:/proccessorfinal/ExecuteDestination_Reg_EX_MEM \
+sim:/proccessorfinal/ExecuteDestination_Reg_MEM_WB \
+sim:/proccessorfinal/ExecuteSrc1_From_ID_EX \
+sim:/proccessorfinal/ExecuteSrc2_From_ID_EX \
+sim:/proccessorfinal/ExecuteWBenable_EX_MEM \
+sim:/proccessorfinal/ExecuteWBenable_MEM_WB \
+sim:/proccessorfinal/ExecuteWBsource_EX_MEM \
+sim:/proccessorfinal/ExecuteSwap \
+sim:/proccessorfinal/ExecutePredictorIn \
+sim:/proccessorfinal/ExecuteALUout \
+sim:/proccessorfinal/ExecuteFlagReg_out \
+sim:/proccessorfinal/ExecuteFlushOut \
+sim:/proccessorfinal/ExecuteNotTakenWrongBranch \
+sim:/proccessorfinal/ExecuteTakenWrongBranch \
+sim:/proccessorfinal/ExecuteStall \
+sim:/proccessorfinal/MemoryWriteBackBufferIN \
+sim:/proccessorfinal/MemoryWriteBackBufferOUT \
+sim:/proccessorfinal/MemoryWrite \
+sim:/proccessorfinal/MemoryRead \
+sim:/proccessorfinal/MemoryEnable \
+sim:/proccessorfinal/MemoryAddress \
+sim:/proccessorfinal/MemoryCALLIntSTD \
+sim:/proccessorfinal/MemoryRET \
+sim:/proccessorfinal/MemoryALUOut \
+sim:/proccessorfinal/MemoryPCPlus \
+sim:/proccessorfinal/MemorySecondOperand \
+sim:/proccessorfinal/MemorySP \
+sim:/proccessorfinal/MemoryFlagReg \
+sim:/proccessorfinal/MemoryFreeProtectedStore \
+sim:/proccessorfinal/MemoryOut \
+sim:/proccessorfinal/MemoryWrongAddress \
+sim:/proccessorfinal/MemoryFlushAllBack \
+sim:/proccessorfinal/MemoryFlushINT_RTI \
+sim:/proccessorfinal/MemoryINTDetected \
+sim:/proccessorfinal/MemoryFlagRegOut \
+sim:/proccessorfinal/WriteBackALUout \
+sim:/proccessorfinal/WriteBackData_in \
+sim:/proccessorfinal/WriteBackMemoryOut \
+sim:/proccessorfinal/WriteBackWriteBackSource \
+sim:/proccessorfinal/WriteBackWrite_enable \
+sim:/proccessorfinal/WriteBackMux_result \
+sim:/proccessorfinal/WriteBackOutputPortEnable \
+sim:/proccessorfinal/WriteBackSwap \
+sim:/proccessorfinal/WriteBackSecond_operand \
+sim:/proccessorfinal/WriteBackAddress1Value \
+sim:/proccessorfinal/WriteBackAddress2Value \
+sim:/proccessorfinal/FirstMuxResult \
+sim:/proccessorfinal/SecondMuxResult \
+sim:/proccessorfinal/FDFlush \
+sim:/proccessorfinal/DEFlush \
+sim:/proccessorfinal/EMFlush \
+sim:/proccessorfinal/MWFlush \
+sim:/proccessorfinal/InPortValue \
+sim:/proccessorfinal/OutPortValue
+force -freeze sim:/proccessorfinal/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/proccessorfinal/en 1 0
+force -freeze sim:/proccessorfinal/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/FetchStage/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/FetchStage/IM1
+force -freeze sim:/proccessorfinal/rst 0 0
+run
+run
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000000101 0
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000001010 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1350 ps  Iteration: 3  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1350 ps  Iteration: 3  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1400 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1400 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+quit -sim
+# End time: 00:10:40 on May 18,2024, Elapsed time: 0:06:38
+# Errors: 0, Warnings: 14
+# Compile of ProcessorFinal.vhd was successful.
+vsim -gui work.proccessorfinal
+# vsim -gui work.proccessorfinal 
+# Start time: 00:11:43 on May 18,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.proccessorfinal(proccessorfinal_arch)
+# Loading work.fetch(fetch_arch)
+# Loading work.pc(pc_arch)
+# Loading ieee.math_real(body)
+# Loading work.instruction_memory(instruction_memory_architecture)
+# Loading work.fetchdecode_reg(fetchdecode_reg)
+# Loading work.decode(decode_arch)
+# Loading work.controller(controller_arch)
+# Loading work.regfile(regfile_architecture)
+# Loading work.predictorreg(predictorreg_arch)
+# Loading work.decodeexecute_reg(decodeexecute_reg)
+# Loading work.execute(execute_arch)
+# Loading work.alu(struct)
+# Loading work.flagreg(flagreg_arch)
+# Loading work.forwardingunit(fu_arch)
+# Loading work.executememory_reg(executememory_reg)
+# Loading work.memory(memory_architecture)
+# Loading work.data_memory(data_memory_architecture)
+# Loading work.stackreg(stackreg_arch)
+# Loading work.protectedflagreg(protectedflags_architecture)
+# Loading work.memorywriteback_reg(memorywriteback_reg)
+# Loading work.writeback(writeback_arch)
+# Loading work.my_dff(a_my_dff)
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/DecodeStage/rtisignal has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /proccessorfinal/ExecuteStage/stalling has no driver.
+# This port will contribute value (U) to the signal network.
+mem load -i {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/TestCase.mem} /proccessorfinal/FetchStage/IM1/ram
+add wave -position insertpoint  \
+sim:/proccessorfinal/N \
+sim:/proccessorfinal/clk \
+sim:/proccessorfinal/en \
+sim:/proccessorfinal/rst \
+sim:/proccessorfinal/InPort \
+sim:/proccessorfinal/OutPort \
+sim:/proccessorfinal/FetchDecodeBufferIN \
+sim:/proccessorfinal/FetchDecodeBufferOUT \
+sim:/proccessorfinal/FetchBranchingAddress \
+sim:/proccessorfinal/FetchINT \
+sim:/proccessorfinal/FetchBranchingSel \
+sim:/proccessorfinal/FetchExceptionSel \
+sim:/proccessorfinal/FetchStall \
+sim:/proccessorfinal/FetchDataOut \
+sim:/proccessorfinal/FetchPCPlus \
+sim:/proccessorfinal/FetchWrongAddress \
+sim:/proccessorfinal/DecodeExecuteBufferIN \
+sim:/proccessorfinal/DecodeExecuteBufferOUT \
+sim:/proccessorfinal/DecodeWriteBackEnable \
+sim:/proccessorfinal/DecodePredictorEnable \
+sim:/proccessorfinal/DecodeInstruction \
+sim:/proccessorfinal/DecodeWritePort1 \
+sim:/proccessorfinal/DecodeWritePort2 \
+sim:/proccessorfinal/DecodeWriteAdd1 \
+sim:/proccessorfinal/DecodeWriteAdd2 \
+sim:/proccessorfinal/DecodeFlush \
+sim:/proccessorfinal/DecodeSwaped \
+sim:/proccessorfinal/DecodeImmediateValue \
+sim:/proccessorfinal/DecodeReadData1 \
+sim:/proccessorfinal/DecodeReadData2 \
+sim:/proccessorfinal/DecodeAluSelector \
+sim:/proccessorfinal/DecodeBranching \
+sim:/proccessorfinal/DecodeAluSource \
+sim:/proccessorfinal/DecodeMWrite \
+sim:/proccessorfinal/DecodeMRead \
+sim:/proccessorfinal/DecodeWBdatasrc \
+sim:/proccessorfinal/DecodeRegWrite \
+sim:/proccessorfinal/DecodeSPPointer \
+sim:/proccessorfinal/DecodeOutEnable \
+sim:/proccessorfinal/DecodeInterruptSignal \
+sim:/proccessorfinal/DecodePcSource \
+sim:/proccessorfinal/DecodeRtiSignal \
+sim:/proccessorfinal/DecodeFreeProtectStore \
+sim:/proccessorfinal/DecodeSwap \
+sim:/proccessorfinal/DecodeMemAddress \
+sim:/proccessorfinal/DecodeRet \
+sim:/proccessorfinal/DecodeCallIntStore \
+sim:/proccessorfinal/DecodeFlushOut \
+sim:/proccessorfinal/DecodePredictorValue \
+sim:/proccessorfinal/DecodeSrcAdd1 \
+sim:/proccessorfinal/DecodeSrcAdd2 \
+sim:/proccessorfinal/ExecuteMemoryBufferIN \
+sim:/proccessorfinal/ExecuteMemoryBufferOUT \
+sim:/proccessorfinal/ExecuteOpcode \
+sim:/proccessorfinal/ExecuteReg1 \
+sim:/proccessorfinal/ExecuteReg2 \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_1_MEM_WB \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_EX_MEM \
+sim:/proccessorfinal/ExecuteForwarded_Src_2_MEM_WB \
+sim:/proccessorfinal/ExecuteALU_selector \
+sim:/proccessorfinal/ExecuteDestination_Reg_EX_MEM \
+sim:/proccessorfinal/ExecuteDestination_Reg_MEM_WB \
+sim:/proccessorfinal/ExecuteSrc1_From_ID_EX \
+sim:/proccessorfinal/ExecuteSrc2_From_ID_EX \
+sim:/proccessorfinal/ExecuteWBenable_EX_MEM \
+sim:/proccessorfinal/ExecuteWBenable_MEM_WB \
+sim:/proccessorfinal/ExecuteWBsource_EX_MEM \
+sim:/proccessorfinal/ExecuteSwap \
+sim:/proccessorfinal/ExecutePredictorIn \
+sim:/proccessorfinal/ExecuteALUout \
+sim:/proccessorfinal/ExecuteFlagReg_out \
+sim:/proccessorfinal/ExecuteFlushOut \
+sim:/proccessorfinal/ExecuteNotTakenWrongBranch \
+sim:/proccessorfinal/ExecuteTakenWrongBranch \
+sim:/proccessorfinal/ExecuteStall \
+sim:/proccessorfinal/MemoryWriteBackBufferIN \
+sim:/proccessorfinal/MemoryWriteBackBufferOUT \
+sim:/proccessorfinal/MemoryWrite \
+sim:/proccessorfinal/MemoryRead \
+sim:/proccessorfinal/MemoryEnable \
+sim:/proccessorfinal/MemoryAddress \
+sim:/proccessorfinal/MemoryCALLIntSTD \
+sim:/proccessorfinal/MemoryRET \
+sim:/proccessorfinal/MemoryALUOut \
+sim:/proccessorfinal/MemoryPCPlus \
+sim:/proccessorfinal/MemorySecondOperand \
+sim:/proccessorfinal/MemorySP \
+sim:/proccessorfinal/MemoryFlagReg \
+sim:/proccessorfinal/MemoryFreeProtectedStore \
+sim:/proccessorfinal/MemoryOut \
+sim:/proccessorfinal/MemoryWrongAddress \
+sim:/proccessorfinal/MemoryFlushAllBack \
+sim:/proccessorfinal/MemoryFlushINT_RTI \
+sim:/proccessorfinal/MemoryINTDetected \
+sim:/proccessorfinal/MemoryFlagRegOut \
+sim:/proccessorfinal/WriteBackALUout \
+sim:/proccessorfinal/WriteBackData_in \
+sim:/proccessorfinal/WriteBackMemoryOut \
+sim:/proccessorfinal/WriteBackWriteBackSource \
+sim:/proccessorfinal/WriteBackWrite_enable \
+sim:/proccessorfinal/WriteBackMux_result \
+sim:/proccessorfinal/WriteBackOutputPortEnable \
+sim:/proccessorfinal/WriteBackSwap \
+sim:/proccessorfinal/WriteBackSecond_operand \
+sim:/proccessorfinal/WriteBackAddress1Value \
+sim:/proccessorfinal/WriteBackAddress2Value \
+sim:/proccessorfinal/FirstMuxResult \
+sim:/proccessorfinal/SecondMuxResult \
+sim:/proccessorfinal/FDFlush \
+sim:/proccessorfinal/DEFlush \
+sim:/proccessorfinal/EMFlush \
+sim:/proccessorfinal/MWFlush \
+sim:/proccessorfinal/InPortValue \
+sim:/proccessorfinal/OutPortValue
+force -freeze sim:/proccessorfinal/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/proccessorfinal/en 1 0
+force -freeze sim:/proccessorfinal/rst 1 0
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /proccessorfinal/FetchStage/IM1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /proccessorfinal/FetchStage/IM1
+force -freeze sim:/proccessorfinal/rst 0 0
+run
+run
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000000101 0
+run
+force -freeze sim:/proccessorfinal/InPort 00000000000000000000000000001010 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1350 ps  Iteration: 3  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1350 ps  Iteration: 3  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1400 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1400 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1500 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 1500 ps  Iteration: 1  Instance: /proccessorfinal/DecodeStage/RegFile1
+run

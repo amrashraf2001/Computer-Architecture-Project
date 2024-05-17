@@ -28,7 +28,7 @@ ARCHITECTURE Controller_Arch OF Controller IS
 BEGIN
 
     OutEnable <= '1' when opcode = "110001" else '0';
-    RegWrite <= '1' WHEN opcode = "000100" or
+    RegWrite <= '1' WHEN (opcode = "000100" or
                         (opcode(5 downto 4) = "00" and opcode(3 downto 0) /= "1011") or 
                         opcode(5 downto 0) = "010001" or 
                         opcode(5 downto 0) = "010010" or
@@ -36,12 +36,13 @@ BEGIN
                         opcode(5 downto 0) = "110110" or
                         opcode(5 downto 0) = "111000" or
                         opcode(5 downto 0) = "110111" or
-                        opcode(5 downto 0) = "110010" or
-                        opcode(5 downto 0) /= "110000" 
+                        opcode(5 downto 0) = "110010") and
+                        (opcode(5 downto 0) /= "110000" ) and
+                        (opcode(5 downto 0) /= "110001" )
                 ELSE '0';
                     
 
-    WBdatasrc <= "10" WHEN opcode(5 downto 4) = "00" or opcode = "110101" or opcode = "110110" or opcode = "110111"
+    WBdatasrc <= "10" WHEN opcode(5 downto 4) = "00" or opcode = "110101" or opcode = "110110" or opcode = "110111" or opcode = "110001"
                  ELSE "00" WHEN opcode = "110010" -- IN
                  ELSE "01" WHEN opcode = "010001" or opcode = "010010" 
                  ELSE "11";
@@ -60,7 +61,7 @@ BEGIN
                  ELSE "1011" WHEN opcode = "010011" -- STD
                  ELSE "1100" WHEN opcode = "110101" -- ADDI
                  ELSE "1101" WHEN opcode = "110110" -- SUBI 
-                 ELSE "1110" WHEN opcode = "000100" --MOV
+                 ELSE "1110" WHEN opcode = "000100" or opcode = "110001" --MOV, OUT
                  ELSE "1111" When opcode = "110111" -- LDM
                  ELSE "1110";
 
@@ -71,11 +72,11 @@ BEGIN
     alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
                  ELSE '0';
 
-    MWrite <= '1' WHEN (opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000"  -- PUSH, STD , CALL, INT
+    MWrite <= '1' WHEN (opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000" and opcode /= "110001"  -- PUSH, STD , CALL, INT
               ELSE '0';
 
 
-    MRead <= '1' WHEN (opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000" -- LDD RTI,RET,POP
+    MRead <= '1' WHEN (opcode = "010001" or opcode = "100011" or opcode = "100100" or opcode = "010010") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000" and opcode /= "110001" -- LDD RTI,RET,POP
              ELSE '0';
 
     SPPointer <= "010" WHEN opcode = "010001" or opcode = "100100" or opcode = "100011" -- POP,RTI,RET

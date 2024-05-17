@@ -132,6 +132,15 @@ COMPONENT WriteBack is
     );
 end COMPONENT;
 
+--------------------------OUTPORT--------------------------
+COMPONENT my_DFF IS
+GENERIC(n : integer :=32);
+    PORT( d : IN std_logic_vector (n-1 downto 0);
+          q : OUT std_logic_vector (n-1 downto 0);
+        clk,rst,en : IN std_logic 
+        );
+END COMPONENT;
+
 --------------------------PIPELINE-BUFFERS--------------------------
 --------------------------FETCH-DECODE--------------------------
 -- in port -> 32 bit (80 downto 49)
@@ -349,6 +358,7 @@ SIGNAL DEFlush : std_logic;
 SIGNAL EMFlush : std_logic;
 SIGNAL MWFlush : std_logic;
 SIGNAL InPortValue : std_logic_vector(31 downto 0);
+SIGNAL OutPortValue : std_logic_vector(31 downto 0);
 
 
 BEGIN
@@ -515,8 +525,10 @@ WriteBackAddress2Value <= MemoryWriteBackBufferOUT(66 downto 64);
 
 
 ------------------------------OUTPORT--------------------------------------
-OutPort <= WriteBackMux_result when MemoryWriteBackBufferOUT(166) = '1' else (Others => '0');
-
+--OutPort <= WriteBackMux_result when MemoryWriteBackBufferOUT(166) = '1' else (Others => '0');
+OUTPORTBuffer: my_DFF port map (d => MemoryWriteBackBufferIN(133 downto 102), q => OutPortValue, clk => clk, rst => rst, en => MemoryWriteBackBufferIN(166));
+OutPort <= OutPortValue;
+--OutPort <= WriteBackALUout when MemoryWriteBackBufferOUT(166) = '1' else OutPortValue;
 
 
 END ProccessorFinal_Arch;
