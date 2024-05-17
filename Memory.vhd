@@ -32,7 +32,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     COMPONENT Data_Memory IS
         GENERIC (n : INTEGER := 32);
         PORT (
-            Clk, Rst, WriteEnable : IN STD_LOGIC;
+            Clk, Rst, WriteEnable,ReadEnable : IN STD_LOGIC;
             ReadAddress, WriteAddress : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
             ReadData : OUT STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
             WriteData : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
@@ -52,7 +52,7 @@ ARCHITECTURE Memory_Architecture OF Memory IS
     COMPONENT ProtectedFlagReg IS
         GENERIC (n : INTEGER := 32);
         PORT (
-            Clk, Rst, WriteEnable : IN STD_LOGIC;
+            Clk, Rst, WriteEnable, ReadEnable : IN STD_LOGIC;
             ReadAddress, WriteAddress : IN STD_LOGIC_VECTOR(n - 1 DOWNTO 0);
             ReadData : OUT STD_LOGIC;
             WriteData : IN STD_LOGIC;
@@ -89,6 +89,7 @@ BEGIN
             Clk => clk,
             Rst => rst,
             WriteEnable => TempEn,
+            ReadEnable => MemoryRead,
             ReadAddress => ReadDataAddress,
             WriteAddress => WriteDataAddress,
             ReadData => DataMemoryReadData,
@@ -121,6 +122,7 @@ BEGIN
             Clk => clk,
             Rst => rst,
             WriteEnable => MemoryWrite,
+            ReadEnable => MemoryRead,
             ReadAddress => ReadDataAddress,
             WriteAddress => WriteDataAddress,
             ReadData => ProtectedFlagRegReadData,

@@ -23,7 +23,7 @@ BEGIN
             FOR i IN ram'range LOOP
                 ram(i) <= (others => '0');
             END LOOP;
-        ELSIF rising_edge(Clk) THEN
+        ELSIF falling_edge(Clk) THEN
             IF WriteEnable = '1' THEN
                 ram(to_integer(unsigned(WriteAddress1))) <= WriteData1;
                 ram(to_integer(unsigned(WriteAddress2))) <= WriteData2;
@@ -31,7 +31,7 @@ BEGIN
         -- ELSIF falling_edge(Clk) THEN
         --     ReadData1 <= ram(to_integer(unsigned(ReadAddress1)));
         --     ReadData2 <= ram(to_integer(unsigned(ReadAddress2)));
-         END IF;
+        END IF;
     END PROCESS;
     
     ReadData1 <= ram(to_integer(unsigned(ReadAddress1)));
