@@ -14,8 +14,8 @@ entity WriteBack is
         WriteBackSource : IN STD_LOGIC_VECTOR(1 downto 0);
         -- OutPutPort : OUT STD_LOGIC_VECTOR(n-1 downto 0); -- Output port
         write_enable : in STD_LOGIC;
-        WriteBackAddress1 : out STD_LOGIC_VECTOR(4 downto 0);
-        WriteBackAddress2 : out STD_LOGIC_VECTOR(4 downto 0);
+        WriteBackAddress1 : out STD_LOGIC_VECTOR(2 downto 0);
+        WriteBackAddress2 : out STD_LOGIC_VECTOR(2 downto 0);
         Mux_result : OUT STD_LOGIC_VECTOR(n-1 downto 0);
         OutputPortEnable : OUT STD_LOGIC;-- Output port enable
         swap : out STD_LOGIC;

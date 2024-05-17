@@ -128,8 +128,8 @@ COMPONENT WriteBack is
         WriteBackSource : IN STD_LOGIC_VECTOR(1 downto 0);
         -- OutPutPort : OUT STD_LOGIC_VECTOR(n-1 downto 0); -- Output port
         write_enable : in STD_LOGIC;
-        WriteBackAddress1 : out STD_LOGIC_VECTOR(4 downto 0);
-        WriteBackAddress2 : out STD_LOGIC_VECTOR(4 downto 0);
+        WriteBackAddress1 : out STD_LOGIC_VECTOR(2 downto 0);
+        WriteBackAddress2 : out STD_LOGIC_VECTOR(2 downto 0);
         Mux_result : OUT STD_LOGIC_VECTOR(n-1 downto 0);
         OutputPortEnable : OUT STD_LOGIC;-- Output port enable
         swap : out STD_LOGIC;
@@ -320,6 +320,7 @@ SIGNAL MemoryPCPlus : std_logic_vector(31 DOWNTO 0);
 SIGNAL MemorySecondOperand : std_logic_vector(31 DOWNTO 0);
 SIGNAL MemorySP : std_logic_vector(2 DOWNTO 0);
 SIGNAL MemoryFlagReg : std_logic_vector(3 DOWNTO 0);
+SIGNAL MemoryFreeProtectedStore : std_logic_vector(1 DOWNTO 0);
 SIGNAL MemoryOut : std_logic_vector(31 DOWNTO 0);
 SIGNAL MemoryWrongAddress : std_logic;
 SIGNAL MemoryFlushAllBack : std_logic;
@@ -337,6 +338,8 @@ SIGNAL WriteBackMux_result : std_logic_vector(31 downto 0);
 SIGNAL WriteBackOutputPortEnable : std_logic;
 SIGNAL WriteBackSwap : std_logic;
 SIGNAL WriteBackSecond_operand : std_logic_vector(31 downto 0);
+SIGNAL WriteBackAddress1 : std_logic_vector(2 downto 0);
+SIGNAL WriteBackAddress2 : std_logic_vector(2 downto 0);
 
 
 BEGIN
@@ -438,7 +441,7 @@ ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
 
 ------------------------------MEMORY--------------------------------------
-MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg, MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);
+MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg,FreeProtectedStore => MemoryFreeProtectedStore , MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);
 MemoryWriteBackBuffer: MemoryWriteBack_Reg port map (A => MemoryWriteBackBufferIN, clk => clk, en => en, rst => rst, F => MemoryWriteBackBufferOUT);
 MemoryWrite <= ExecuteMemoryBufferOUT(9);
 MemoryRead <= ExecuteMemoryBufferOUT(10);
@@ -464,7 +467,19 @@ MemoryWriteBackBufferIN(63 downto 32) <= ExecuteMemoryBufferOUT(115 downto 84);
 MemoryWriteBackBufferIN(31 downto 0) <= ExecuteMemoryBufferOUT(147 downto 116);
 
 ------------------------------WRITEBACK--------------------------------------
-WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => "00000", WriteBackAddress2 => "00000", Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
+WriteBackStage: WriteBack port map (clk => clk, reset => rst, ALUout => WriteBackALUout, data_in => WriteBackData_in, MemoryOut => WriteBackMemoryOut, WriteBackSource => WriteBackWriteBackSource, write_enable => WriteBackWrite_enable, WriteBackAddress1 => WriteBackAddress1, WriteBackAddress2 => WriteBackAddress2, Mux_result => WriteBackMux_result, OutputPortEnable => WriteBackOutputPortEnable, swap => WriteBackSwap, second_operand => WriteBackSecond_operand);
+WriteBackALUout <= MemoryWriteBackBufferOUT(133 downto 102);
+WriteBackData_in <= MemoryWriteBackBufferOUT(63 downto 32);
+WriteBackMemoryOut <= MemoryWriteBackBufferOUT(165 downto 134);
+WriteBackWriteBackSource <= MemoryWriteBackBufferOUT(168 downto 167);
+WriteBackWrite_enable <= MemoryWriteBackBufferOUT(169);
+WriteBackAddress1 <= MemoryWriteBackBufferOUT(69 downto 67);
+WriteBackAddress2 <= MemoryWriteBackBufferOUT(66 downto 64);
+
+
+------------------------------OUTPORT--------------------------------------
+OutPort <= WriteBackMux_result when MemoryWriteBackBufferOUT(166) = '1' else (Others => '0');
+
 
 
 END ProccessorFinal_Arch;

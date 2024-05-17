@@ -8772,3 +8772,9 @@ quit -sim
 # Compile of ProcessorFinal.vhd failed with 1 errors.
 # Compile of ProcessorFinal.vhd was successful.
 # Compile of ProcessorFinal.vhd was successful.
+# Compile of ProcessorFinal.vhd failed with 3 errors.
+# Compile of ProcessorFinal.vhd failed with 2 errors.
+# Compile of ProcessorFinal.vhd failed with 4 errors.
+# Compile of ProcessorFinal.vhd failed with 2 errors.
+# Compile of WriteBack.vhd was successful.
+# Compile of ProcessorFinal.vhd was successful.
