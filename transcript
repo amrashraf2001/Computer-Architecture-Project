@@ -8778,3 +8778,10 @@ quit -sim
 # Compile of ProcessorFinal.vhd failed with 2 errors.
 # Compile of WriteBack.vhd was successful.
 # Compile of ProcessorFinal.vhd was successful.
+# Compile of Decode.vhd failed with 1 errors.
+# Compile of Decode.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of ProcessorFinal.vhd failed with 1 errors.
+# Compile of ProcessorFinal.vhd failed with 1 errors.
+# Compile of ProcessorFinal.vhd was successful.
+# Compile of ProcessorFinal.vhd was successful.

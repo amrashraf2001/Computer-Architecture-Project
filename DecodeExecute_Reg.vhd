@@ -3,10 +3,11 @@ use ieee.std_logic_1164.all;
 
 entity DecodeExecute_Reg is
 port (
-    A: IN std_logic_vector(195 downto 0); 
+    A: IN std_logic_vector(196 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(195 downto 0));
+    F: out STD_LOGIC_VECTOR(196 downto 0));
 end entity DecodeExecute_Reg;
+-- predictor 1 bit (196)
 -- opcode 6 bit (195 downto 190)
 -- RET 2 bit (189 downto 188)
 -- swap 1 bit (187)

@@ -58,7 +58,8 @@ COMPONENT Decode IS
         Ret: out std_logic_vector(1 downto 0);
         CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
         FlushOut: OUT std_logic;
-        OutEnable: OUT std_logic
+        OutEnable: OUT std_logic;
+        PredictorValue: OUT std_logic
     );
 END COMPONENT;
 
@@ -156,6 +157,7 @@ COMPONENT FetchDecode_Reg is
 end COMPONENT;
 
 --------------------------DECODE-EXECUTE--------------------------
+-- predictor 1 bit (196)
 -- opcode 6 bit (195 downto 190)
 -- RET 2 bit (189 downto 188)
 -- swap 1 bit (187)
@@ -178,9 +180,9 @@ end COMPONENT;
 
 COMPONENT DecodeExecute_Reg is
     port (
-        A: IN std_logic_vector(195 downto 0); 
+        A: IN std_logic_vector(196 downto 0); 
         clk,en,rst: in std_logic ; 
-        F: out STD_LOGIC_VECTOR(195 downto 0));
+        F: out STD_LOGIC_VECTOR(196 downto 0));
 end COMPONENT;
     
 --------------------------EXECUTE-MEMORY--------------------------
@@ -247,8 +249,8 @@ SIGNAL FetchWrongAddress : std_logic;
 
 --------------------------DECODE--------------------------
 
-SIGNAL DecodeExecuteBufferIN : std_logic_vector(195 downto 0);
-SIGNAL DecodeExecuteBufferOUT : std_logic_vector(195 downto 0);
+SIGNAL DecodeExecuteBufferIN : std_logic_vector(196 downto 0);
+SIGNAL DecodeExecuteBufferOUT : std_logic_vector(196 downto 0);
 SIGNAL DecodeWriteBackEnable : std_logic;
 SIGNAL DecodePredictorEnable : std_logic;
 SIGNAL DecodeInstruction : std_logic_vector(15 downto 0);
@@ -279,6 +281,7 @@ SIGNAL DecodeMemAddress : std_logic_vector(2 downto 0);
 SIGNAL DecodeRet : std_logic_vector(1 downto 0);
 SIGNAL DecodeCallIntStore : std_logic_vector(1 downto 0);
 SIGNAL DecodeFlushOut : std_logic;
+SIGNAL DecodePredictorValue : std_logic;
 
 --------------------------EXECUTE--------------------------
 SIGNAL ExecuteMemoryBufferIN : std_logic_vector(157 downto 0);
@@ -372,17 +375,18 @@ process(FetchDataOut)
     end process;
 ------------------------------DECODE--------------------------------------
 
---DecodeWriteBackEnable <= bla blaa 5odha mn el write back
+DecodeWriteBackEnable <= MemoryWriteBackBufferOUT(169); -- not sure about that
 DecodePredictorEnable <= '1';
 DecodeInstruction <= FetchDecodeBufferOUT(48 downto 33);
--- DecodeWritePort1 <= 5odha mn el write back;
--- DecodeWritePort2 <= 5odha mn el write back;
--- DecodeWriteAdd1 <= 5odha mn el write back;
--- DecodeWriteAdd2 <= 5odha mn el write back;
--- DecodeFlush <= 5odha mn el execution;
--- DecodeSwaped <= 5odha mn el write back;
-DecodeStage: Decode port map (Clk => clk, Rst => rst, writeBackEnable => DecodeWriteBackEnable, PredictorEnable => DecodePredictorEnable, Instruction => DecodeInstruction, writeport1 => DecodeWritePort1, writeport2 => DecodeWritePort2, WriteAdd1 => DecodeWriteAdd1, WriteAdd2 => DecodeWriteAdd2, Flush => DecodeFlush, Swaped => DecodeSwaped, ImmediateValue => FetchDataOut(15 downto 0), ReadData1 => DecodeReadData1, ReadData2 => DecodeReadData2, AluSelector => DecodeAluSelector, Branching => DecodeBranching, alusource => DecodeAluSource, MWrite => DecodeMWrite, MRead => DecodeMRead, WBdatasrc => DecodeWBdatasrc, RegWrite => DecodeRegWrite, SPPointer => DecodeSPPointer, interruptsignal => DecodeInterruptSignal, pcSource => DecodePcSource, rtisignal => DecodeRtiSignal, FreeProtectStore => DecodeFreeProtectStore, Swap => DecodeSwap, MemAddress => DecodeMemAddress, Ret => DecodeRet, CallIntStore => DecodeCallIntStore, FlushOut => DecodeFlushOut, OutEnable => DecodeOutEnable);
+DecodeWritePort1 <= WriteBackMux_result;
+DecodeWritePort2 <= WriteBackSecond_operand;
+DecodeWriteAdd1 <= WriteBackAddress1;
+DecodeWriteAdd2 <= WriteBackAddress2;
+DecodeFlush <= ExecuteFlushOut;
+DecodeSwaped <= WriteBackSwap;
+DecodeStage: Decode port map (Clk => clk, Rst => rst, writeBackEnable => DecodeWriteBackEnable, PredictorEnable => DecodePredictorEnable, Instruction => DecodeInstruction, writeport1 => DecodeWritePort1, writeport2 => DecodeWritePort2, WriteAdd1 => DecodeWriteAdd1, WriteAdd2 => DecodeWriteAdd2, Flush => DecodeFlush, Swaped => DecodeSwaped, ImmediateValue => FetchDataOut(15 downto 0), ReadData1 => DecodeReadData1, ReadData2 => DecodeReadData2, AluSelector => DecodeAluSelector, Branching => DecodeBranching, alusource => DecodeAluSource, MWrite => DecodeMWrite, MRead => DecodeMRead, WBdatasrc => DecodeWBdatasrc, RegWrite => DecodeRegWrite, SPPointer => DecodeSPPointer, interruptsignal => DecodeInterruptSignal, pcSource => DecodePcSource, rtisignal => DecodeRtiSignal, FreeProtectStore => DecodeFreeProtectStore, Swap => DecodeSwap, MemAddress => DecodeMemAddress, Ret => DecodeRet, CallIntStore => DecodeCallIntStore, FlushOut => DecodeFlushOut, OutEnable => DecodeOutEnable, PredictorValue => DecodePredictorValue);
 DecodeExecuteBuffer: DecodeExecute_Reg port map (A => DecodeExecuteBufferIN, clk => clk, en => en, rst => rst, F => DecodeExecuteBufferOUT);
+DecodeExecuteBufferIN(196) <= DecodePredictorValue;
 DecodeExecuteBufferIN(195 downto 190) <= FetchDecodeBufferOUT(48 downto 43);
 DecodeExecuteBufferIN(189 downto 188) <= DecodeRet;
 DecodeExecuteBufferIN(187) <= DecodeSwap;
@@ -421,8 +425,8 @@ ExecuteALU_selector <= DecodeExecuteBufferOUT(148 downto 145);
 --ExecuteWBenable_EX_MEM <= 5odha mn el execute memory buffer
 --ExecuteWBenable_MEM_WB <= 5odha mn el memory write back buffer
 --ExecuteWBsource_EX_MEM <= 5odha mn el execute memory buffer
---ExecuteSwap <= 5odha mn el decode stage
---ExecutePredictorIn <= 5odha mn el decode stage
+ExecuteSwap <= DecodeExecuteBufferOUT(187);
+ExecutePredictorIn <= DecodeExecuteBufferOUT(196);
 ExecuteMemoryBufferIN(157 downto 156) <= DecodeExecuteBufferOUT(189 downto 188);
 ExecuteMemoryBufferIN(155) <= DecodeExecuteBufferOUT(187);
 ExecuteMemoryBufferIN(154 downto 152) <= DecodeExecuteBufferOUT(153 downto 151);

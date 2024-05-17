@@ -32,7 +32,8 @@ ENTITY Decode IS
         Ret: out std_logic_vector(1 downto 0);
         CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
         FlushOut: OUT std_logic;
-        OutEnable: OUT std_logic
+        OutEnable: OUT std_logic;
+        PredictorValue: OUT std_logic
     );
 END ENTITY Decode;
 
@@ -126,4 +127,5 @@ begin
     PredictorReg1: PredictorReg PORT MAP(PredictorInput, PredictorOutput, Clk, Rst, PredictorEnable);
     tempFlush <= '1' when (Instruction(15 downto 10) = "100001") else '0';
     FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (Branching));
+    PredictorValue <= PredictorOutput;
 end architecture Decode_Arch;
