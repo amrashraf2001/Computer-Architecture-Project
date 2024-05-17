@@ -31,7 +31,8 @@ ENTITY Decode IS
         MemAddress: OUT std_logic_vector(2 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
         CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
-        FlushOut: OUT std_logic
+        FlushOut: OUT std_logic;
+        OutEnable: OUT std_logic
     );
 END ENTITY Decode;
 
@@ -52,7 +53,8 @@ architecture Decode_Arch of Decode is
             MemAddress: OUT std_logic_vector(2 DOWNTO 0);
             CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
             Ret: out std_logic_vector(1 downto 0);
-            Swap: out std_logic
+            Swap: out std_logic;
+            OutEnable: OUT std_logic
         );
     END component;
     

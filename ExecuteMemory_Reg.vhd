@@ -3,21 +3,21 @@ use ieee.std_logic_1164.all;
 
 entity ExecuteMemory_Reg is
 port (
-    A: IN std_logic_vector(156 downto 0); 
+    A: IN std_logic_vector(157 downto 0); 
     clk,en,rest: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(156 downto 0));
+    F: out STD_LOGIC_VECTOR(157 downto 0));
 
 end entity ExecuteMemory_Reg;
--- RET 2 bits (156 downto 155)
--- swap 1 bit (154)
--- Mem Address → 3 Bit (153 downto 151)
--- Flag value -> 4 bit (150 downto 147)
--- PC + 1 → 32 Bit (146 downto 115)
--- IN Port → 32 Bit (114 downto 83)
--- Write Back Addresses → 6 Bit (82 downto 77)
--- ALU Output → 32 Bit (76 downto 45)
--- Second Operand → 32 Bit (44 downto 13)
--- CALL/STD → 1 Bit (12)
+-- RET 2 bits (157 downto 156)
+-- swap 1 bit (155)
+-- Mem Address → 3 Bit (154 downto 152)
+-- Flag value -> 4 bit (151 downto 148)
+-- PC + 1 → 32 Bit (147 downto 116)
+-- IN Port → 32 Bit (115 downto 84)
+-- Write Back Addresses → 6 Bit (83 downto 78)
+-- ALU Output → 32 Bit (77 downto 46)
+-- Second Operand → 32 Bit (45 downto 14)
+-- CALL/int/STD → 2 Bit (13 downto 12) 
 -- OUT Enable → 1 Bit (11)
 -- MR-MW-RW → 3 Bit (10 downto 8)
 -- ALU_src → 1 Bit (7)

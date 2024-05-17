@@ -19,12 +19,15 @@ ENTITY Controller IS
         MemAddress: OUT std_logic_vector(2 DOWNTO 0);
         CallIntStore: OUT std_logic_vector(1 DOWNTO 0);
         Ret: out std_logic_vector(1 downto 0);
-        Swap: out std_logic
+        Swap: out std_logic;
+        OutEnable: OUT std_logic
     );
 END Controller;
 
 ARCHITECTURE Controller_Arch OF Controller IS
 BEGIN
+
+    OutEnable <= '1' when opcode = "110001" else '0';
     RegWrite <= '1' WHEN opcode = "000100" or
                         (opcode(5 downto 4) = "00" and opcode(3 downto 0) /= "1011") or 
                         opcode(5 downto 0) = "010001" or 

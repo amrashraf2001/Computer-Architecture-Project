@@ -8762,3 +8762,12 @@ quit -sim
 # Compile of Processor.vhd was successful.
 # Compile of ForwardingUnit.vhd was successful.
 # 21 compiles, 0 failed with no errors.
+# Compile of ExecuteMemory_Reg.vhd was successful.
+# Compile of DecodeExecute_Reg.vhd was successful.
+# Compile of Controller.vhd was successful.
+# Compile of Decode.vhd was successful.
+# Compile of ProcessorFinal.vhd failed with 1 errors.
+# Compile of ProcessorFinal.vhd failed with 1 errors.
+# Compile of ProcessorFinal.vhd failed with 2 errors.
+# Compile of ProcessorFinal.vhd failed with 1 errors.
+# Compile of ProcessorFinal.vhd was successful.
