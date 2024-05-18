@@ -781,7 +781,7 @@ R3
 DEx4 work 15 proccessorfinal 0 22 G@M5H>n;VzCZ5]1:A;:eI1
 !i122 964
 l364
-Z131 L15 522
+L15 522
 V4VH3k5FcjR?D>e6HBV@jE3
 !s100 0;i9lFdXK0bBk@41@:P`J1
 R7
@@ -795,14 +795,14 @@ R130
 R12
 R13
 Eprocessor
-Z132 w1713997269
+Z131 w1713997269
 R1
 R2
 R3
 !i122 932
 R4
-Z133 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
-Z134 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
+Z132 8D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
+Z133 FD:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd
 l0
 L5 1
 VS3SOnd68R?`4Q=;Lz_BC83
@@ -812,8 +812,8 @@ R7
 R39
 !i10b 1
 R40
-Z135 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
-Z136 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
+Z135 !s107 D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Processor.vhd|
 !i113 1
 R12
 R13
@@ -832,17 +832,17 @@ R7
 R39
 !i10b 1
 R40
+R134
 R135
-R136
 !i113 1
 R12
 R13
 Eprocessorfinal
-Z137 w1716027764
+Z136 w1716031771
 R1
 R2
 R3
-!i122 975
+!i122 983
 R4
 R125
 R126
@@ -852,9 +852,9 @@ V]?BRK>fm5YS7NGQ821OKN1
 !s100 j0T7ck6ReJ:2;9nGH`efW3
 R7
 32
-Z138 !s110 1716027802
+Z137 !s110 1716031784
 !i10b 1
-Z139 !s108 1716027802.000000
+Z138 !s108 1716031784.000000
 R129
 R130
 !i113 1
@@ -864,17 +864,17 @@ Aprocessorfinal_arch
 R1
 R2
 R3
-Z140 DEx4 work 14 processorfinal 0 22 ]?BRK>fm5YS7NGQ821OKN1
-!i122 975
+Z139 DEx4 work 14 processorfinal 0 22 ]?BRK>fm5YS7NGQ821OKN1
+!i122 983
 l366
-L15 524
-Vh9ZbB5<ZYhAZ:YY_]:MoP2
-!s100 N__gOc5g5F93:ON;mB7T>0
+Z140 L15 529
+VMeW10:Jf36b[YXO>Do3KV2
+!s100 XGQ?Dh<98?<CLCbZSTILB1
 R7
 32
-R138
+R137
 !i10b 1
-R139
+R138
 R129
 R130
 !i113 1

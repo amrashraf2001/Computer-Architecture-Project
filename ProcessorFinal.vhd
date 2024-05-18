@@ -388,9 +388,9 @@ FetchDecodeBufferIN(0) <= FetchWrongAddress;
 
 InPortValue <= InPort;
 
---FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeExecuteBufferOUT(186) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeExecuteBufferOUT(186) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
 --FDFlush <='1' when rst = '1' or FetchDecodeBufferOUT(48 downto 43) = "110101" or FetchDecodeBufferOUT(48 downto 43) = "110110" or FetchDecodeBufferOUT(48 downto 43) = "110111" or FetchDecodeBufferOUT(48 downto 43) = "010010" or FetchDecodeBufferOUT(48 downto 43) = "010011"  else '0'; 
-FDFlush <='1' when rst = '1' or DecodeExecuteBufferOUT(186) = '1' else '0';
+--FDFlush <='1' when rst = '1' or DecodeExecuteBufferOUT(186) = '1' else '0';
 process(FetchDataOut)
     begin
         for i in 31 downto 16 loop
@@ -402,6 +402,11 @@ process(FetchDataOut)
           end if;
         end loop;
         DecodeImmediateValue(15 downto 0) <= FetchDataOut(15 downto 0);
+        -- if rst = '1' or FetchDecodeBufferOUT(48 downto 43) = "110101" or FetchDecodeBufferOUT(48 downto 43) = "110110" or FetchDecodeBufferOUT(48 downto 43) = "110111" or FetchDecodeBufferOUT(48 downto 43) = "010010" or FetchDecodeBufferOUT(48 downto 43) = "010011" then
+        --     FDFlush <= '1';
+        -- else
+        --     FDFlush <= '0';
+        -- end if;
     end process;
 ------------------------------DECODE--------------------------------------
 
@@ -439,8 +444,8 @@ DecodeExecuteBufferIN(69 downto 38) <= FetchDecodeBufferOUT(80 downto 49);
 DecodeExecuteBufferIN(37 downto 32) <= FetchDecodeBufferOUT(42 downto 40) & FetchDecodeBufferOUT(39 downto 37); -- add1 then add2
 DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
---DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
-DEFlush <= '1' when rst = '1' else '0';
+DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+--DEFlush <= '1' when rst = '1' else '0';
 
 ------------------------------EXECUTE--------------------------------------
 
@@ -486,7 +491,7 @@ ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
 ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
 
---EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
+EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
 EMFlush <= '1' when rst = '1' else '0';
 
 ------------------------------MEMORY--------------------------------------
