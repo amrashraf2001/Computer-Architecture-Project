@@ -88,7 +88,7 @@ BEGIN
         PORT MAP (
             Clk => clk,
             Rst => rst,
-            WriteEnable => TempEn,
+            WriteEnable => MemoryWrite,
             ReadEnable => MemoryRead,
             ReadAddress => ReadDataAddress,
             WriteAddress => WriteDataAddress,
