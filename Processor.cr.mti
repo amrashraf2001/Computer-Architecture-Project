@@ -43,6 +43,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Instruction_Memory
 -- Compiling architecture Instruction_Memory_Architecture of Instruction_Memory
 
+} {} {}} {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/Execute.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\gam3a\spring 2024\CMPN301 Computer Architecture\my project\Computer-Architecture-Project\Execute.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Execute
+-- Compiling architecture Execute_Arch of Execute
+
 } {} {}} {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/gam3a/spring 2024/CMPN301 Computer Architecture/my project/Computer-Architecture-Project/ForwardingUnit.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD

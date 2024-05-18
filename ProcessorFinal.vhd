@@ -541,6 +541,8 @@ WriteBackWriteBackSource <= MemoryWriteBackBufferOUT(168 downto 167);
 WriteBackWrite_enable <= MemoryWriteBackBufferOUT(169);
 WriteBackAddress1Value <= MemoryWriteBackBufferOUT(69 downto 67);
 WriteBackAddress2Value <= MemoryWriteBackBufferOUT(66 downto 64);
+WriteBackSecond_operand<= MemoryWriteBackBufferOUT(101 downto 70);
+WriteBackSwap <= MemoryWriteBackBufferOUT(170);
 
 
 ------------------------------OUTPORT--------------------------------------
