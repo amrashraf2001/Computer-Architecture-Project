@@ -85,7 +85,8 @@ COMPONENT Execute is
         FlushOut : OUT std_logic;
         NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
         TakenWrongBranch : OUT std_logic; -- el and eli ta7t taken w kan el mafroud a not take it
-        stalling : out std_logic
+        stalling : out std_logic;
+        secondOperandOut : out std_logic_vector(n-1 downto 0)
         );
 end COMPONENT;
 
@@ -314,6 +315,7 @@ SIGNAL ExecuteFlushOut : std_logic;
 SIGNAL ExecuteNotTakenWrongBranch : std_logic;
 SIGNAL ExecuteTakenWrongBranch : std_logic;
 SIGNAl ExecuteStall : std_logic;
+SIGNAl ExecuteSecondOperandOut : std_logic_vector(31 downto 0);
 
 --------------------------MEMORY--------------------------
 SIGNAL MemoryWriteBackBufferIN : std_logic_vector(172 downto 0);
@@ -442,7 +444,7 @@ DEFlush <= '1' when rst = '1' else '0';
 
 ------------------------------EXECUTE--------------------------------------
 
-ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall);
+ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall, secondOperandOut => ExecuteSecondOperandOut);
 ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => EMFlush, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeExecuteBufferOUT(133 downto 102);
@@ -475,7 +477,7 @@ ExecuteMemoryBufferIN(147 downto 116) <= DecodeExecuteBufferOUT(31 downto 0);
 ExecuteMemoryBufferIN(115 downto 84) <= DecodeExecuteBufferOUT(69 downto 38);
 ExecuteMemoryBufferIN(83 downto 78) <= DecodeExecuteBufferOUT(37 downto 32);
 ExecuteMemoryBufferIN(77 downto 46) <= ExecuteALUout;
-ExecuteMemoryBufferIN(45 downto 14) <= DecodeExecuteBufferOUT(101 downto 70);
+ExecuteMemoryBufferIN(45 downto 14) <= ExecuteSecondOperandOut;
 ExecuteMemoryBufferIN(13 downto 12) <= DecodeExecuteBufferOUT(135 downto 134);
 ExecuteMemoryBufferIN(11) <= DecodeExecuteBufferOUT(141);
 ExecuteMemoryBufferIN(10 downto 8) <= DecodeExecuteBufferOUT(138 downto 136);
