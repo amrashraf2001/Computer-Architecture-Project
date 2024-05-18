@@ -24,7 +24,8 @@ ENTITY Memory IS
         FlushAllBack : OUT std_logic;
         FlushINT_RTI: OUT std_logic;
         INTDetected: OUT std_logic;
-        FlagRegOut: OUT std_logic_vector(3 DOWNTO 0) -- ha4edo lel execute f 7alet el RTI
+        FlagRegOut: OUT std_logic_vector(3 DOWNTO 0); -- ha4edo lel execute f 7alet el RTI
+        src2AsItIs: IN std_logic_vector(n-1 DOWNTO 0)
     );
 END Memory;
 
@@ -170,7 +171,7 @@ BEGIN
     MemoryWriteData <= pcPlus WHEN MemoryWrite = '1' AND CALLIntSTD = "00" ELSE
                        TempWriteData WHEN MemoryWrite = '1' AND CALLIntSTD = "01" ELSE
                        SecondOperand WHEN MemoryWrite = '1' AND CALLIntSTD = "10" ELSE
-                       SecondOperand WHEN MemoryWrite = '1' AND CALLIntSTD = "11" ELSE
+                       src2AsItIs WHEN MemoryWrite = '1' AND CALLIntSTD = "11" ELSE
                        (OTHERS => '0');
 
     ProtectedFlag <= ProtectedFlagRegReadData WHEN FreeProtectedStore = "00" ELSE

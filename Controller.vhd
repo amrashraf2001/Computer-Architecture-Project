@@ -108,8 +108,9 @@ BEGIN
 
     CallIntStore <= "00" WHEN opcode = "100010" -- CALL
                   ELSE "01" WHEN opcode = "111001" -- INT
-                  ELSE "10" WHEN opcode = "010011" or opcode = "010000" -- STD, PUSH
-                  ELSE "10";
+                  ELSE "10" WHEN opcode = "010000" -- PUSH
+                  ELSE "11" when opcode = "010011" -- STD
+                  ELSE "11";
 
     Ret <= "00" WHEN opcode = "110000" or opcode = "010011" or opcode = "010010" or opcode = "010000" or opcode = "010001" -- NOP,STD,LDD,PUSH,POP
          ELSE "01" WHEN opcode = "100011" -- RET

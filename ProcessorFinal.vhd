@@ -86,7 +86,9 @@ COMPONENT Execute is
         NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
         TakenWrongBranch : OUT std_logic; -- el and eli ta7t taken w kan el mafroud a not take it
         stalling : out std_logic;
-        secondOperandOut : out std_logic_vector(n-1 downto 0)
+        secondOperandOut : out std_logic_vector(n-1 downto 0);
+        Executesrc2IN: IN std_logic_vector(n-1 downto 0);
+        Executesrc2OUT: OUT std_logic_vector(n-1 downto 0)
         );
 end COMPONENT;
 
@@ -114,7 +116,8 @@ COMPONENT Memory IS
         FlushAllBack : OUT std_logic;
         FlushINT_RTI: OUT std_logic;
         INTDetected: OUT std_logic;
-        FlagRegOut: OUT std_logic_vector(3 DOWNTO 0) -- ha4edo lel execute f 7alet el RTI
+        FlagRegOut: OUT std_logic_vector(3 DOWNTO 0); -- ha4edo lel execute f 7alet el RTI
+        src2AsItIs: IN std_logic_vector(n-1 DOWNTO 0)
     );
 END COMPONENT;
 
@@ -190,6 +193,7 @@ COMPONENT DecodeExecute_Reg is
 end COMPONENT;
     
 --------------------------EXECUTE-MEMORY--------------------------
+-- src2 as it is 32 bit (189 downto 158)
 -- RET 2 bits (157 downto 156)
 -- swap 1 bit (155)
 -- Mem Address → 3 Bit (154 downto 152)
@@ -209,9 +213,9 @@ end COMPONENT;
 
 COMPONENT ExecuteMemory_Reg is
     port (
-        A: IN std_logic_vector(157 downto 0); 
+        A: IN std_logic_vector(189 downto 0); 
         clk,en,rst: in std_logic ; 
-        F: out STD_LOGIC_VECTOR(157 downto 0));
+        F: out STD_LOGIC_VECTOR(189 downto 0));
     
 end COMPONENT;
 
@@ -290,8 +294,8 @@ SIGNAL DecodeSrcAdd1: std_logic_vector(2 downto 0);
 SIGNAL DecodeSrcAdd2: std_logic_vector(2 downto 0);
 
 --------------------------EXECUTE--------------------------
-SIGNAL ExecuteMemoryBufferIN : std_logic_vector(157 downto 0);
-SIGNAL ExecuteMemoryBufferOUT : std_logic_vector(157 downto 0);
+SIGNAL ExecuteMemoryBufferIN : std_logic_vector(189 downto 0);
+SIGNAL ExecuteMemoryBufferOUT : std_logic_vector(189 downto 0);
 SIGNAL ExecuteOpcode : std_logic_vector(5 downto 0);
 SIGNAL ExecuteReg1 : std_logic_vector(31 downto 0);
 SIGNAL ExecuteReg2 : std_logic_vector(31 downto 0);
@@ -361,6 +365,9 @@ SIGNAL EMFlush : std_logic;
 SIGNAL MWFlush : std_logic;
 SIGNAL InPortValue : std_logic_vector(31 downto 0);
 SIGNAL OutPortValue : std_logic_vector(31 downto 0);
+SIGNAL Memorysrc2AsItIs : std_logic_vector(31 downto 0);
+SIGNAL Executesrc2: std_logic_vector(31 downto 0);
+SIGNAL Executesrc2O: std_logic_vector(31 downto 0);
 
 
 BEGIN
@@ -449,11 +456,12 @@ DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or Memor
 
 ------------------------------EXECUTE--------------------------------------
 
-ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall, secondOperandOut => ExecuteSecondOperandOut);
+ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => ExecuteOpcode, Reg1 => ExecuteReg1, Reg2 => ExecuteReg2, Forwarded_Src_1_EX_MEM => ExecuteForwarded_Src_1_EX_MEM, Forwarded_Src_1_MEM_WB => ExecuteForwarded_Src_1_MEM_WB, Forwarded_Src_2_EX_MEM => ExecuteForwarded_Src_2_EX_MEM, Forwarded_Src_2_MEM_WB => ExecuteForwarded_Src_2_MEM_WB, ALU_selector => ExecuteALU_selector, Destination_Reg_EX_MEM => ExecuteDestination_Reg_EX_MEM, Destination_Reg_MEM_WB => ExecuteDestination_Reg_MEM_WB, Src1_From_ID_EX => ExecuteSrc1_From_ID_EX, Src2_From_ID_EX => ExecuteSrc2_From_ID_EX, WBenable_EX_MEM => ExecuteWBenable_EX_MEM, WBenable_MEM_WB => ExecuteWBenable_MEM_WB, WBsource_EX_MEM => ExecuteWBsource_EX_MEM, swap => ExecuteSwap, PredictorIn => ExecutePredictorIn, ALUout => ExecuteALUout, FlagReg_out => ExecuteFlagReg_out, FlushOut => ExecuteFlushOut, NotTakenWrongBranch => ExecuteNotTakenWrongBranch, TakenWrongBranch => ExecuteTakenWrongBranch, stalling => ExecuteStall, secondOperandOut => ExecuteSecondOperandOut, Executesrc2IN => Executesrc2, Executesrc2OUT => Executesrc2O);
 ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => EMFlush, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeExecuteBufferOUT(133 downto 102);
 ExecuteReg2 <= DecodeExecuteBufferOUT(101 downto 70) when DecodeExecuteBufferOUT(186) = '0' else DecodeExecuteBufferOUT(185 downto 154);
+Executesrc2 <= DecodeExecuteBufferOUT(101 downto 70);
 ExecuteForwarded_Src_1_EX_MEM <= ExecuteMemoryBufferOUT(115 downto 84) when ExecuteMemoryBufferOUT(3 downto 2) = "00"
 else ExecuteMemoryBufferOUT(77 downto 46);  --(ALU output or IN value from EX MEM buffer)
 ExecuteForwarded_Src_1_MEM_WB <= MemoryWriteBackBufferOUT(165 downto 134) when MemoryWriteBackBufferOUT(168 downto 167) = "01"
@@ -490,12 +498,13 @@ ExecuteMemoryBufferIN(7) <= DecodeExecuteBufferOUT(186);
 ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
 ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
+ExecuteMemoryBufferIN(189 downto 158) <= Executesrc2O;
 
 EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
 EMFlush <= '1' when rst = '1' else '0';
 
 ------------------------------MEMORY--------------------------------------
-MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg,FreeProtectedStore => MemoryFreeProtectedStore , MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);
+MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg,FreeProtectedStore => MemoryFreeProtectedStore , MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut, src2AsItIs => Memorysrc2AsItIs);
 MemoryWriteBackBuffer: MemoryWriteBack_Reg port map (A => MemoryWriteBackBufferIN, clk => clk, en => en, rst => rst, F => MemoryWriteBackBufferOUT);
 MemoryWrite <= ExecuteMemoryBufferOUT(9);
 MemoryRead <= ExecuteMemoryBufferOUT(10);
@@ -506,6 +515,7 @@ MemoryRET <= ExecuteMemoryBufferOUT(157 downto 156);
 MemoryALUOut <= ExecuteMemoryBufferOUT(77 downto 46);
 MemoryPCPlus <= ExecuteMemoryBufferOUT(147 downto 116);
 MemorySecondOperand <= ExecuteMemoryBufferOUT(45 downto 14);
+Memorysrc2AsItIs <= ExecuteMemoryBufferOUT(189 downto 158);
 MemorySP <= ExecuteMemoryBufferOUT(6 downto 4);
 MemoryFlagReg <= ExecuteMemoryBufferOUT(151 downto 148);
 MemoryFreeProtectedStore <= ExecuteMemoryBufferOUT(1 downto 0);

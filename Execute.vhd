@@ -24,7 +24,9 @@ entity Execute is
         NotTakenWrongBranch : OUT std_logic; -- el and eli fo2 not taken w kan el mafroud a take it
         TakenWrongBranch : OUT std_logic; -- el and eli ta7t taken w kan el mafroud a not take it
         stalling : out std_logic;
-        secondOperandOut : out std_logic_vector(n-1 downto 0)
+        secondOperandOut : out std_logic_vector(n-1 downto 0);
+        Executesrc2IN: IN std_logic_vector(n-1 downto 0);
+        Executesrc2OUT: OUT std_logic_vector(n-1 downto 0)
     );
 end Execute;
 architecture Execute_Arch of Execute is
@@ -69,6 +71,7 @@ architecture Execute_Arch of Execute is
     signal Selector_Mux1, Selector_Mux2 : std_logic_vector(1 downto 0);
     signal stall : std_logic;
     signal Mux1_Output, Mux2_Output : std_logic_vector(n-1 downto 0); -- MUX outputs from FU selectors and forwarded values
+    signal tempp: std_logic_vector(n-1 downto 0);
 
 begin
     --The ALU Mapping
@@ -134,6 +137,11 @@ begin
                         Reg2;
 
     secondOperandOut <= Mux2_Output;
+
+    Executesrc2OUT <= Forwarded_Src_2_EX_MEM WHEN Selector_Mux2 = "00" ELSE
+        Forwarded_Src_2_MEM_WB WHEN Selector_Mux2 = "01" ELSE
+        Forwarded_Src_2_EX_MEM WHEN Selector_Mux2 = "10" ELSE
+        Executesrc2IN;
 
     NotTakenWrongBranch <= '1' when Zerocombtemp = '1' and PredictorIn = '1' and opcode = "100001" else '0';
     TakenWrongBranch <= '1' when Zerocombtemp = '0' and PredictorIn = '1' and opcode = "100001" else '0';

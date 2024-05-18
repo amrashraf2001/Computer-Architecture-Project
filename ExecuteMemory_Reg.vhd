@@ -3,11 +3,12 @@ use ieee.std_logic_1164.all;
 
 entity ExecuteMemory_Reg is
 port (
-    A: IN std_logic_vector(157 downto 0); 
+    A: IN std_logic_vector(189 downto 0); 
     clk,en,rst: in std_logic ; 
-    F: out STD_LOGIC_VECTOR(157 downto 0));
+    F: out STD_LOGIC_VECTOR(189 downto 0));
 
 end entity ExecuteMemory_Reg;
+-- src2 as it is 32 bit (189 downto 158)
 -- RET 2 bits (157 downto 156)
 -- swap 1 bit (155)
 -- Mem Address → 3 Bit (154 downto 152)
