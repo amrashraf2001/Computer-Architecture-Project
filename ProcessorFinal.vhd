@@ -386,8 +386,8 @@ FetchDecodeBufferIN(0) <= FetchWrongAddress;
 
 InPortValue <= InPort;
 
-FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeAluSource = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
-
+--FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeExecuteBufferOUT(186) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+FDFlush <='1' when rst = '1' or DecodeExecuteBufferOUT(186) = '1' else '0'; 
 process(FetchDataOut)
     begin
         for i in 31 downto 16 loop
@@ -431,13 +431,13 @@ DecodeExecuteBufferIN(140 downto 139) <= DecodeWBdatasrc;
 DecodeExecuteBufferIN(138 downto 136) <= DecodeMRead & DecodeMWrite & DecodeRegWrite;
 DecodeExecuteBufferIN(135 downto 134) <= DecodeCallIntStore;
 DecodeExecuteBufferIN(133 downto 102) <= DecodeReadData1;
-DecodeExecuteBufferIN(101 downto 70) <= DecodeReadData2;
+DecodeExecuteBufferIN(101 downto 70) <= DecodeReadData2; --when DecodeAluSource = '0' else DecodeImmediateValue;
 DecodeExecuteBufferIN(69 downto 38) <= FetchDecodeBufferOUT(80 downto 49);
 DecodeExecuteBufferIN(37 downto 32) <= FetchDecodeBufferOUT(42 downto 40) & FetchDecodeBufferOUT(39 downto 37); -- add1 then add2
 DecodeExecuteBufferIN(31 downto 0) <= FetchDecodeBufferOUT(32 downto 1);
 
-DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
-
+--DEFlush <= '1' when ExecuteTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+DEFlush <= '1' when rst = '1' else '0';
 
 ------------------------------EXECUTE--------------------------------------
 
@@ -445,7 +445,7 @@ ExecuteStage: Execute port map (clk => clk, en => en, rst => rst, opcode => Exec
 ExecuteMemoryBuffer: ExecuteMemory_Reg port map (A => ExecuteMemoryBufferIN, clk => clk, en => en, rst => EMFlush, F => ExecuteMemoryBufferOUT);
 ExecuteOpcode <= DecodeExecuteBufferOUT(195 downto 190);
 ExecuteReg1 <= DecodeExecuteBufferOUT(133 downto 102);
-ExecuteReg2 <= DecodeExecuteBufferOUT(101 downto 70);
+ExecuteReg2 <= DecodeExecuteBufferOUT(101 downto 70) when DecodeExecuteBufferOUT(186) = '0' else DecodeExecuteBufferOUT(185 downto 154);
 ExecuteForwarded_Src_1_EX_MEM <= ExecuteMemoryBufferOUT(115 downto 84) when ExecuteMemoryBufferOUT(3 downto 2) = "00"
 else ExecuteMemoryBufferOUT(77 downto 46);  --(ALU output or IN value from EX MEM buffer)
 ExecuteForwarded_Src_1_MEM_WB <= MemoryWriteBackBufferOUT(165 downto 134) when MemoryWriteBackBufferOUT(168 downto 167) = "01"
@@ -483,7 +483,8 @@ ExecuteMemoryBufferIN(6 downto 4) <= DecodeExecuteBufferOUT(144 downto 142);
 ExecuteMemoryBufferIN(3 downto 2) <= DecodeExecuteBufferOUT(140 downto 139);
 ExecuteMemoryBufferIN(1 downto 0) <= DecodeExecuteBufferOUT(150 downto 149);
 
-EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
+--EMFlush <= '1' when MemoryINTDetected = '1' or MemoryFlushAllBack = '1' or rst = '1' else '0';
+EMFlush <= '1' when rst = '1' else '0';
 
 ------------------------------MEMORY--------------------------------------
 MemoryStage: Memory port map (clk => clk, en => en, rst => rst, MemoryWrite => MemoryWrite, MemoryRead => MemoryRead, MemoryEnable => MemoryEnable, MemoryAddress => MemoryAddress, CALLIntSTD => MemoryCALLIntSTD, RET => MemoryRET, ALUOut => MemoryALUOut, pcPlus => MemoryPCPlus, SecondOperand => MemorySecondOperand, SP => MemorySP, FlagReg => MemoryFlagReg,FreeProtectedStore => MemoryFreeProtectedStore , MemoryOut => MemoryOut, WrongAddress => MemoryWrongAddress, FlushAllBack => MemoryFlushAllBack, FlushINT_RTI => MemoryFlushINT_RTI, INTDetected => MemoryINTDetected, FlagRegOut => MemoryFlagRegOut);

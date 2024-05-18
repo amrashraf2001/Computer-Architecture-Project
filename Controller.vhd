@@ -69,7 +69,7 @@ BEGIN
     Branching <= '1' WHEN opcode(5 downto 4) = "10" or opcode(5 downto 1) = "11100" -- Branching
                  ELSE '0';
 
-    alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" -- ADDI, SUBI, LDM
+    alusource <= '1' WHEN opcode = "110101" or opcode = "110110" or opcode = "110111" OR opcode(5 downto 1) = "01001" -- ADDI, SUBI, LDM,STD,LDD
                  ELSE '0';
 
     MWrite <= '1' WHEN (opcode = "010000" or opcode = "010011" or opcode = "100010" or opcode = "111001") and opcode /= "110010" and opcode /= "000010" and opcode /= "110000" and opcode /= "110001"  -- PUSH, STD , CALL, INT
