@@ -2,7 +2,7 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.all;
 USE IEEE.numeric_std.all;
 
-ENTITY ProccessorFinal IS
+ENTITY ProcessorFinal IS
 GENERIC (N : INTEGER := 32);
 PORT (
     clk : IN STD_LOGIC;
@@ -10,9 +10,9 @@ PORT (
     InPort : IN std_logic_vector(31 downto 0);
     OutPort : OUT std_logic_vector(31 downto 0)
 );
-END ProccessorFinal;
+END ProcessorFinal;
 
-ARCHITECTURE ProccessorFinal_Arch OF ProccessorFinal IS
+ARCHITECTURE ProcessorFinal_Arch OF ProcessorFinal IS
 
 --------------------------FETCH--------------------------
 COMPONENT Fetch IS
@@ -533,5 +533,5 @@ OutPort <= OutPortValue;
 --OutPort <= WriteBackALUout when MemoryWriteBackBufferOUT(166) = '1' else OutPortValue;
 
 
-END ProccessorFinal_Arch;
+END ProcessorFinal_Arch;
 

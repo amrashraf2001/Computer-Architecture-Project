@@ -80,7 +80,8 @@ architecture Decode_Arch of Decode is
     signal RAdd1, RAdd2: std_logic_vector(2 DOWNTO 0);
     signal WAdd1, WAdd2: std_logic_vector(2 DOWNTO 0);
     signal ExtendedImmediate: std_logic_vector(31 DOWNTO 0);
-    --signal Swap: std_logic;
+    signal SwapIn: std_logic;
+    signal BranchingOut: std_logic;
     signal WData1, WData2: std_logic_vector(31 DOWNTO 0);
     signal PredictorInput: std_logic := '0';
     signal PredictorOutput: std_logic;
@@ -99,7 +100,7 @@ begin
     --Swap <= Swapcheck;
     opcode <= Instruction(15 downto 10);
     RAdd1 <= Instruction(6 downto 4);
-    RAdd2 <= Instruction(3 downto 1) when Swap ='0' else Instruction(9 downto 7);
+    RAdd2 <= Instruction(3 downto 1) when SwapIn ='0' else Instruction(9 downto 7);
     WAdd1 <= WriteAdd1;
     WAdd2 <= WriteAdd2 when Swaped = '1' else WriteAdd1;
     WData1 <= writeport1;
@@ -108,7 +109,7 @@ begin
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, Swap,OutEnable);
+    Controller1: Controller PORT MAP(opcode, AluSelector, BranchingOut, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, SwapIn,OutEnable);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,
@@ -126,6 +127,8 @@ begin
     
     PredictorReg1: PredictorReg PORT MAP(PredictorInput, PredictorOutput, Clk, Rst, PredictorEnable);
     tempFlush <= '1' when (Instruction(15 downto 10) = "100001") else '0';
-    FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (Branching));
+    FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (BranchingOut));
     PredictorValue <= PredictorOutput;
+    Swap <= '1' when (Instruction(15 downto 10) = "000101") else '0';
+    Branching<= BranchingOut;
 end architecture Decode_Arch;

@@ -61,7 +61,7 @@ BEGIN
                  ELSE "1011" WHEN opcode = "010011" -- STD
                  ELSE "1100" WHEN opcode = "110101" -- ADDI
                  ELSE "1101" WHEN opcode = "110110" -- SUBI 
-                 ELSE "1110" WHEN opcode = "000100" or opcode = "110001" --MOV, OUT
+                 ELSE "1110" WHEN opcode = "000100" or opcode = "110001" --OR opcode = "010000" --MOV, OUT, push
                  ELSE "1111" When opcode = "110111" -- LDM
                  ELSE "1110";
 

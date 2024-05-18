@@ -14,7 +14,7 @@ ENTITY Data_Memory IS
 END Data_Memory;
 
 ARCHITECTURE Data_Memory_Architecture OF Data_Memory IS
-    TYPE ram_type IS ARRAY (0 TO 4096) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
+    TYPE ram_type IS ARRAY (0 TO 4095) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
     SIGNAL ram : ram_type;
 
 BEGIN
@@ -33,7 +33,9 @@ BEGIN
                 ELSE
                     WrongAddress <= '1';
                 END IF;
-            ELSIF ReadEnable = '1' THEN
+            end if;
+        END IF;
+        IF ReadEnable = '1' THEN
                 IF ReadAddress < "00000000000000000001000000000000" THEN
                     ReadData <= ram(to_integer(unsigned(ReadAddress))) & ram(to_integer(unsigned(ReadAddress)+ 1));
                     WrongAddress <= '0';
@@ -41,7 +43,6 @@ BEGIN
                     WrongAddress <= '1';
                     ReadData <= (OTHERS => '0');
                 END IF;
-            END IF;
         END IF;
     END PROCESS;
 
