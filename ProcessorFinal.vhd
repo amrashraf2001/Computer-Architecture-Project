@@ -382,7 +382,7 @@ else DecodeExecuteBufferOUT(31 downto 0) when ExecuteNotTakenWrongBranch = '0' a
 else DecodeExecuteBufferOUT(133 downto 102) when ExecuteNotTakenWrongBranch = '1' and ExecuteTakenWrongBranch = '0'
 else DecodeReadData1;
 FetchBranchingAddress <= SecondMuxResult;
-FetchBranchingSel <= '1' when ExecuteTakenWrongBranch = '1' or ExecuteNotTakenWrongBranch = '1' or DecodeFlushOut = '1' else '0';
+FetchBranchingSel <= '1' when ExecuteTakenWrongBranch = '1' or (DecodeBranching = '1' and FetchDecodeBufferOUT(48 downto 43) /= "100001") or (DecodeBranching = '1' and FetchDecodeBufferOUT(48 downto 43) = "100001" and DecodePredictorValue = '1') or ExecuteNotTakenWrongBranch = '1' or DecodeFlushOut = '1' else '0';
 FetchExceptionSel <= '1' when MemoryWrongAddress = '1' else '0';
 FetchStall <= '1' when ExecuteStall = '1' else '0';
 FetchINT <= '1' when MemoryINTDetected = '1' else '0'; -- not sure about that
@@ -395,7 +395,7 @@ FetchDecodeBufferIN(0) <= FetchWrongAddress;
 
 InPortValue <= InPort;
 
-FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeExecuteBufferOUT(186) = '1' or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
+FDFlush <= '1' when ExecuteTakenWrongBranch = '1' or DecodeExecuteBufferOUT(186) = '1' or (DecodeBranching = '1' and FetchDecodeBufferOUT(48 downto 43) /= "100001") or (DecodeBranching = '1' and FetchDecodeBufferOUT(48 downto 43) = "100001" and DecodePredictorValue = '1') or ExecuteNotTakenWrongBranch = '1' or MemoryRET(1) = '1' or MemoryRET(0) = '1' or DecodeFlushOut = '1' or MemoryFlushAllBack = '1' or MemoryFlushINT_RTI = '1' or rst = '1' else '0';
 --FDFlush <='1' when rst = '1' or FetchDecodeBufferOUT(48 downto 43) = "110101" or FetchDecodeBufferOUT(48 downto 43) = "110110" or FetchDecodeBufferOUT(48 downto 43) = "110111" or FetchDecodeBufferOUT(48 downto 43) = "010010" or FetchDecodeBufferOUT(48 downto 43) = "010011"  else '0'; 
 --FDFlush <='1' when rst = '1' or DecodeExecuteBufferOUT(186) = '1' else '0';
 process(FetchDataOut)

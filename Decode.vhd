@@ -109,7 +109,7 @@ begin
     else not PredictorOutput when flush = '1'
     else PredictorOutput;
     
-    Controller1: Controller PORT MAP(opcode, AluSelector, BranchingOut, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, SwapIn,OutEnable);
+    Controller1: Controller PORT MAP(opcode, AluSelector, Branching, alusource, MWrite, MRead, WBdatasrc, RegWrite, SPPointer, interruptsignal, pcSource, FreeProtectStore, MemAddress,CallIntStore ,Ret, SwapIn,OutEnable);
     
     RegFile1: RegFile PORT MAP(
         Clk => Clk,
@@ -127,8 +127,8 @@ begin
     
     PredictorReg1: PredictorReg PORT MAP(PredictorInput, PredictorOutput, Clk, Rst, PredictorEnable);
     tempFlush <= '1' when (Instruction(15 downto 10) = "100001") else '0';
-    FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (BranchingOut));
+    FlushOut <= ((PredictorOutput)AND (tempFlush)) or ((tempFlush) AND (Branching));
     PredictorValue <= PredictorOutput;
     Swap <= '1' when (Instruction(15 downto 10) = "000101") else '0';
-    Branching<= BranchingOut;
+    --BranchingOut<= BranchingOut;
 end architecture Decode_Arch;
